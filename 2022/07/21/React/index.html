@@ -1,0 +1,791 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>React | 孙文祥的博客</title><meta name="keywords" content="前端,React"><meta name="author" content="Sun wen xiang"><meta name="copyright" content="Sun wen xiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="React简介官网  英文官网: https:&#x2F;&#x2F;reactjs.org&#x2F; 中文官网: https:&#x2F;&#x2F;react.docschina.org&#x2F;  介绍描述  用于动态构建用户界面的 JavaScript 库(只关注于视图) 由Facebook开源   正常写一个页面需要： 1.获取数据 2.处理数据 3.操作DOM呈现页面 ——React只关注这最后一步，前面的操作它不关心 所以React是一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React">
+<meta property="og:url" content="http://example.com/2022/07/21/React/index.html">
+<meta property="og:site_name" content="孙文祥的博客">
+<meta property="og:description" content="React简介官网  英文官网: https:&#x2F;&#x2F;reactjs.org&#x2F; 中文官网: https:&#x2F;&#x2F;react.docschina.org&#x2F;  介绍描述  用于动态构建用户界面的 JavaScript 库(只关注于视图) 由Facebook开源   正常写一个页面需要： 1.获取数据 2.处理数据 3.操作DOM呈现页面 ——React只关注这最后一步，前面的操作它不关心 所以React是一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tu.sunning.fit/i/y/34.jpg">
+<meta property="article:published_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:modified_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:author" content="Sun wen xiang">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tu.sunning.fit/i/y/34.jpg"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="http://example.com/2022/07/21/React/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'React',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 08:43:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tu.sunning.fit/i/y/34.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">孙文祥的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">React</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T00:43:02.000Z" title="更新于 2022-07-21 08:43:02">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="React"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="React简介"><a href="#React简介" class="headerlink" title="React简介"></a>React简介</h1><p>官网</p>
+<ol>
+<li>英文官网: <a target="_blank" rel="noopener" href="https://reactjs.org/">https://reactjs.org/</a></li>
+<li>中文官网: <a target="_blank" rel="noopener" href="https://react.docschina.org/">https://react.docschina.org/</a></li>
+</ol>
+<p>介绍描述</p>
+<ol>
+<li>用于动态构建用户界面的 JavaScript 库(只关注于视图)</li>
+<li>由Facebook开源</li>
+</ol>
+<blockquote>
+<p>正常写一个页面需要：</p>
+<p>1.获取数据</p>
+<p>2.处理数据</p>
+<p>3.操作DOM呈现页面 ——React只关注这最后一步，前面的操作它不关心</p>
+<p>所以React是一个把数据渲染为HTML视图的开源js库</p>
+</blockquote>
+<p>React的特点</p>
+<ol>
+<li>声明式编码</li>
+<li>组件化编码</li>
+<li>React Native 编写移动开发</li>
+<li>高效（优秀的Diffing算法）</li>
+</ol>
+<p>React高效的原因</p>
+<ol>
+<li>使用虚拟(virtual)DOM, 不总是直接操作页面真实DOM。（操作真实DOM浏览器要一直绘制，性能消耗大，用DOM的API操作UI）</li>
+<li>DOM Diffing算法, 最小化页面重绘。</li>
+</ol>
+<h1 id="React的基本使用"><a href="#React的基本使用" class="headerlink" title="React的基本使用"></a>React的基本使用</h1><h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cd5c08bf5.png"></p>
+<h3 id="相关js库"><a href="#相关js库" class="headerlink" title="相关js库"></a>相关js库</h3><ol>
+<li>react.js：React核心库。</li>
+<li>react-dom.js：提供操作DOM的react扩展库。 </li>
+<li>babel.min.js：解析JSX语法代码转为JS代码的库。</li>
+</ol>
+<h3 id="创建虚拟DOM的两种方式"><a href="#创建虚拟DOM的两种方式" class="headerlink" title="创建虚拟DOM的两种方式"></a>创建虚拟DOM的两种方式</h3><p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cd5fb622e.png"></p>
+<h4 id="纯JS方式-一般不用"><a href="#纯JS方式-一般不用" class="headerlink" title="纯JS方式(一般不用)"></a>纯JS方式(一般不用)</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">VDOM</span> = <span class="title class_">React</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;h1&#x27;</span>, &#123;<span class="attr">id</span>: <span class="string">&#x27;title&#x27;</span>&#125;, <span class="title class_">React</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;span&#x27;</span>, &#123;&#125;, <span class="string">&#x27;Hello,React&#x27;</span>))</span><br><span class="line">    <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="variable constant_">VDOM</span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>))</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="JSX方式"><a href="#JSX方式" class="headerlink" title="JSX方式"></a>JSX方式</h4><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">VDOM</span> = (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;title&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            Hello,React</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">)</span><br><span class="line"><span class="comment">//2.渲染虚拟DOM到页面</span></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="variable constant_">VDOM</span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="虚拟DOM与真实DOM"><a href="#虚拟DOM与真实DOM" class="headerlink" title="虚拟DOM与真实DOM"></a>虚拟DOM与真实DOM</h2><ol>
+<li>React提供了一些API来创建一种 “特别” 的<strong>一般js对象</strong><ul>
+<li>**const VDOM &#x3D; React.createElement(‘xx’,{id:’xx’},’xx’)**创建的就是一个简单的虚拟DOM对象</li>
+</ul>
+</li>
+<li>虚拟DOM对象最终都会被React转换为真实的DOM</li>
+<li>我们编码时基本只需要操作react的虚拟DOM相关数据, react会转换为真实DOM变化而更新界。</li>
+<li>虚拟dom本质是Object类型的对象（一般对象）</li>
+<li>虚拟dom比较轻，真实dom比较重，因为虚拟dom是react内部在用，无需真实dom上那么多的属性</li>
+</ol>
+<h1 id="React-JSX"><a href="#React-JSX" class="headerlink" title="React JSX"></a>React JSX</h1><h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><ol>
+<li><p>全称: JavaScript XML</p>
+</li>
+<li><p>react定义的一种类似于XML的JS扩展语法: JS + XML本质是**React.createElement(component, props, …children)**方法的语法糖</p>
+</li>
+<li><p>作用: 用来简化创建虚拟DOM</p>
+<ol>
+<li>写法：<strong>var ele &#x3D; &lt;h1&gt;Hello JSX!&lt;&#x2F;h1&gt;</strong></li>
+<li>注意1：它不是字符串, 也不是HTML&#x2F;XML标签</li>
+<li>注意2：它最终产生的就是一个JS对象</li>
+</ol>
+</li>
+<li><p>标签名任意: HTML标签或其它标签</p>
+</li>
+<li><p>标签属性任意: HTML标签属性或其它</p>
+</li>
+<li><p>基本语法规则</p>
+<ol>
+<li>遇到 &lt;开头的代码, 以标签的语法解析: html同名标签转换为html同名元素, 其它标签需要特别解析</li>
+<li>{ }，以JS语法解析: 标签中的js表达式必须用{ }包含</li>
+<li>样式的类名指定不要用class,要用className</li>
+<li>内联样式，要用<code>style=&#123;&#123;key:value&#125;&#125;</code>的形式去写（如果是font-size这种，要写成小驼峰，fontSize）</li>
+<li>虚拟dom只能有一个根标签</li>
+<li>标签必须闭合</li>
+<li>标签首字母：<ol>
+<li>若小写字母开头，则将该标签转为html中同名元素，若html中无改标签对应的同名元素，则报错</li>
+<li>若大写字母开头，则react去渲染对应的组件，若组件没有定义，则报错</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>{}中只能用js表达式:                        js语句（代码）与js表达式</p>
+<p>表达式：</p>
+<ol>
+<li>a</li>
+<li>a+b</li>
+<li>demo(1)</li>
+<li>arr.map()</li>
+<li>function.map()</li>
+<li>function test(){} &#x2F;&#x2F;函数本身也是个表达式，因为可以const xx&#x3D;function test(){}</li>
+</ol>
+<p>语句：</p>
+<ol>
+<li>if(){}</li>
+<li>for(){}</li>
+<li>switch(){case:xxx}</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        data.<span class="title function_">map</span>(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+</li>
+<li><p>babel.js的作用</p>
+<ol>
+<li>浏览器不能直接解析JSX代码, 需要babel转译为纯JS的代码才能运行</li>
+<li>只要用了JSX，都要加上type&#x3D;”text&#x2F;babel”, 声明需要babel来处理</li>
+</ol>
+</li>
+</ol>
+<h2 id="渲染虚拟DOM-元素"><a href="#渲染虚拟DOM-元素" class="headerlink" title="渲染虚拟DOM(元素)"></a>渲染虚拟DOM(元素)</h2><ol>
+<li>语法: <strong>ReactDOM.render(virtualDOM, containerDOM)</strong></li>
+<li>作用: 将虚拟DOM元素渲染到页面中的真实容器DOM中显示</li>
+<li>参数说明<ol>
+<li>参数一: 纯js或jsx创建的虚拟dom对象</li>
+<li>参数二: 用来包含虚拟DOM元素的真实dom元素对象(一般是一个div)</li>
+</ol>
+</li>
+</ol>
+<h2 id="模块与组件理解"><a href="#模块与组件理解" class="headerlink" title="模块与组件理解"></a>模块与组件理解</h2><h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ol>
+<li>理解：向外提供特定功能的js程序, 一般就是一个js文件</li>
+<li>为什么要拆成模块：随着业务逻辑增加，代码越来越多且复杂。</li>
+<li>作用：复用js, 简化js的编写, 提高js运行效率</li>
+</ol>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><ol>
+<li>理解：用来实现局部功能效果的代码和资源的集合(html&#x2F;css&#x2F;js&#x2F;image等等)</li>
+<li>为什么要用组件： 一个界面的功能更复杂</li>
+<li>作用：复用编码, 简化项目编码, 提高运行效率</li>
+</ol>
+<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>当应用的js都以模块来编写的, 这个应用就是一个模块化的应用</p>
+<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p>当应用是以多组件的方式实现, 这个应用就是一个组件化的应用</p>
+<h1 id="React面向组件编程"><a href="#React面向组件编程" class="headerlink" title="React面向组件编程"></a>React面向组件编程</h1><h2 id="基本理解和使用"><a href="#基本理解和使用" class="headerlink" title="基本理解和使用"></a>基本理解和使用</h2><h3 id="使用React开发者工具调试"><a href="#使用React开发者工具调试" class="headerlink" title="使用React开发者工具调试"></a>使用React开发者工具调试</h3><p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cd6d9954b.png"></p>
+<h3 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a>函数式组件</h3><img src="https://tu.sunning.fit/i/2022/07/20/62d7cd71194a3.png" style="zoom: 50%;" />
+
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyComponent</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">//此处的this是undefined,因为babel编译后开启了严格模式，不允许this指向window</span></span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>用函数定义的简单组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//渲染组件到页面</span></span><br><span class="line"><span class="title class_">ReactDom</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">MyComponent</span>/&gt;</span></span>,<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>)); <span class="comment">//因为是函数式组件，所以组件名就是函数名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//执行完</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h3 id="类式组件："><a href="#类式组件：" class="headerlink" title="类式组件："></a>类式组件：</h3><img src="https://tu.sunning.fit/i/2022/07/20/62d7cd7484e25.png" style="zoom:33%;" />
+
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建类式组件</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;    <span class="comment">//这个render必须要写，同时，必须有返回值</span></span><br><span class="line">        <span class="comment">//render放在哪里——MyComponent的原型对象上，供实例使用</span></span><br><span class="line">        <span class="comment">//render中的this是谁 ——MyCompent的实例对象 也叫 组件实例对象（组件对象)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>用类定义的组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//渲染组件到页面</span></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">MyComponent</span>/&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>));</span><br><span class="line"><span class="comment">/*这句执行完成后——</span></span><br><span class="line"><span class="comment">* 1.React解析组件标签，找到了MyComponent组件</span></span><br><span class="line"><span class="comment">* 2.发现组件是使用类定义的，随后new出来类的实例，并通过该实例调用到原型上的render方法</span></span><br><span class="line"><span class="comment">* 3.将render返回的虚拟DOM转为真实DOM,呈现在页面中</span></span><br><span class="line"><span class="comment">* */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="组件实例的三大属性——（有实例的只有类式组件）"><a href="#组件实例的三大属性——（有实例的只有类式组件）" class="headerlink" title="组件实例的三大属性——（有实例的只有类式组件）"></a>组件实例的三大属性——（有实例的只有类式组件）</h1><p><img src="https://tu.sunning.fit/i/2022/07/21/62d90c19e1dfb.png" alt="image-20220721161934853"></p>
+<h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><em>需求: 定义一个展示天气信息的组件</em></p>
+<ol>
+<li><em>默认展示天气炎热 或 凉爽</em></li>
+<li><em>点击文字切换天气</em></li>
+</ol>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol>
+<li>state是组件对象最重要的属性, 值是对象(可以包含多个key-value的组合)</li>
+<li>组件被称为”状态机”, 通过更新组件的state来更新对应的页面显示(重新渲染组件)</li>
+</ol>
+<h3 id="强烈注意"><a href="#强烈注意" class="headerlink" title="强烈注意"></a>强烈注意</h3><ol>
+<li>组件中render方法中的this为组件实例对象</li>
+<li>组件自定义的方法中this为undefined，如何解决？<ol>
+<li>强制绑定this: 通过函数对象的bind()</li>
+<li>箭头函数</li>
+</ol>
+</li>
+<li>状态数据，不能直接修改或更新</li>
+</ol>
+<h2 id="props"><a href="#props" class="headerlink" title="props"></a>props</h2><h3 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h3><p><em>需求: 自定义用来显示一个人员信息的组件</em></p>
+<ol>
+<li><em>姓名必须指定，且为字符串类型；</em></li>
+<li><em>性别为字符串类型，如果性别没有指定，默认为男</em></li>
+<li><em>年龄为字符串类型，且为数字类型，默认值为18</em></li>
+</ol>
+<p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cd8088fac.png"></p>
+<h3 id="理解-1"><a href="#理解-1" class="headerlink" title="理解"></a>理解</h3><ol>
+<li>每个组件对象都会有props(properties的简写)属性</li>
+<li>组件标签的所有属性都保存在props中</li>
+</ol>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>通过标签属性从组件外向组件内传递变化的数据</li>
+<li>注意: 组件内部不要修改props数据</li>
+</ol>
+<h3 id="编码操作"><a href="#编码操作" class="headerlink" title="编码操作"></a>编码操作</h3><ol>
+<li><p>内部读取某个属性值</p>
+</li>
+<li><p>对props中的属性值进行类型限制和必要性限制</p>
+<p>第一种方式（React v15.5 开始已弃用）：</p>
+</li>
+</ol>
+<p>第二种方式（新）：使用prop-types库进限制（需要引入prop-types库）</p>
+<ol>
+<li>扩展属性: 将对象的所有属性通过props传递</li>
+<li>默认属性值：</li>
+<li>组件类的构造函数</li>
+</ol>
+<h2 id="refs与事件处理"><a href="#refs与事件处理" class="headerlink" title="refs与事件处理"></a>refs与事件处理</h2><h3 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h3><p><em>需求: 自定义组件, 功能说明如下:</em></p>
+<p><em>1. 点击按钮, 提示第一个输入框中的值</em></p>
+<p><em>2. 当第2个输入框失去焦点时, 提示这个输入框中的值</em></p>
+<p>效果如下：</p>
+<h3 id="理解-2"><a href="#理解-2" class="headerlink" title="理解"></a>理解</h3><p>组件内的标签可以定义ref属性来标识自己</p>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><ol>
+<li>字符串形式的ref</li>
+<li>回调形式的ref</li>
+<li>createRef创建ref容器·</li>
+</ol>
+<h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><ol>
+<li>通过onXxx属性指定事件处理函数(注意大小写)<ol>
+<li>React使用的是自定义(合成)事件, 而不是使用的原生DOM事件</li>
+<li>React中的事件是通过事件委托方式处理的(委托给组件最外层的元素)</li>
+</ol>
+</li>
+<li>通过event.target得到发生事件的DOM元素对象</li>
+</ol>
+<h1 id="2-5-收集表单数据"><a href="#2-5-收集表单数据" class="headerlink" title="2.5. 收集表单数据"></a>2.5. 收集表单数据</h1><h2 id="2-5-1-效果"><a href="#2-5-1-效果" class="headerlink" title="2.5.1. 效果"></a>2.5.1. 效果</h2><p><em>需求: 定义一个包含表单的组件</em></p>
+<p><em>输入用户名密码后, 点击登录提示输入信息</em></p>
+<h2 id="2-5-2-理解"><a href="#2-5-2-理解" class="headerlink" title="2.5.2. 理解"></a>2.5.2. 理解</h2><p>包含表单的组件分类</p>
+<ol>
+<li>受控组件<ol>
+<li>非受控组件</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-6-组件的生命周期"><a href="#2-6-组件的生命周期" class="headerlink" title="2.6. 组件的生命周期"></a>2.6. 组件的生命周期</h1><h2 id="2-6-1-效果"><a href="#2-6-1-效果" class="headerlink" title="2.6.1. 效果"></a>2.6.1. 效果</h2><p><em>需求:定义组件实现以下功能：</em></p>
+<p><em>1. 让指定的文本做显示 &#x2F; 隐藏的渐变动画</em></p>
+<p><em>2. 从完全可见，到彻底消失，耗时2S</em></p>
+<p><em>3. 点击“不活了”按钮从界面中卸载组件</em></p>
+<h2 id="2-6-2-理解"><a href="#2-6-2-理解" class="headerlink" title="2.6.2. 理解"></a>2.6.2. 理解</h2><ol>
+<li>组件从创建到死亡它会经历一些特定的阶段。</li>
+<li>React组件中包含一系列勾子函数(生命周期回调函数), 会在特定的时刻调用。</li>
+<li>我们在定义组件时，会在特定的生命周期回调函数中，做特定的工作。</li>
+</ol>
+<h2 id="2-6-3-生命周期流程图-旧"><a href="#2-6-3-生命周期流程图-旧" class="headerlink" title="2.6.3. 生命周期流程图(旧)"></a>2.6.3. 生命周期流程图(旧)</h2><p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cd8d8a23f.png"></p>
+<p>生命周期的三个阶段（旧）</p>
+<p><strong>1. 初始化阶段:</strong> 由ReactDOM.render()触发—初次渲染</p>
+<ol>
+<li>constructor()<ol>
+<li>componentWillMount()<ol>
+<li>render()<ol>
+<li>componentDidMount()</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>2. 更新阶段:</strong> 由组件内部this.setSate()或父组件重新render触发</p>
+<ol>
+<li>shouldComponentUpdate()</li>
+<li>componentWillUpdate()</li>
+<li>render()</li>
+<li>componentDidUpdate()</li>
+</ol>
+<p><strong>3. 卸载组件:</strong> 由ReactDOM.unmountComponentAtNode()触发</p>
+<ol>
+<li>componentWillUnmount()</li>
+</ol>
+<h2 id="2-6-4-生命周期流程图-新"><a href="#2-6-4-生命周期流程图-新" class="headerlink" title="2.6.4. 生命周期流程图(新)"></a>2.6.4. 生命周期流程图(新)</h2><p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cdcfe92f5.png"></p>
+<p>生命周期的三个阶段（新）</p>
+<p><strong>1. 初始化阶段:</strong> 由ReactDOM.render()触发—初次渲染</p>
+<ol>
+<li>constructor()</li>
+<li><strong>getDerivedStateFromProps</strong></li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ol>
+<p><strong>2. 更新阶段:</strong> 由组件内部this.setSate()或父组件重新render触发</p>
+<ol>
+<li><strong>getDerivedStateFromProps</strong></li>
+<li>shouldComponentUpdate()</li>
+<li>render()</li>
+<li><strong>getSnapshotBeforeUpdate</strong></li>
+<li>componentDidUpdate()</li>
+</ol>
+<p><strong>3. 卸载组件:</strong> 由ReactDOM.unmountComponentAtNode()触发</p>
+<ol>
+<li>componentWillUnmount()</li>
+</ol>
+<h2 id="2-6-5-重要的勾子"><a href="#2-6-5-重要的勾子" class="headerlink" title="2.6.5. 重要的勾子"></a>2.6.5. 重要的勾子</h2><ol>
+<li>render：初始化渲染或更新渲染调用</li>
+<li>componentDidMount：开启监听, 发送ajax请求</li>
+<li>componentWillUnmount：做一些收尾工作, 如: 清理定时器</li>
+</ol>
+<h2 id="2-6-6-即将废弃的勾子"><a href="#2-6-6-即将废弃的勾子" class="headerlink" title="2.6.6. 即将废弃的勾子"></a>2.6.6. 即将废弃的勾子</h2><ol>
+<li>componentWillMount</li>
+<li>componentWillReceiveProps</li>
+<li>componentWillUpdate</li>
+</ol>
+<p>现在使用会出现警告，下一个大版本需要加上UNSAFE_前缀才能使用，以后可能会被彻底废弃，不建议使用。</p>
+<h1 id="2-7-虚拟DOM与DOM-Diffing算法"><a href="#2-7-虚拟DOM与DOM-Diffing算法" class="headerlink" title="2.7. 虚拟DOM与DOM Diffing算法"></a>2.7. 虚拟DOM与DOM Diffing算法</h1><h2 id="2-7-1-效果"><a href="#2-7-1-效果" class="headerlink" title="2.7.1. 效果"></a>2.7.1. 效果</h2><p><em>需求：验证虚拟DOM Diffing算法的存在</em></p>
+<h2 id="2-7-2-基本原理图"><a href="#2-7-2-基本原理图" class="headerlink" title="2.7.2. 基本原理图"></a>2.7.2. 基本原理图</h2><p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cdd52d6d7.png" alt="虚拟DOM与DOM diff"></p>
+<p>第3章：React应用(基于React脚手架)</p>
+<h1 id="3-1-使用create-react-app创建react应用"><a href="#3-1-使用create-react-app创建react应用" class="headerlink" title="3.1. 使用create-react-app创建react应用"></a>3.1. 使用create-react-app创建react应用</h1><h2 id="3-1-1-react脚手架"><a href="#3-1-1-react脚手架" class="headerlink" title="3.1.1. react脚手架"></a>3.1.1. react脚手架</h2><ol>
+<li>xxx脚手架: 用来帮助程序员快速创建一个基于xxx库的模板项目<ol>
+<li>包含了所有需要的配置（语法检查、jsx编译、devServer…）</li>
+<li>下载好了所有相关的依赖</li>
+<li>可以直接运行一个简单效果</li>
+</ol>
+</li>
+<li>react提供了一个用于创建react项目的脚手架库: create-react-app</li>
+<li>项目的整体技术架构为: react + webpack + es6 + eslint</li>
+<li>使用脚手架开发的项目的特点: 模块化, 组件化, 工程化</li>
+</ol>
+<h2 id="3-1-2-创建项目并启动"><a href="#3-1-2-创建项目并启动" class="headerlink" title="3.1.2. 创建项目并启动"></a>3.1.2. 创建项目并启动</h2><p><strong>第一步</strong>，全局安装：npm i -g create-react-app</p>
+<p><strong>第二步</strong>，切换到想创项目的目录，使用命令：create-react-app hello-react</p>
+<p><strong>第三步</strong>，进入项目文件夹：cd hello-react</p>
+<p><strong>第四步</strong>，启动项目：npm start</p>
+<h2 id="3-1-3-react脚手架项目结构"><a href="#3-1-3-react脚手架项目结构" class="headerlink" title="3.1.3. react脚手架项目结构"></a>3.1.3. react脚手架项目结构</h2><p>public —- 静态资源文件夹</p>
+<p>favicon.icon —— 网站页签图标</p>
+<p><strong>index.html ——– 主页面</strong></p>
+<p>logo192.png ——- logo图</p>
+<p>logo512.png ——- logo图</p>
+<p>manifest.json —– 应用加壳的配置文件</p>
+<p>robots.txt ——– 爬虫协议文件</p>
+<p>src —- 源码文件夹</p>
+<p>App.css ——– App组件的样式</p>
+<p><strong>App.js ——— App组件</strong></p>
+<p>App.test.js —- 用于给App做测试</p>
+<p>index.css —— 样式</p>
+<p><strong>index.js ——- 入口文件</strong></p>
+<p>logo.svg ——- logo图</p>
+<p>reportWebVitals.js</p>
+<p>-– 页面性能分析文件(需要web-vitals库的支持)</p>
+<p>setupTests.js</p>
+<p>-— 组件单元测试的文件(需要jest-dom库的支持)</p>
+<h2 id="3-1-4-功能界面的组件化编码流程（通用）"><a href="#3-1-4-功能界面的组件化编码流程（通用）" class="headerlink" title="3.1.4. 功能界面的组件化编码流程（通用）"></a>3.1.4. 功能界面的组件化编码流程（通用）</h2><p>1. 拆分组件: 拆分界面,抽取组件</p>
+<p>2. 实现静态组件: 使用组件实现静态页面效果</p>
+<p>3. 实现动态组件</p>
+<p>3.1 动态显示初始化数据</p>
+<p>3.1.1 数据类型</p>
+<p>3.1.2 数据名称</p>
+<p>3.1.2 保存在哪个组件?</p>
+<p>3.2 交互(从绑定事件监听开始)</p>
+<h1 id="3-2-组件的组合使用-TodoList"><a href="#3-2-组件的组合使用-TodoList" class="headerlink" title="3.2. 组件的组合使用-TodoList"></a>3.2. 组件的组合使用-TodoList</h1><p><em>功能: 组件化实现此功能</em></p>
+<p><em>1. 显示所有todo列表</em></p>
+<p><em>2. 输入文本, 点击按钮显示到列表的首位, 并清除输入的文本</em></p>
+<p>第4章：React ajax</p>
+<h1 id="4-1-理解"><a href="#4-1-理解" class="headerlink" title="4.1. 理解"></a>4.1. 理解</h1><h2 id="4-1-1-前置说明"><a href="#4-1-1-前置说明" class="headerlink" title="4.1.1. 前置说明"></a>4.1.1. 前置说明</h2><ol>
+<li>React本身只关注于界面, 并不包含发送ajax请求的代码</li>
+<li>前端应用需要通过ajax请求与后台进行交互(json数据)</li>
+<li>react应用中需要集成第三方ajax库(或自己封装)</li>
+</ol>
+<h2 id="4-1-2-常用的ajax请求库"><a href="#4-1-2-常用的ajax请求库" class="headerlink" title="4.1.2. 常用的ajax请求库"></a>4.1.2. 常用的ajax请求库</h2><ol>
+<li>jQuery: 比较重, 如果需要另外引入不建议使用</li>
+<li>axios: 轻量级, 建议使用<ol>
+<li>封装XmlHttpRequest对象的ajax<ol>
+<li>promise风格</li>
+<li>可以用在浏览器端和node服务器端</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-2-axios"><a href="#4-2-axios" class="headerlink" title="4.2. axios"></a>4.2. axios</h1><h2 id="4-2-1-文档"><a href="#4-2-1-文档" class="headerlink" title="4.2.1. 文档"></a>4.2.1. 文档</h2><p><a target="_blank" rel="noopener" href="https://github.com/axios/axios">https://github.com/axios/axios</a></p>
+<h2 id="4-2-2-相关API"><a href="#4-2-2-相关API" class="headerlink" title="4.2.2. 相关API"></a>4.2.2. 相关API</h2><ol>
+<li>GET请求</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>axios.get(‘&#x2F;user?ID&#x3D;12345’)  .then(function (response) {  console.log(response.data);  })  .catch(function (error) {  console.log(error);  });  axios.get(‘&#x2F;user’, {  params: {  ID: 12345  }  })  .then(function (response) {  console.log(response);  })  .catch(function (error) {  console.log(error);  });</th>
+</tr>
+</thead>
+</table>
+<ol>
+<li>POST请求</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>axios.post(‘&#x2F;user’, {  firstName: ‘Fred’,  lastName: ‘Flintstone’ }) .then(function (response) { console.log(response); }) .catch(function (error) { console.log(error); });</th>
+</tr>
+</thead>
+</table>
+<h1 id="4-3-案例—github用户搜索"><a href="#4-3-案例—github用户搜索" class="headerlink" title="4.3. 案例—github用户搜索"></a>4.3. 案例—github用户搜索</h1><h2 id="4-3-1-效果"><a href="#4-3-1-效果" class="headerlink" title="4.3.1. 效果"></a>4.3.1. 效果</h2><p>请求地址: <a target="_blank" rel="noopener" href="https://api.github.com/search/users?q=xxxxxx">https://api.github.com/search/users?q=xxxxxx</a></p>
+<h1 id="4-4-消息订阅-发布机制"><a href="#4-4-消息订阅-发布机制" class="headerlink" title="4.4. 消息订阅-发布机制"></a>4.4. 消息订阅-发布机制</h1><ol>
+<li>工具库: PubSubJS</li>
+<li>下载: npm install pubsub-js –save</li>
+<li>使用:<ol>
+<li>import PubSub from ‘pubsub-js’ &#x2F;&#x2F;引入<ol>
+<li>PubSub.subscribe(‘delete’, function(data){ }); &#x2F;&#x2F;订阅<ol>
+<li>PubSub.publish(‘delete’, data) &#x2F;&#x2F;发布消息</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-5-扩展：Fetch"><a href="#4-5-扩展：Fetch" class="headerlink" title="4.5. 扩展：Fetch"></a>4.5. 扩展：Fetch</h1><h2 id="4-5-1-文档"><a href="#4-5-1-文档" class="headerlink" title="4.5.1. 文档"></a>4.5.1. 文档</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.github.io/fetch/">https://github.github.io/fetch/</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000003810652">https://segmentfault.com/a/1190000003810652</a></li>
+</ol>
+<h2 id="4-5-2-特点"><a href="#4-5-2-特点" class="headerlink" title="4.5.2. 特点"></a>4.5.2. 特点</h2><ol>
+<li>fetch: 原生函数，不再使用XmlHttpRequest对象提交ajax请求</li>
+<li>老版本浏览器可能不支持</li>
+</ol>
+<h2 id="4-5-3-相关API"><a href="#4-5-3-相关API" class="headerlink" title="4.5.3. 相关API"></a>4.5.3. 相关API</h2><ol>
+<li>GET请求</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>fetch(url).then(function(response) {  return response.json()  }).then(function(data) {  console.log(data)  }).catch(function(e) {  console.log(e)  });</th>
+</tr>
+</thead>
+</table>
+<ol>
+<li>POST请求</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>fetch(url, {  method: “POST”,  body: JSON.stringify(data),  }).then(function(data) {  console.log(data)  }).catch(function(e) {  console.log(e)  })</th>
+</tr>
+</thead>
+</table>
+<p>第5章：React路由</p>
+<h1 id="5-1-相关理解"><a href="#5-1-相关理解" class="headerlink" title="5.1. 相关理解"></a>5.1. 相关理解</h1><h2 id="5-1-1-SPA的理解"><a href="#5-1-1-SPA的理解" class="headerlink" title="5.1.1. SPA的理解"></a>5.1.1. SPA的理解</h2><ol>
+<li>单页Web应用（single page web application，SPA）。</li>
+<li>整个应用只有<strong>一个完整的页面</strong>。</li>
+<li>点击页面中的链接<strong>不会刷新</strong>页面，只会做页面的<strong>局部更新。</strong></li>
+<li>数据都需要通过ajax请求获取, 并在前端异步展现。</li>
+</ol>
+<h2 id="5-1-2-路由的理解"><a href="#5-1-2-路由的理解" class="headerlink" title="5.1.2. 路由的理解"></a>5.1.2. 路由的理解</h2><ol>
+<li><strong>什么是路由?</strong><ol>
+<li>一个路由就是一个映射关系(key:value)</li>
+<li>key为路径, value可能是function或component</li>
+</ol>
+</li>
+<li><strong>路由分类</strong><ol>
+<li>后端路由：<ol>
+<li>理解： value是function, 用来处理客户端提交的请求。</li>
+<li>注册路由： router.get(path, function(req, res))</li>
+<li>工作过程：当node接收到一个请求时, 根据请求路径找到匹配的路由, 调用路由中的函数来处理请求, 返回响应数据</li>
+</ol>
+</li>
+<li>前端路由：<ol>
+<li>浏览器端路由，value是component，用于展示页面内容。</li>
+<li>注册路由: &lt;Route path&#x3D;”&#x2F;test” component&#x3D;{Test}&gt;</li>
+<li>工作过程：当浏览器的path变为&#x2F;test时, 当前路由组件就会变为Test组件</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="5-1-3-react-router-dom的理解"><a href="#5-1-3-react-router-dom的理解" class="headerlink" title="5.1.3. react-router-dom的理解"></a>5.1.3. react-router-dom的理解</h2><ol>
+<li>react的一个插件库。</li>
+<li>专门用来实现一个SPA应用。</li>
+<li>基于react的项目基本都会用到此库。</li>
+</ol>
+<h1 id="5-2-react-router-dom相关API"><a href="#5-2-react-router-dom相关API" class="headerlink" title="5.2. react-router-dom相关API"></a>5.2. react-router-dom相关API</h1><h2 id="5-2-1-内置组件"><a href="#5-2-1-内置组件" class="headerlink" title="5.2.1. 内置组件"></a>5.2.1. 内置组件</h2><ol>
+<li>&lt;BrowserRouter&gt;</li>
+<li>&lt;HashRouter&gt;</li>
+<li>&lt;Route&gt;</li>
+<li>&lt;Redirect&gt;</li>
+<li>&lt;Link&gt;</li>
+<li>&lt;NavLink&gt;</li>
+<li>&lt;Switch&gt;</li>
+</ol>
+<h2 id="5-2-2-其它"><a href="#5-2-2-其它" class="headerlink" title="5.2.2. 其它"></a>5.2.2. 其它</h2><ol>
+<li>history对象</li>
+<li>match对象</li>
+<li>withRouter函数</li>
+</ol>
+<h1 id="5-3-基本路由使用"><a href="#5-3-基本路由使用" class="headerlink" title="5.3. 基本路由使用"></a>5.3. 基本路由使用</h1><h2 id="5-3-1-效果"><a href="#5-3-1-效果" class="headerlink" title="5.3.1. 效果"></a>5.3.1. 效果</h2><h2 id="5-3-2-准备"><a href="#5-3-2-准备" class="headerlink" title="5.3.2. 准备"></a>5.3.2. 准备</h2><ol>
+<li>下载react-router-dom: npm install –save react-router-dom</li>
+<li>引入bootstrap.css: &lt;link rel&#x3D;”stylesheet” href&#x3D;”&#x2F;css&#x2F;bootstrap.css”&gt;</li>
+</ol>
+<h2 id="5-4-嵌套路由使用"><a href="#5-4-嵌套路由使用" class="headerlink" title="5.4. 嵌套路由使用"></a>5.4. 嵌套路由使用</h2><h3 id="效果-3"><a href="#效果-3" class="headerlink" title="效果"></a>效果</h3><h2 id="5-5-向路由组件传递参数数据"><a href="#5-5-向路由组件传递参数数据" class="headerlink" title="5.5. 向路由组件传递参数数据"></a>5.5. 向路由组件传递参数数据</h2><h3 id="效果-4"><a href="#效果-4" class="headerlink" title="效果"></a>效果</h3><h2 id="5-6-多种路由跳转方式"><a href="#5-6-多种路由跳转方式" class="headerlink" title="5.6. 多种路由跳转方式"></a>5.6. 多种路由跳转方式</h2><h3 id="效果-5"><a href="#效果-5" class="headerlink" title="效果"></a>效果</h3><h1 id="6-1-流行的开源React-UI组件库"><a href="#6-1-流行的开源React-UI组件库" class="headerlink" title="6.1.流行的开源React UI组件库"></a>6.1.流行的开源React UI组件库</h1><h2 id="6-1-1-material-ui-国外"><a href="#6-1-1-material-ui-国外" class="headerlink" title="6.1.1. material-ui(国外)"></a>6.1.1. material-ui(国外)</h2><ol>
+<li>官网: <a target="_blank" rel="noopener" href="http://www.material-ui.com/#/">http://www.material-ui.com/#&#x2F;</a></li>
+<li>github: <a target="_blank" rel="noopener" href="https://github.com/callemall/material-ui">https://github.com/callemall/material-ui</a></li>
+</ol>
+<h2 id="6-1-2-ant-design-国内蚂蚁金服"><a href="#6-1-2-ant-design-国内蚂蚁金服" class="headerlink" title="6.1.2. ant-design(国内蚂蚁金服)"></a>6.1.2. ant-design(国内蚂蚁金服)</h2><ol>
+<li>官网: <a target="_blank" rel="noopener" href="https://ant.design/index-cn">https://ant.design/index-cn</a></li>
+<li>Github: <a target="_blank" rel="noopener" href="https://github.com/ant-design/ant-design/">https://github.com/ant-design/ant-design/</a></li>
+</ol>
+<p>第7章：redux</p>
+<h1 id="7-1-redux理解"><a href="#7-1-redux理解" class="headerlink" title="7.1. redux理解"></a>7.1. redux理解</h1><h2 id="7-1-1-学习文档"><a href="#7-1-1-学习文档" class="headerlink" title="7.1.1. 学习文档"></a>7.1.1. 学习文档</h2><ol>
+<li>英文文档: <a target="_blank" rel="noopener" href="https://redux.js.org/">https://redux.js.org/</a></li>
+<li>中文文档: <a target="_blank" rel="noopener" href="http://www.redux.org.cn/">http://www.redux.org.cn/</a></li>
+<li>Github: <a target="_blank" rel="noopener" href="https://github.com/reactjs/redux">https://github.com/reactjs/redux</a></li>
+</ol>
+<h2 id="7-1-2-redux是什么"><a href="#7-1-2-redux是什么" class="headerlink" title="7.1.2. redux是什么"></a>7.1.2. redux是什么</h2><ol>
+<li>redux是一个专门用于做<strong>状态管理</strong>的JS库(不是react插件库)。</li>
+<li>它可以用在react, angular, vue等项目中, 但基本与react配合使用。</li>
+<li>作用: 集中式管理react应用中多个组件<strong>共享</strong>的状态。</li>
+</ol>
+<h2 id="7-1-3-什么情况下需要使用redux"><a href="#7-1-3-什么情况下需要使用redux" class="headerlink" title="7.1.3. 什么情况下需要使用redux"></a>7.1.3. 什么情况下需要使用redux</h2><ol>
+<li>某个组件的状态，需要让其他组件可以随时拿到（共享）。</li>
+<li>一个组件需要改变另一个组件的状态（通信）。</li>
+<li>总体原则：能不用就不用, 如果不用比较吃力才考虑使用。</li>
+</ol>
+<h2 id="7-1-4-redux工作流程"><a href="#7-1-4-redux工作流程" class="headerlink" title="7.1.4. redux工作流程"></a>7.1.4. redux工作流程</h2><p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cde1f404a.png"></p>
+<h1 id="7-2-redux的三个核心概念"><a href="#7-2-redux的三个核心概念" class="headerlink" title="7.2. redux的三个核心概念"></a>7.2. redux的三个核心概念</h1><h2 id="7-2-1-action"><a href="#7-2-1-action" class="headerlink" title="7.2.1. action"></a>7.2.1. action</h2><ol>
+<li>动作的对象</li>
+<li>包含2个属性<ul>
+<li>type：标识属性, 值为字符串, 唯一, 必要属性</li>
+<li>data：数据属性, 值类型任意, 可选属性</li>
+</ul>
+</li>
+<li>例子：{ type: ‘ADD_STUDENT’,data:{name: ‘tom’,age:18} }</li>
+</ol>
+<h2 id="7-2-2-reducer"><a href="#7-2-2-reducer" class="headerlink" title="7.2.2. reducer"></a>7.2.2. reducer</h2><ol>
+<li>用于初始化状态、加工状态。</li>
+<li>加工时，根据旧的state和action， 产生新的state的<strong>纯函数。</strong></li>
+</ol>
+<h2 id="7-2-3-store"><a href="#7-2-3-store" class="headerlink" title="7.2.3. store"></a>7.2.3. store</h2><ol>
+<li>将state、action、reducer联系在一起的对象</li>
+<li>如何得到此对象?<ol>
+<li>import {createStore} from ‘redux’<ol>
+<li>import reducer from ‘.&#x2F;reducers’<ol>
+<li>const store &#x3D; createStore(reducer)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>此对象的功能?<ol>
+<li>getState(): 得到state<ol>
+<li>dispatch(action): 分发action, 触发reducer调用, 产生新的state<ol>
+<li>subscribe(listener): 注册监听, 当产生了新的state时, 自动调用</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="7-3-redux的核心API"><a href="#7-3-redux的核心API" class="headerlink" title="7.3. redux的核心API"></a>7.3. redux的核心API</h1><h2 id="7-3-1-createstore"><a href="#7-3-1-createstore" class="headerlink" title="7.3.1. createstore()"></a>7.3.1. createstore()</h2><p>作用：创建包含指定reducer的store对象</p>
+<h2 id="7-3-2-store对象"><a href="#7-3-2-store对象" class="headerlink" title="7.3.2. store对象"></a>7.3.2. store对象</h2><ol>
+<li>作用: redux库最核心的管理对象</li>
+<li>它内部维护着:<ol>
+<li>state<ol>
+<li>reducer</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>核心方法:<ol>
+<li>getState()<ol>
+<li>dispatch(action)<ol>
+<li>subscribe(listener)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>具体编码:<ol>
+<li>store.getState()<ol>
+<li>store.dispatch({type:’INCREMENT’, number})<ol>
+<li>store.subscribe(render)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="7-3-3-applyMiddleware"><a href="#7-3-3-applyMiddleware" class="headerlink" title="7.3.3. applyMiddleware()"></a>7.3.3. applyMiddleware()</h2><p>作用：应用上基于redux的中间件(插件库)</p>
+<h2 id="7-3-4-combineReducers"><a href="#7-3-4-combineReducers" class="headerlink" title="7.3.4. combineReducers()"></a>7.3.4. combineReducers()</h2><p>作用：合并多个reducer函数</p>
+<h2 id="7-4-使用redux编写应用"><a href="#7-4-使用redux编写应用" class="headerlink" title="7.4. 使用redux编写应用"></a>7.4. 使用redux编写应用</h2><p><strong>效果</strong></p>
+<h2 id="7-5-redux异步编程"><a href="#7-5-redux异步编程" class="headerlink" title="7.5. redux异步编程"></a>7.5. redux异步编程</h2><h3 id="7-5-1理解："><a href="#7-5-1理解：" class="headerlink" title="7.5.1理解："></a>7.5.1理解：</h3><ol>
+<li>redux默认是不能进行异步处理的,</li>
+<li>某些时候应用中需要在<strong>redux中执行异步任务</strong>(ajax, 定时器)</li>
+</ol>
+<h3 id="7-5-2-使用异步中间件"><a href="#7-5-2-使用异步中间件" class="headerlink" title="7.5.2. 使用异步中间件"></a>7.5.2. 使用异步中间件</h3><p>npm install –save redux-thunk</p>
+<h2 id="7-6-react-redux"><a href="#7-6-react-redux" class="headerlink" title="7.6. react-redux"></a>7.6. react-redux</h2><h3 id="7-6-1-理解"><a href="#7-6-1-理解" class="headerlink" title="7.6.1. 理解"></a>7.6.1. 理解</h3><ol>
+<li>一个react插件库</li>
+<li>专门用来简化react应用中使用redux</li>
+</ol>
+<h3 id="7-6-2-react-Redux将所有组件分成两大类"><a href="#7-6-2-react-Redux将所有组件分成两大类" class="headerlink" title="7.6.2. react-Redux将所有组件分成两大类"></a>7.6.2. react-Redux将所有组件分成两大类</h3><ol>
+<li>UI组件<ol>
+<li>只负责 UI 的呈现，不带有任何业务逻辑<ol>
+<li>通过props接收数据(一般数据和函数)</li>
+<li>不使用任何 Redux 的 API</li>
+<li>一般保存在components文件夹下</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>容器组件<ol>
+<li>负责管理数据和业务逻辑，不负责UI的呈现<ol>
+<li>使用 Redux 的 API</li>
+<li>一般保存在containers文件夹下</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="7-6-3-相关API"><a href="#7-6-3-相关API" class="headerlink" title="7.6.3. 相关API"></a>7.6.3. 相关API</h3><ol>
+<li>Provider：让所有组件都可以得到state数据</li>
+<li>connect：用于包装 UI 组件生成容器组件</li>
+<li>mapStateToprops：将外部的数据（即state对象）转换为UI组件的标签属性</li>
+<li>mapDispatchToProps：将分发action的函数转换为UI组件的标签属性</li>
+</ol>
+<h2 id="7-7-使用上redux调试工具"><a href="#7-7-使用上redux调试工具" class="headerlink" title="7.7. 使用上redux调试工具"></a>7.7. 使用上redux调试工具</h2><h3 id="7-7-1-安装chrome浏览器插件"><a href="#7-7-1-安装chrome浏览器插件" class="headerlink" title="7.7.1. 安装chrome浏览器插件"></a>7.7.1. 安装chrome浏览器插件</h3><p><img src="https://tu.sunning.fit/i/2022/07/20/62d7cded320fd.png"></p>
+<h3 id="7-7-2-下载工具依赖包"><a href="#7-7-2-下载工具依赖包" class="headerlink" title="7.7.2. 下载工具依赖包"></a>7.7.2. 下载工具依赖包</h3><p>npm install –save-dev redux-devtools-extension</p>
+<h2 id="7-8-纯函数和高阶函数"><a href="#7-8-纯函数和高阶函数" class="headerlink" title="7.8. 纯函数和高阶函数"></a>7.8. 纯函数和高阶函数</h2><h3 id="7-8-1-纯函数"><a href="#7-8-1-纯函数" class="headerlink" title="7.8.1. 纯函数"></a>7.8.1. 纯函数</h3><ol>
+<li>一类特别的函数: 只要是同样的输入(实参)，必定得到同样的输出(返回)</li>
+<li>必须遵守以下一些约束<ol>
+<li>不得改写参数数据<ol>
+<li>不会产生任何副作用，例如网络请求，输入和输出设备</li>
+<li>不能调用Date.now()或者Math.random()等不纯的方法</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>redux的reducer函数必须是一个纯函数</li>
+</ol>
+<h3 id="7-8-2-高阶函数"><a href="#7-8-2-高阶函数" class="headerlink" title="7.8.2. 高阶函数"></a>7.8.2. 高阶函数</h3><ol>
+<li>理解: 一类特别的函数<ol>
+<li>情况1: 参数是函数<ol>
+<li>情况2: 返回是函数</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>常见的高阶函数:<ol>
+<li>定时器设置函数<ol>
+<li>数组的forEach()&#x2F;map()&#x2F;filter()&#x2F;reduce()&#x2F;find()&#x2F;bind()</li>
+<li>promise</li>
+<li>react-redux中的connect函数</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>作用: 能实现更加动态, 更加可扩展的功能</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Sun wen xiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/07/21/React/">http://example.com/2022/07/21/React/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">孙文祥的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/React/">React</a></div><div class="post_share"><div class="social-share" data-image="https://tu.sunning.fit/i/y/34.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/Sakurairo%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE/"><img class="prev-cover" src="https://tu.sunning.fit/i/y/7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Sakurairo主题设置</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/Quasar/"><img class="next-cover" src="https://tu.sunning.fit/i/y/26.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Quasar</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/21/Axios/" title="Axios"><img class="cover" src="https://tu.sunning.fit/i/y/119.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Axios</div></div></a></div><div><a href="/2022/07/21/BOM/" title="BOM"><img class="cover" src="https://tu.sunning.fit/i/y/70.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">BOM</div></div></a></div><div><a href="/2022/07/21/Echarts%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="Echarts数据可视化"><img class="cover" src="https://tu.sunning.fit/i/y/20.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Echarts数据可视化</div></div></a></div><div><a href="/2022/07/21/JavaScript%E5%9F%BA%E7%A1%80/" title="JavaScript基础"><img class="cover" src="https://tu.sunning.fit/i/y/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">JavaScript基础</div></div></a></div><div><a href="/2022/07/21/Mock/" title="Mock"><img class="cover" src="https://tu.sunning.fit/i/y/67.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Mock</div></div></a></div><div><a href="/2022/07/21/Pinia/" title="Pinia"><img class="cover" src="https://tu.sunning.fit/i/y/12.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Pinia</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sun wen xiang</div><div class="author-info__description">遇到困难睡大觉</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sunwenxiang133"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">React简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">React的基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E4%BE%8B"><span class="toc-number">2.1.</span> <span class="toc-text">引例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3js%E5%BA%93"><span class="toc-number">2.1.1.</span> <span class="toc-text">相关js库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9FDOM%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.2.</span> <span class="toc-text">创建虚拟DOM的两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%AFJS%E6%96%B9%E5%BC%8F-%E4%B8%80%E8%88%AC%E4%B8%8D%E7%94%A8"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">纯JS方式(一般不用)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSX%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">JSX方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9FDOM%E4%B8%8E%E7%9C%9F%E5%AE%9EDOM"><span class="toc-number">2.2.</span> <span class="toc-text">虚拟DOM与真实DOM</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-JSX"><span class="toc-number">3.</span> <span class="toc-text">React JSX</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JSX"><span class="toc-number">3.1.</span> <span class="toc-text">JSX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E8%99%9A%E6%8B%9FDOM-%E5%85%83%E7%B4%A0"><span class="toc-number">3.2.</span> <span class="toc-text">渲染虚拟DOM(元素)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%B8%8E%E7%BB%84%E4%BB%B6%E7%90%86%E8%A7%A3"><span class="toc-number">3.3.</span> <span class="toc-text">模块与组件理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97"><span class="toc-number">3.3.1.</span> <span class="toc-text">模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">3.3.2.</span> <span class="toc-text">组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">3.3.3.</span> <span class="toc-text">模块化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-number">3.3.4.</span> <span class="toc-text">组件化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E9%9D%A2%E5%90%91%E7%BB%84%E4%BB%B6%E7%BC%96%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">React面向组件编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%90%86%E8%A7%A3%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text">基本理解和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8React%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E8%B0%83%E8%AF%95"><span class="toc-number">4.1.1.</span> <span class="toc-text">使用React开发者工具调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6"><span class="toc-number">4.1.2.</span> <span class="toc-text">函数式组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%BC%8F%E7%BB%84%E4%BB%B6%EF%BC%9A"><span class="toc-number">4.1.3.</span> <span class="toc-text">类式组件：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E7%9A%84%E4%B8%89%E5%A4%A7%E5%B1%9E%E6%80%A7%E2%80%94%E2%80%94%EF%BC%88%E6%9C%89%E5%AE%9E%E4%BE%8B%E7%9A%84%E5%8F%AA%E6%9C%89%E7%B1%BB%E5%BC%8F%E7%BB%84%E4%BB%B6%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">组件实例的三大属性——（有实例的只有类式组件）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#state"><span class="toc-number">5.1.</span> <span class="toc-text">state</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-number">5.1.1.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3"><span class="toc-number">5.1.2.</span> <span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%83%88%E6%B3%A8%E6%84%8F"><span class="toc-number">5.1.3.</span> <span class="toc-text">强烈注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#props"><span class="toc-number">5.2.</span> <span class="toc-text">props</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C-1"><span class="toc-number">5.2.1.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3-1"><span class="toc-number">5.2.2.</span> <span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">5.2.3.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E6%93%8D%E4%BD%9C"><span class="toc-number">5.2.4.</span> <span class="toc-text">编码操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#refs%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">5.3.</span> <span class="toc-text">refs与事件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C-2"><span class="toc-number">5.3.1.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3-2"><span class="toc-number">5.3.2.</span> <span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81"><span class="toc-number">5.3.3.</span> <span class="toc-text">编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">5.3.4.</span> <span class="toc-text">事件处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-5-%E6%94%B6%E9%9B%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">2.5. 收集表单数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-1-%E6%95%88%E6%9E%9C"><span class="toc-number">6.1.</span> <span class="toc-text">2.5.1. 效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-2-%E7%90%86%E8%A7%A3"><span class="toc-number">6.2.</span> <span class="toc-text">2.5.2. 理解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-6-%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">7.</span> <span class="toc-text">2.6. 组件的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-1-%E6%95%88%E6%9E%9C"><span class="toc-number">7.1.</span> <span class="toc-text">2.6.1. 效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-2-%E7%90%86%E8%A7%A3"><span class="toc-number">7.2.</span> <span class="toc-text">2.6.2. 理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-3-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B5%81%E7%A8%8B%E5%9B%BE-%E6%97%A7"><span class="toc-number">7.3.</span> <span class="toc-text">2.6.3. 生命周期流程图(旧)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-4-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B5%81%E7%A8%8B%E5%9B%BE-%E6%96%B0"><span class="toc-number">7.4.</span> <span class="toc-text">2.6.4. 生命周期流程图(新)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-5-%E9%87%8D%E8%A6%81%E7%9A%84%E5%8B%BE%E5%AD%90"><span class="toc-number">7.5.</span> <span class="toc-text">2.6.5. 重要的勾子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-6-%E5%8D%B3%E5%B0%86%E5%BA%9F%E5%BC%83%E7%9A%84%E5%8B%BE%E5%AD%90"><span class="toc-number">7.6.</span> <span class="toc-text">2.6.6. 即将废弃的勾子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-7-%E8%99%9A%E6%8B%9FDOM%E4%B8%8EDOM-Diffing%E7%AE%97%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">2.7. 虚拟DOM与DOM Diffing算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-1-%E6%95%88%E6%9E%9C"><span class="toc-number">8.1.</span> <span class="toc-text">2.7.1. 效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-2-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%9B%BE"><span class="toc-number">8.2.</span> <span class="toc-text">2.7.2. 基本原理图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-1-%E4%BD%BF%E7%94%A8create-react-app%E5%88%9B%E5%BB%BAreact%E5%BA%94%E7%94%A8"><span class="toc-number">9.</span> <span class="toc-text">3.1. 使用create-react-app创建react应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-1-react%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-number">9.1.</span> <span class="toc-text">3.1.1. react脚手架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%B9%B6%E5%90%AF%E5%8A%A8"><span class="toc-number">9.2.</span> <span class="toc-text">3.1.2. 创建项目并启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-3-react%E8%84%9A%E6%89%8B%E6%9E%B6%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">9.3.</span> <span class="toc-text">3.1.3. react脚手架项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-4-%E5%8A%9F%E8%83%BD%E7%95%8C%E9%9D%A2%E7%9A%84%E7%BB%84%E4%BB%B6%E5%8C%96%E7%BC%96%E7%A0%81%E6%B5%81%E7%A8%8B%EF%BC%88%E9%80%9A%E7%94%A8%EF%BC%89"><span class="toc-number">9.4.</span> <span class="toc-text">3.1.4. 功能界面的组件化编码流程（通用）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-2-%E7%BB%84%E4%BB%B6%E7%9A%84%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8-TodoList"><span class="toc-number">10.</span> <span class="toc-text">3.2. 组件的组合使用-TodoList</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-1-%E7%90%86%E8%A7%A3"><span class="toc-number">11.</span> <span class="toc-text">4.1. 理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-1-%E5%89%8D%E7%BD%AE%E8%AF%B4%E6%98%8E"><span class="toc-number">11.1.</span> <span class="toc-text">4.1.1. 前置说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-2-%E5%B8%B8%E7%94%A8%E7%9A%84ajax%E8%AF%B7%E6%B1%82%E5%BA%93"><span class="toc-number">11.2.</span> <span class="toc-text">4.1.2. 常用的ajax请求库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-2-axios"><span class="toc-number">12.</span> <span class="toc-text">4.2. axios</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-1-%E6%96%87%E6%A1%A3"><span class="toc-number">12.1.</span> <span class="toc-text">4.2.1. 文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-2-%E7%9B%B8%E5%85%B3API"><span class="toc-number">12.2.</span> <span class="toc-text">4.2.2. 相关API</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-3-%E6%A1%88%E4%BE%8B%E2%80%94github%E7%94%A8%E6%88%B7%E6%90%9C%E7%B4%A2"><span class="toc-number">13.</span> <span class="toc-text">4.3. 案例—github用户搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-1-%E6%95%88%E6%9E%9C"><span class="toc-number">13.1.</span> <span class="toc-text">4.3.1. 效果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-4-%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85-%E5%8F%91%E5%B8%83%E6%9C%BA%E5%88%B6"><span class="toc-number">14.</span> <span class="toc-text">4.4. 消息订阅-发布机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-5-%E6%89%A9%E5%B1%95%EF%BC%9AFetch"><span class="toc-number">15.</span> <span class="toc-text">4.5. 扩展：Fetch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-1-%E6%96%87%E6%A1%A3"><span class="toc-number">15.1.</span> <span class="toc-text">4.5.1. 文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-2-%E7%89%B9%E7%82%B9"><span class="toc-number">15.2.</span> <span class="toc-text">4.5.2. 特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-3-%E7%9B%B8%E5%85%B3API"><span class="toc-number">15.3.</span> <span class="toc-text">4.5.3. 相关API</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-1-%E7%9B%B8%E5%85%B3%E7%90%86%E8%A7%A3"><span class="toc-number">16.</span> <span class="toc-text">5.1. 相关理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-1-SPA%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">16.1.</span> <span class="toc-text">5.1.1. SPA的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-2-%E8%B7%AF%E7%94%B1%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">16.2.</span> <span class="toc-text">5.1.2. 路由的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-3-react-router-dom%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">16.3.</span> <span class="toc-text">5.1.3. react-router-dom的理解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-2-react-router-dom%E7%9B%B8%E5%85%B3API"><span class="toc-number">17.</span> <span class="toc-text">5.2. react-router-dom相关API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-1-%E5%86%85%E7%BD%AE%E7%BB%84%E4%BB%B6"><span class="toc-number">17.1.</span> <span class="toc-text">5.2.1. 内置组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-2-%E5%85%B6%E5%AE%83"><span class="toc-number">17.2.</span> <span class="toc-text">5.2.2. 其它</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-3-%E5%9F%BA%E6%9C%AC%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8"><span class="toc-number">18.</span> <span class="toc-text">5.3. 基本路由使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-1-%E6%95%88%E6%9E%9C"><span class="toc-number">18.1.</span> <span class="toc-text">5.3.1. 效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-2-%E5%87%86%E5%A4%87"><span class="toc-number">18.2.</span> <span class="toc-text">5.3.2. 准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8"><span class="toc-number">18.3.</span> <span class="toc-text">5.4. 嵌套路由使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C-3"><span class="toc-number">18.3.1.</span> <span class="toc-text">效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-%E5%90%91%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0%E6%95%B0%E6%8D%AE"><span class="toc-number">18.4.</span> <span class="toc-text">5.5. 向路由组件传递参数数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C-4"><span class="toc-number">18.4.1.</span> <span class="toc-text">效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-%E5%A4%9A%E7%A7%8D%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E6%96%B9%E5%BC%8F"><span class="toc-number">18.5.</span> <span class="toc-text">5.6. 多种路由跳转方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C-5"><span class="toc-number">18.5.1.</span> <span class="toc-text">效果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-1-%E6%B5%81%E8%A1%8C%E7%9A%84%E5%BC%80%E6%BA%90React-UI%E7%BB%84%E4%BB%B6%E5%BA%93"><span class="toc-number">19.</span> <span class="toc-text">6.1.流行的开源React UI组件库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-1-material-ui-%E5%9B%BD%E5%A4%96"><span class="toc-number">19.1.</span> <span class="toc-text">6.1.1. material-ui(国外)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-2-ant-design-%E5%9B%BD%E5%86%85%E8%9A%82%E8%9A%81%E9%87%91%E6%9C%8D"><span class="toc-number">19.2.</span> <span class="toc-text">6.1.2. ant-design(国内蚂蚁金服)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-1-redux%E7%90%86%E8%A7%A3"><span class="toc-number">20.</span> <span class="toc-text">7.1. redux理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-1-%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3"><span class="toc-number">20.1.</span> <span class="toc-text">7.1.1. 学习文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-2-redux%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">20.2.</span> <span class="toc-text">7.1.2. redux是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-3-%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8redux"><span class="toc-number">20.3.</span> <span class="toc-text">7.1.3. 什么情况下需要使用redux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-4-redux%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">20.4.</span> <span class="toc-text">7.1.4. redux工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-2-redux%E7%9A%84%E4%B8%89%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">21.</span> <span class="toc-text">7.2. redux的三个核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-1-action"><span class="toc-number">21.1.</span> <span class="toc-text">7.2.1. action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-2-reducer"><span class="toc-number">21.2.</span> <span class="toc-text">7.2.2. reducer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-3-store"><span class="toc-number">21.3.</span> <span class="toc-text">7.2.3. store</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-3-redux%E7%9A%84%E6%A0%B8%E5%BF%83API"><span class="toc-number">22.</span> <span class="toc-text">7.3. redux的核心API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-1-createstore"><span class="toc-number">22.1.</span> <span class="toc-text">7.3.1. createstore()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-2-store%E5%AF%B9%E8%B1%A1"><span class="toc-number">22.2.</span> <span class="toc-text">7.3.2. store对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-3-applyMiddleware"><span class="toc-number">22.3.</span> <span class="toc-text">7.3.3. applyMiddleware()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-4-combineReducers"><span class="toc-number">22.4.</span> <span class="toc-text">7.3.4. combineReducers()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E4%BD%BF%E7%94%A8redux%E7%BC%96%E5%86%99%E5%BA%94%E7%94%A8"><span class="toc-number">22.5.</span> <span class="toc-text">7.4. 使用redux编写应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-redux%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="toc-number">22.6.</span> <span class="toc-text">7.5. redux异步编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-1%E7%90%86%E8%A7%A3%EF%BC%9A"><span class="toc-number">22.6.1.</span> <span class="toc-text">7.5.1理解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-2-%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">22.6.2.</span> <span class="toc-text">7.5.2. 使用异步中间件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-6-react-redux"><span class="toc-number">22.7.</span> <span class="toc-text">7.6. react-redux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-1-%E7%90%86%E8%A7%A3"><span class="toc-number">22.7.1.</span> <span class="toc-text">7.6.1. 理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-2-react-Redux%E5%B0%86%E6%89%80%E6%9C%89%E7%BB%84%E4%BB%B6%E5%88%86%E6%88%90%E4%B8%A4%E5%A4%A7%E7%B1%BB"><span class="toc-number">22.7.2.</span> <span class="toc-text">7.6.2. react-Redux将所有组件分成两大类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-3-%E7%9B%B8%E5%85%B3API"><span class="toc-number">22.7.3.</span> <span class="toc-text">7.6.3. 相关API</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-7-%E4%BD%BF%E7%94%A8%E4%B8%8Aredux%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-number">22.8.</span> <span class="toc-text">7.7. 使用上redux调试工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-1-%E5%AE%89%E8%A3%85chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6"><span class="toc-number">22.8.1.</span> <span class="toc-text">7.7.1. 安装chrome浏览器插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-2-%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="toc-number">22.8.2.</span> <span class="toc-text">7.7.2. 下载工具依赖包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-8-%E7%BA%AF%E5%87%BD%E6%95%B0%E5%92%8C%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="toc-number">22.9.</span> <span class="toc-text">7.8. 纯函数和高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8-1-%E7%BA%AF%E5%87%BD%E6%95%B0"><span class="toc-number">22.9.1.</span> <span class="toc-text">7.8.1. 纯函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8-2-%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="toc-number">22.9.2.</span> <span class="toc-text">7.8.2. 高阶函数</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Axios/" title="Axios"><img src="https://tu.sunning.fit/i/y/119.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Axios"/></a><div class="content"><a class="title" href="/2022/07/21/Axios/" title="Axios">Axios</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BFS/" title="BFS"><img src="https://tu.sunning.fit/i/y/46.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BFS"/></a><div class="content"><a class="title" href="/2022/07/21/BFS/" title="BFS">BFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BOM/" title="BOM"><img src="https://tu.sunning.fit/i/y/70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2022/07/21/BOM/" title="BOM">BOM</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用"><img src="https://tu.sunning.fit/i/y/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clion使用"/></a><div class="content"><a class="title" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用">Clion使用</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/DFS/" title="DFS"><img src="https://tu.sunning.fit/i/y/88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS"/></a><div class="content"><a class="title" href="/2022/07/21/DFS/" title="DFS">DFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Sun wen xiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

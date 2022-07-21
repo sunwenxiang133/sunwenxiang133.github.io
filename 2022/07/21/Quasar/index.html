@@ -1,0 +1,384 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Quasar | 孙文祥的博客</title><meta name="keywords" content="前端,Vue,Quasar"><meta name="author" content="Sun wen xiang"><meta name="copyright" content="Sun wen xiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="安装及构建安装要node.js 14以上 npm i -g @quasar&#x2F;cli  构建项目在想要创建的位置使用 npm init quasar  &amp;&amp; yarn create quasar      项目构建的设置  check the features needed for ….  eslint 代码检查工具 state management (Pinia) （和Vuex一样">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quasar">
+<meta property="og:url" content="http://example.com/2022/07/21/Quasar/index.html">
+<meta property="og:site_name" content="孙文祥的博客">
+<meta property="og:description" content="安装及构建安装要node.js 14以上 npm i -g @quasar&#x2F;cli  构建项目在想要创建的位置使用 npm init quasar  &amp;&amp; yarn create quasar      项目构建的设置  check the features needed for ….  eslint 代码检查工具 state management (Pinia) （和Vuex一样">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tu.sunning.fit/i/y/26.jpg">
+<meta property="article:published_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:modified_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:author" content="Sun wen xiang">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Quasar">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tu.sunning.fit/i/y/26.jpg"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="http://example.com/2022/07/21/Quasar/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Quasar',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 08:43:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tu.sunning.fit/i/y/26.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">孙文祥的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Quasar</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T00:43:02.000Z" title="更新于 2022-07-21 08:43:02">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Quasar"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="安装及构建"><a href="#安装及构建" class="headerlink" title="安装及构建"></a>安装及构建</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>要node.js 14以上</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm i -g @quasar/cli</span><br></pre></td></tr></table></figure>
+
+<h2 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h2><p>在想要创建的位置使用</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm init quasar</span><br></pre></td></tr></table></figure>
+
+<p>&amp;&amp;</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yarn create quasar</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>项目构建的设置</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c5457d0d25c.png" alt="image-20220529110836606"></p>
+<p>check the features needed for ….</p>
+<ul>
+<li>eslint 代码检查工具</li>
+<li>state management (Pinia) （和Vuex一样）</li>
+<li>Vue-il8n 多语言支持</li>
+</ul>
+<p>pick an eslint preset </p>
+<ul>
+<li>prettier 代码风格</li>
+</ul>
+<h2 id="创建新的文件"><a href="#创建新的文件" class="headerlink" title="创建新的文件"></a>创建新的文件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">quasar <span class="keyword">new</span> 目录 文件名</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><h2 id="给的api怎么读"><a href="#给的api怎么读" class="headerlink" title="给的api怎么读"></a>给的api怎么读</h2><p><img src="https://tu.sunning.fit/i/2022/07/06/62c54581f00f8.png" alt="image-20220529170753749"></p>
+<p>behavior是设置这个组件有什么样子的功能</p>
+<p>model是数据绑定可以绑什么东西，绑定之后有什么功能</p>
+<p>style是样式</p>
+<h2 id="css文件夹"><a href="#css文件夹" class="headerlink" title="css文件夹"></a>css文件夹</h2><p><img src="https://tu.sunning.fit/i/2022/07/06/62c545d45081c.png" alt="image-20220529150115508"></p>
+<p>app里面是全局的css</p>
+<p>quasar.variables里面是定义的全局的颜色变量（quasar自带的组件用的就是这个主题变量）</p>
+<h2 id="quasar-config-js"><a href="#quasar-config-js" class="headerlink" title="quasar.config.js"></a>quasar.config.js</h2><h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><p>全局搜css,定位到，然后把想要全局引入的东西放到样式表里面即可（但是想要引入的东西要是在css文件夹下面的东西）</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c545d860aca.png" alt="image-20220529151155909"></p>
+<h3 id="boot"><a href="#boot" class="headerlink" title="boot"></a>boot</h3><p>boot文件夹里面是需要用的组件，在boot文件夹里面写完组件，要在quasar.config.js里面的boot写进去</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">boot</span>: [</span><br><span class="line">  <span class="string">&#x27;i18n&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;axios&#x27;</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<h3 id="extras"><a href="#extras" class="headerlink" title="extras"></a>extras</h3><p>extras里面配置的是需要用的图标</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">extras</span>: [</span><br><span class="line">  <span class="comment">// &#x27;ionicons-v4&#x27;,</span></span><br><span class="line">  <span class="comment">// &#x27;mdi-v5&#x27;,</span></span><br><span class="line">  <span class="comment">// &#x27;fontawesome-v6&#x27;,</span></span><br><span class="line">  <span class="comment">// &#x27;eva-icons&#x27;,</span></span><br><span class="line">  <span class="comment">// &#x27;themify&#x27;,</span></span><br><span class="line">  <span class="comment">// &#x27;line-awesome&#x27;,</span></span><br><span class="line">  <span class="comment">// &#x27;roboto-font-latin-ext&#x27;, // this or either &#x27;roboto-font&#x27;, NEVER both!</span></span><br><span class="line">  <span class="string">&#x27;roboto-font&#x27;</span>, <span class="comment">// optional, you are not bound to it</span></span><br><span class="line">  <span class="string">&#x27;material-icons&#x27;</span>, <span class="comment">// optional, you are not bound to it</span></span><br><span class="line">  <span class="string">&#x27;bootstrap-icons&#x27;</span></span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<p>有个默认没有的但是很常用的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;bootstrap-icons&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="bulid-和编译相关的"><a href="#bulid-和编译相关的" class="headerlink" title="bulid 和编译相关的"></a>bulid 和编译相关的</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">build</span>: &#123;</span><br><span class="line">      <span class="attr">vueRouterMode</span>: <span class="string">&#x27;hash&#x27;</span>, <span class="comment">// available values: &#x27;hash&#x27;, &#x27;history&#x27;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// transpile: false,</span></span><br><span class="line">      <span class="comment">// publicPath: &#x27;/&#x27;,</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// Add dependencies for transpiling with Babel (Array of string/regex)</span></span><br><span class="line">      <span class="comment">// (from node_modules, which are by default not transpiled).</span></span><br><span class="line">      <span class="comment">// Applies only if &quot;transpile&quot; is set to true.</span></span><br><span class="line">      <span class="comment">// transpileDependencies: [],</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// rtl: true, // https://quasar.dev/options/rtl-support</span></span><br><span class="line">      <span class="comment">// preloadChunks: true,</span></span><br><span class="line">      <span class="comment">// showProgress: false,</span></span><br><span class="line">      <span class="comment">// gzip: true,</span></span><br><span class="line">      <span class="comment">// analyze: true,</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// Options below are automatically set depending on the env, set them if you want to override</span></span><br><span class="line">      <span class="comment">// extractCSS: false,</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// https://v2.quasar.dev/quasar-cli-webpack/handling-webpack</span></span><br><span class="line">      <span class="comment">// &quot;chain&quot; is a webpack-chain object https://github.com/neutrinojs/webpack-chain</span></span><br><span class="line"></span><br><span class="line">      chainWebpack (chain) &#123;</span><br><span class="line">        chain.<span class="title function_">plugin</span>(<span class="string">&#x27;eslint-webpack-plugin&#x27;</span>)</span><br><span class="line">          .<span class="title function_">use</span>(<span class="title class_">ESLintPlugin</span>, [&#123; <span class="attr">extensions</span>: [ <span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;vue&#x27;</span> ] &#125;])</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>路由的模式默认是哈希</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">chainWebpack (chain) &#123;</span><br><span class="line">        chain.<span class="title function_">plugin</span>(<span class="string">&#x27;eslint-webpack-plugin&#x27;</span>)</span><br><span class="line">          .<span class="title function_">use</span>(<span class="title class_">ESLintPlugin</span>, [&#123; <span class="attr">extensions</span>: [ <span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;vue&#x27;</span> ] &#125;])</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以通过这里更改webpack的配置</p>
+<h3 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">      <span class="attr">server</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;http&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">port</span>: <span class="number">8080</span>,</span><br><span class="line">      <span class="attr">open</span>: <span class="literal">true</span> <span class="comment">// opens browser window automatically</span></span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>开发时开的服务器，代理服务器的设置和配置</p>
+<h3 id="framework"><a href="#framework" class="headerlink" title="framework"></a>framework</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">framework</span>: &#123;</span><br><span class="line">      <span class="attr">config</span>: &#123;&#125;,</span><br><span class="line">      <span class="attr">cssAddon</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="comment">// iconSet: &#x27;material-icons&#x27;, // Quasar icon set</span></span><br><span class="line">      <span class="comment">// lang: &#x27;en-US&#x27;, // Quasar language pack</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// For special cases outside of where the auto-import strategy can have an impact</span></span><br><span class="line">      <span class="comment">// (like functional components as one of the examples),</span></span><br><span class="line">      <span class="comment">// you can manually specify Quasar components/directives to be available everywhere:</span></span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="comment">// components: [],</span></span><br><span class="line">      <span class="comment">// directives: [],</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// Quasar plugins</span></span><br><span class="line">      <span class="attr">plugins</span>: [],</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>// lang: &#39;en-US&#39;, // Quasar language pack</code> 配置语言的，后面组件如果用到这个会使用不同的语言</p>
+<p>中文是 zh-CN</p>
+<p>plugins 配置需要使用的quasar的插件，添加完插件还要在config配置项里面写上对应的配置</p>
+<p>Quasar插件是您可以在Vue文件中以及在其外部使用的功能，如Notify、BottomSheet、AppVisibility等。</p>
+<p>要使用它们，您需要在<code>/quasar.conf.js</code>中添加对它们的引用：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">framework</span>: &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="string">&#x27;Notify&#x27;</span>, <span class="string">&#x27;BottomSheet&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="animations"><a href="#animations" class="headerlink" title="animations"></a>animations</h3><p>动画</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// animations: &#x27;all&#x27;, // --- includes all animations</span></span><br><span class="line"><span class="comment">// https://quasar.dev/options/animations</span></span><br><span class="line"><span class="attr">animations</span>: [],</span><br></pre></td></tr></table></figure>
+
+<p>如果用<code>animations: &#39;all&#39;</code>是引入所有的动画</p>
+<p>如果只要用部分的动画，就在animation里面的配置上面写上即可</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">animations</span>:[<span class="string">&#x27;bounceInLeft&#x27;</span>,<span class="string">&#x27;bounceOutRight&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>使用方式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!-- <span class="title class_">Example</span> <span class="keyword">with</span> wrapping only one <span class="variable constant_">DOM</span> element / component --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">transition</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">appear</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">enter-active-class</span>=<span class="string">&quot;animated fadeIn&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">leave-active-class</span>=<span class="string">&quot;animated fadeOut&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="comment">&lt;!-- Wrapping only one DOM element, defined by QBtn --&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">q-btn</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">color</span>=<span class="string">&quot;secondary&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">icon</span>=<span class="string">&quot;mail&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">label</span>=<span class="string">&quot;Email&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="boot配置-启动文件"><a href="#boot配置-启动文件" class="headerlink" title="boot配置 (启动文件)"></a>boot配置 (启动文件)</h3><p>因为quasar没有main.js（为了多端适配，所以去掉了，用boot来代替）</p>
+<p>Quasar应用程序的一个常见用例是<strong>在实例化根Vue应用程序实例之前运行代码</strong>，例如注入和初始化您自己的依赖项（例如：Vue组件、库…）或者只是配置一些启动代码应用程序。</p>
+<p>由于您无法访问任何<code>/main.js</code>文件（因此Quasar CLI可以无缝初始化并为SPA&#x2F;PWA&#x2F;SSR&#x2F;Cordova&#x2F;Electron构建相同的代码库）Quasar提供了该问题的优雅解决方案——允许用户定义所谓的启动文件。</p>
+<p>文件可以用quasar来生成一个新启动文件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ quasar <span class="keyword">new</span> boot &lt;name&gt; [--format ts]</span><br><span class="line">             文件夹位置  名字  如果写上表示用ts写</span><br></pre></td></tr></table></figure>
+
+<p>最后一步是告诉Quasar使用你的新启动文件。 为了做到这一点，你需要在<code>/quasar.conf.js</code>中添加启动文件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">boot</span>: [</span><br><span class="line">  <span class="comment">// references /src/boot/&lt;name&gt;.js</span></span><br><span class="line">  <span class="string">&#x27;&lt;name&gt;&#x27;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>引入boot启动文件的例子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; boot &#125; <span class="keyword">from</span> <span class="string">&#x27;quasar/wrappers&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; createI18n &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-i18n&#x27;</span></span><br><span class="line"><span class="keyword">import</span> messages <span class="keyword">from</span> <span class="string">&#x27;src/i18n&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">boot</span>(<span class="function">(<span class="params">&#123; app &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> i18n = <span class="title function_">createI18n</span>(&#123;</span><br><span class="line">    <span class="attr">locale</span>: <span class="string">&#x27;en-US&#x27;</span>,</span><br><span class="line">    messages</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Set i18n instance on app</span></span><br><span class="line">  app.<span class="title function_">use</span>(i18n)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>import引入需要引入的东西</p>
+<p>然后用app.use(xxx)使用即可</p>
+<h2 id="router文件夹的路由配置"><a href="#router文件夹的路由配置" class="headerlink" title="router文件夹的路由配置"></a>router文件夹的路由配置</h2><p>在config.js里面的build里面把路由的默认值改成history</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;layouts/MainLayout.vue&quot;</span>),</span><br><span class="line">    <span class="attr">children</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;pages/IndexPage.vue&quot;</span>),</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;oneone&quot;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;pages/oneone.vue&quot;</span>),</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;twotwo&quot;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;pages/twotwo.vue&quot;</span>),</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>这种先写个括号，然后写上对应的东西是懒加载，只有用到了才会加载</p>
+<p>下面这种就是页面一开始就开始加载(layout的那个)</p>
+<p><img src="https://tu.sunning.fit/i/2022/06/23/62b3c35b5d795.png" alt="image-20220529183554140"></p>
+<p>在某个页面使用路由</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;useRouter&#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> $router=<span class="title function_">useRouter</span>();</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">toStyle</span>(<span class="params"></span>)&#123;</span><br><span class="line">  $router.<span class="title function_">push</span>(<span class="string">&#x27;/one&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在需要的地方用这个方法即可</p>
+<p>另一种方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">methods</span>:&#123;</span><br><span class="line">    <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(<span class="string">&#x27;index&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p>组件一开始的页面使用路由对应不同的地方</p>
+<p>在EssentialLink的对应地方使用</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">q-item</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">clickable</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">tag</span>=<span class="string">&quot;a&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>  //这个去掉</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:to</span>=<span class="string">&quot;link&quot;</span>   把默认的<span class="attr">href</span>改成<span class="attr">to</span>即可</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  &gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="风格和特性"><a href="#风格和特性" class="headerlink" title="风格和特性"></a>风格和特性</h1><h2 id="Typography"><a href="#Typography" class="headerlink" title="Typography"></a>Typography</h2><p>排版</p>
+<p>几个有点像md的东西</p>
+<h2 id="Color-Palette"><a href="#Color-Palette" class="headerlink" title="Color Palette"></a>Color Palette</h2><p>可以使用的颜色，想用哪个颜色对着填就行</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c545e5b7fcf.png" alt="image-20220529145541053"></p>
+<h2 id="Theming"><a href="#Theming" class="headerlink" title="Theming"></a>Theming</h2><p>选择对应的主题可以导出主题的颜色</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c545f0df65a.png" alt="image-20220529145622515"></p>
+<h2 id="Dark-Mode"><a href="#Dark-Mode" class="headerlink" title="Dark Mode"></a>Dark Mode</h2><p>黑暗模式</p>
+<p>只在在vue组件里的使用方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button @click=&quot;$q.dark.toggle()&quot; class=&quot;shadow-16&quot;&gt;模式切换&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123;useQuasar&#125; from &#x27;quasar&#x27; //引入脚本</span><br><span class="line">const $q=useQuasar(); //实例化，然后q里面有q.dark.toggle方法可以切换黑暗模式</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>还有另外一种方法,组件的$q里面本身就有dark.toggle方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;button @click=<span class="string">&quot;this.$q.dark.toggle()&quot;</span>&gt;<span class="number">123</span>&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>黑暗模式和白天模式的界面用</p>
+<blockquote>
+<p>这个只能修改自己写的组件的颜色，如果默认的组件的颜色也要修改，用上面全局主题（css quasar.variables.css）里面的 $dark变量</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.<span class="property">body</span>--light &#123;</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">body</span>--dark &#123;</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="CSS-Spacing-Classes"><a href="#CSS-Spacing-Classes" class="headerlink" title="CSS Spacing Classes"></a>CSS Spacing Classes</h2><p>间距</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c545f78ca01.png" alt="image-20220529152719097"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;q-ma-lg&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>magin是large大小</p>
+<h3 id="支持断点"><a href="#支持断点" class="headerlink" title="支持断点"></a>支持断点</h3><p>配置:</p>
+<p>在quasar.config.js 的 framework 添加cssAddon: true</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">framework</span>: &#123;</span><br><span class="line">      <span class="attr">config</span>: &#123;&#125;,</span><br><span class="line">      <span class="attr">cssAddon</span>:<span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在ma后面跟的是类似媒体查询的东西</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;q-ma-lg-lg&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Breakpoints"><a href="#Breakpoints" class="headerlink" title="Breakpoints"></a>Breakpoints</h2><p>断点</p>
+<p>类似媒体查询</p>
+<h2 id="CSS-Shadows-Elevation"><a href="#CSS-Shadows-Elevation" class="headerlink" title="CSS Shadows (Elevation)"></a>CSS Shadows (Elevation)</h2><p>阴影的样式，需要啥直接用就行</p>
+<h2 id="CSS-Visibility"><a href="#CSS-Visibility" class="headerlink" title="CSS Visibility"></a>CSS Visibility</h2><h2 id="CSS-Positioning-Classes"><a href="#CSS-Positioning-Classes" class="headerlink" title="CSS Positioning Classes"></a>CSS Positioning Classes</h2><h1 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h1><h2 id="Flex-Grid"><a href="#Flex-Grid" class="headerlink" title="Flex Grid"></a>Flex Grid</h2><h3 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h3><p>直接在css的父类上面加上这些类就是对应的布局方式</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c545fea9441.png" alt="image-20220529152537912"></p>
+<p>不同的类对应不同组件方式</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c54602857c1.png" alt="image-20220529152629403"></p>
+<h3 id="Grid-Row"><a href="#Grid-Row" class="headerlink" title="Grid Row"></a>Grid Row</h3><p>栅格系统</p>
+<p>默认是12份</p>
+<p>这个也支持断点</p>
+<p>offset前面空多少份</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c546092968f.png" alt="image-20220529163317558"></p>
+<h3 id="Grid-Gutter"><a href="#Grid-Gutter" class="headerlink" title="Grid Gutter"></a>Grid Gutter</h3><p>加上这个之后，它的所有子元素会有一个默认的边距</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c5460f8f001.png" alt="image-20220529163520040"></p>
+<p>q-gutter-md 加上外边距</p>
+<p>q-col-gutter-md加上内边距</p>
+<h3 id="Flex-Playground"><a href="#Flex-Playground" class="headerlink" title="Flex Playground"></a>Flex Playground</h3><p>这是一个方便的可视化的界面</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c5461558a87.png" alt="image-20220529163813657"></p>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><p><img src="https://tu.sunning.fit/i/2022/07/06/62c5461b9b8a2.png" alt="image-20220529165519366"></p>
+<p>要头部</p>
+<p>要尾部</p>
+<p>要左弹出框</p>
+<p>要右弹出框</p>
+<p>要头部下面的切换页面的标签</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c54620dc4c3.png" alt="image-20220529165701691"></p>
+<p>h,f 大写，小写代表绝对定位还是相对定位</p>
+<p>四个角的选项代表分别布局在哪些位置</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c54627548ea.png" alt="image-20220529165825252"></p>
+<p><img src="https://tu.sunning.fit/i/2022/07/06/62c54630a741d.png" alt="image-20220529165848993"></p>
+<p>Header Reval标题的头上滑一定位置会消失</p>
+<p>Behavior还可以选择模式，是在手机模式（侧边框会占很多的位置）还是在其他的模式</p>
+<p>Left-side 中的Overlay mode是侧边框会不会把其他的位置挤出去</p>
+<p>Separator type是控制没有没阴影</p>
+<p>设置完成的东西直接导出，然后赋值粘贴到</p>
+<h3 id="q-page"><a href="#q-page" class="headerlink" title="q-page"></a>q-page</h3><p>这个是布局用的，就包在最外层就行</p>
+<h3 id="q-page-sticky"><a href="#q-page-sticky" class="headerlink" title="q-page-sticky"></a>q-page-sticky</h3><p>QPageSticky组件有助于将由它包裹的DOM元素&#x2F;组件放置到QPage内容区域中的静态位置，无论用户在哪里滚动。</p>
+<h1 id="Icon"><a href="#Icon" class="headerlink" title="Icon"></a>Icon</h1><p>在quasar.config.js的extras用想用的icon类型</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">extras</span>: [</span><br><span class="line">    <span class="string">&#x27;bootstrap-icons&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;roboto-font&quot;</span>, <span class="comment">// optional, you are not bound to it</span></span><br><span class="line">    <span class="string">&quot;material-icons&quot;</span>, <span class="comment">// optional, you are not bound to it</span></span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://icons.getbootstrap.com/">https://icons.getbootstrap.com/</a></p>
+<p>在想要用的页面上面</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;q-btn @click=<span class="string">&quot;toStyle&quot;</span>&gt;<span class="number">123</span>&lt;/q-btn&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Vuex使用"><a href="#Vuex使用" class="headerlink" title="Vuex使用"></a>Vuex使用</h1><p>在quasar中的目录结构</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">└── src/</span><br><span class="line">    └── store/               <span class="comment"># Vuex Store</span></span><br><span class="line">        ├── index.js         <span class="comment"># Vuex Store 定义</span></span><br><span class="line">        ├── &lt;folder&gt;         <span class="comment"># Vuex Store 模块...</span></span><br><span class="line">        └── &lt;folder&gt;         <span class="comment"># Vuex Store 模块...</span></span><br></pre></td></tr></table></figure>
+
+<p>添加一个Vuex模块</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">quasar new store &lt;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Sun wen xiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/07/21/Quasar/">http://example.com/2022/07/21/Quasar/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">孙文祥的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/Vue/">Vue</a><a class="post-meta__tags" href="/tags/Quasar/">Quasar</a></div><div class="post_share"><div class="social-share" data-image="https://tu.sunning.fit/i/y/26.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/React/"><img class="prev-cover" src="https://tu.sunning.fit/i/y/34.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">React</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/Pinia/"><img class="next-cover" src="https://tu.sunning.fit/i/y/12.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Pinia</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/21/Axios/" title="Axios"><img class="cover" src="https://tu.sunning.fit/i/y/119.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Axios</div></div></a></div><div><a href="/2022/07/21/Pinia/" title="Pinia"><img class="cover" src="https://tu.sunning.fit/i/y/12.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Pinia</div></div></a></div><div><a href="/2022/07/21/Router/" title="Router"><img class="cover" src="https://tu.sunning.fit/i/y/89.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Router</div></div></a></div><div><a href="/2022/07/21/Vite/" title="Vite"><img class="cover" src="https://tu.sunning.fit/i/y/11.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Vite</div></div></a></div><div><a href="/2022/07/21/Vuex/" title="Vuex"><img class="cover" src="https://tu.sunning.fit/i/y/60.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Vuex</div></div></a></div><div><a href="/2022/07/21/Vue%E5%9F%BA%E7%A1%80/" title="Vue基础"><img class="cover" src="https://tu.sunning.fit/i/y/26.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Vue基础</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sun wen xiang</div><div class="author-info__description">遇到困难睡大觉</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sunwenxiang133"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E6%9E%84%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text">安装及构建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.</span> <span class="toc-text">构建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">创建新的文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E4%BA%86%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">基础了解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99%E7%9A%84api%E6%80%8E%E4%B9%88%E8%AF%BB"><span class="toc-number">2.1.</span> <span class="toc-text">给的api怎么读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.2.</span> <span class="toc-text">css文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quasar-config-js"><span class="toc-number">2.3.</span> <span class="toc-text">quasar.config.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css"><span class="toc-number">2.3.1.</span> <span class="toc-text">css</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#boot"><span class="toc-number">2.3.2.</span> <span class="toc-text">boot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extras"><span class="toc-number">2.3.3.</span> <span class="toc-text">extras</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bulid-%E5%92%8C%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3%E7%9A%84"><span class="toc-number">2.3.4.</span> <span class="toc-text">bulid 和编译相关的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#devServer"><span class="toc-number">2.3.5.</span> <span class="toc-text">devServer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#framework"><span class="toc-number">2.3.6.</span> <span class="toc-text">framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#animations"><span class="toc-number">2.3.7.</span> <span class="toc-text">animations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#boot%E9%85%8D%E7%BD%AE-%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-number">2.3.8.</span> <span class="toc-text">boot配置 (启动文件)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#router%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text">router文件夹的路由配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A3%8E%E6%A0%BC%E5%92%8C%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">风格和特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Typography"><span class="toc-number">3.1.</span> <span class="toc-text">Typography</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Color-Palette"><span class="toc-number">3.2.</span> <span class="toc-text">Color Palette</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Theming"><span class="toc-number">3.3.</span> <span class="toc-text">Theming</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dark-Mode"><span class="toc-number">3.4.</span> <span class="toc-text">Dark Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-Spacing-Classes"><span class="toc-number">3.5.</span> <span class="toc-text">CSS Spacing Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E6%96%AD%E7%82%B9"><span class="toc-number">3.5.1.</span> <span class="toc-text">支持断点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Breakpoints"><span class="toc-number">3.6.</span> <span class="toc-text">Breakpoints</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-Shadows-Elevation"><span class="toc-number">3.7.</span> <span class="toc-text">CSS Shadows (Elevation)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-Visibility"><span class="toc-number">3.8.</span> <span class="toc-text">CSS Visibility</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-Positioning-Classes"><span class="toc-number">3.9.</span> <span class="toc-text">CSS Positioning Classes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-number">4.</span> <span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex-Grid"><span class="toc-number">4.1.</span> <span class="toc-text">Flex Grid</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flexbox"><span class="toc-number">4.1.1.</span> <span class="toc-text">Flexbox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Grid-Row"><span class="toc-number">4.1.2.</span> <span class="toc-text">Grid Row</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Grid-Gutter"><span class="toc-number">4.1.3.</span> <span class="toc-text">Grid Gutter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flex-Playground"><span class="toc-number">4.1.4.</span> <span class="toc-text">Flex Playground</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Layout"><span class="toc-number">4.2.</span> <span class="toc-text">Layout</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#q-page"><span class="toc-number">4.2.1.</span> <span class="toc-text">q-page</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#q-page-sticky"><span class="toc-number">4.2.2.</span> <span class="toc-text">q-page-sticky</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Icon"><span class="toc-number">5.</span> <span class="toc-text">Icon</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vuex%E4%BD%BF%E7%94%A8"><span class="toc-number">6.</span> <span class="toc-text">Vuex使用</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Axios/" title="Axios"><img src="https://tu.sunning.fit/i/y/119.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Axios"/></a><div class="content"><a class="title" href="/2022/07/21/Axios/" title="Axios">Axios</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BFS/" title="BFS"><img src="https://tu.sunning.fit/i/y/46.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BFS"/></a><div class="content"><a class="title" href="/2022/07/21/BFS/" title="BFS">BFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BOM/" title="BOM"><img src="https://tu.sunning.fit/i/y/70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2022/07/21/BOM/" title="BOM">BOM</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用"><img src="https://tu.sunning.fit/i/y/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clion使用"/></a><div class="content"><a class="title" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用">Clion使用</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/DFS/" title="DFS"><img src="https://tu.sunning.fit/i/y/88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS"/></a><div class="content"><a class="title" href="/2022/07/21/DFS/" title="DFS">DFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Sun wen xiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

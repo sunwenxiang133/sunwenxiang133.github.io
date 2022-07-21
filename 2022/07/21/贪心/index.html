@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>贪心 | 孙文祥的博客</title><meta name="keywords" content="算法,贪心"><meta name="author" content="Sun wen xiang"><meta name="copyright" content="Sun wen xiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="贪心解体的思路（猜+证明）贪心一般没有什么套路，但是可以去试一些做法左端点排序，右端点排序，双关键词排序，哪个做法是可以的话（举几个例子，试一试有没有问题），尝试证明 贪心应该是像这种单峰的图像，每次找到当前最优，最终到全局最优  像这种就不能用贪心  解题方法按照左端点&#x2F;右端点&#x2F;中间值进行排序 按照这个参数或者另外的参数（居多）来选东西 多试几次，如果能成，应该就是答案了，接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贪心">
+<meta property="og:url" content="http://example.com/2022/07/21/%E8%B4%AA%E5%BF%83/index.html">
+<meta property="og:site_name" content="孙文祥的博客">
+<meta property="og:description" content="贪心解体的思路（猜+证明）贪心一般没有什么套路，但是可以去试一些做法左端点排序，右端点排序，双关键词排序，哪个做法是可以的话（举几个例子，试一试有没有问题），尝试证明 贪心应该是像这种单峰的图像，每次找到当前最优，最终到全局最优  像这种就不能用贪心  解题方法按照左端点&#x2F;右端点&#x2F;中间值进行排序 按照这个参数或者另外的参数（居多）来选东西 多试几次，如果能成，应该就是答案了，接">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tu.sunning.fit/i/y/7.jpg">
+<meta property="article:published_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:modified_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:author" content="Sun wen xiang">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="贪心">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tu.sunning.fit/i/y/7.jpg"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="http://example.com/2022/07/21/%E8%B4%AA%E5%BF%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '贪心',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 08:43:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tu.sunning.fit/i/y/7.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">孙文祥的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">贪心</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T00:43:02.000Z" title="更新于 2022-07-21 08:43:02">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="贪心"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="贪心解体的思路（猜-证明）"><a href="#贪心解体的思路（猜-证明）" class="headerlink" title="贪心解体的思路（猜+证明）"></a>贪心解体的思路（猜+证明）</h1><p>贪心一般没有什么套路，但是可以去试一些做法<br>左端点排序，右端点排序，双关键词排序，哪个做法是可以的话（举几个例子，试一试有没有问题），尝试证明</p>
+<p>贪心应该是像这种单峰的图像，每次找到当前最优，最终到全局最优</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267e09f1a42b.jpg" alt="img"></p>
+<p>像这种就不能用贪心</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267e0a32a3f7.jpg" alt="img"></p>
+<h2 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h2><p>按照左端点&#x2F;右端点&#x2F;中间值进行排序</p>
+<p>按照这个参数或者另外的参数（居多）来选东西</p>
+<p>多试几次，如果能成，应该就是答案了，接下来就是想办法证明</p>
+<h2 id="贪心证明"><a href="#贪心证明" class="headerlink" title="贪心证明"></a>贪心证明</h2><p>想要证明A&#x3D;B,套路证明一定存在A&gt;&#x3D;B，同时A&lt;&#x3D;B</p>
+<p>例如：如果是求最小值</p>
+<p>假设ans是所有可行方案里面的最小值，cnt是按照自己做的方法的解</p>
+<p>证明</p>
+<ol>
+<li><p>证明用ans求出来的是可行的解</p>
+</li>
+<li><p>cnt&lt;&#x3D;ans,因为ans是题目的最小值，所以一定存在ans&lt;&#x3D;cnt</p>
+</li>
+<li><p>证明ans&gt;&#x3D;cnt</p>
+</li>
+</ol>
+<p>有几种证明的方法</p>
+<ul>
+<li><p>从问题求解的方法去说</p>
+</li>
+<li><p>反证法<br>假设相反，然后按照题目求解的方法来说明如果要是在有，就和题目的条件不相符合</p>
+</li>
+<li><p>数学归纳法</p>
+<ol>
+<li>n&#x3D;1的时候成立，则成立</li>
+<li>假设n&#x3D;k-1的时候成立，证明n&#x3D;k的时候成立</li>
+</ol>
+</li>
+<li><p>证明单调性：即每次的局部最优就是全局最优</p>
+</li>
+<li><p>交换论证法：<br>交换论证法可以更好地代替反证法</p>
+<p><img src="https://tu.sunning.fit/i/2022/06/19/62af22ff50b09.png" alt="image-20220619212202622"></p>
+</li>
+</ul>
+<h1 id="区间问题"><a href="#区间问题" class="headerlink" title="区间问题"></a>区间问题</h1><h2 id="区间选点"><a href="#区间选点" class="headerlink" title="区间选点"></a>区间选点</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e0b1220b1.jpg" alt="img"></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>将每个区间从右端点从小到大排序</li>
+<li>从前到后枚举每一个区间，如果当前区间已经包含点，直接pass,否则选择当前区间的右端点</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Range</span>&#123;</span><br><span class="line">    <span class="type">int</span> l,r;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt; (<span class="type">const</span> Range &amp;W)<span class="type">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> r&lt;W.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;range[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;range[i].l&gt;&gt;range[i].r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(range,range+n);</span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>,ed=<span class="number">-2e9</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(range[i].l&gt;ed)&#123;</span><br><span class="line">            res++;</span><br><span class="line">            ed=range[i].r;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;res;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>c艹的运算符重载：</p>
+<p>运算符重载是c艹重载的一种，重载的运算符是带有特殊名称的函数，函数名是由operator和之后要重载的符号构成的。</p>
+<p>返回值  operator 重载的符号 （参数列表）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> Point <span class="keyword">operator</span>+(<span class="type">const</span> Point &amp;point) <span class="type">const</span>&#123;</span><br><span class="line">	<span class="comment">//code...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第一个const意思是返回值是const的变量类型</p>
+<p>第二个const意思是可以接收常量参数</p>
+<p>第三个const意思是可以被常数参数调用</p>
+<p>记住第二个，第三个带上反正不错就好</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43734095/article/details/104465307">https://blog.csdn.net/weixin_43734095/article/details/104465307</a></p>
+</blockquote>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e0bb349aa.jpg" alt="img"></p>
+<p>ans是题目答案，cnt是用这个方法求出来的解</p>
+<p>因为ans是答案，所以ans&lt;&#x3D;cnt</p>
+<p>证明ans&gt;&#x3D;cnt 按照我们的这种方法，会分出来一段一段互不相交的区间，区间的个数是cnt个，按照要求，每一个区间至少需要一个解，所以cnt&gt;&#x3D;ans</p>
+<p>综上，cnt&#x3D;ans</p>
+<h2 id="最大不相交区间的数量"><a href="#最大不相交区间的数量" class="headerlink" title="最大不相交区间的数量"></a>最大不相交区间的数量</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e0c565cee.jpg" alt="img"></p>
+<h3 id="题解（和上一题几乎一样）"><a href="#题解（和上一题几乎一样）" class="headerlink" title="题解（和上一题几乎一样）"></a>题解（和上一题几乎一样）</h3><ol>
+<li>将所有区间的右端点从左向右排序</li>
+<li>枚举每个区间，如果区间的左端点不在上一个区间的右端点，则选取这个区间</li>
+</ol>
+<p>代码和上面一题一模一样</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Range</span>&#123;</span><br><span class="line">    <span class="type">int</span> l,r;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> Range &amp;W)<span class="type">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> r&lt;W.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;range[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;range[i].l&gt;&gt;range[i].r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(range,range+n);</span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>,ed=<span class="number">-2e9</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(ed&lt;range[i].l)&#123;</span><br><span class="line">            res++;</span><br><span class="line">            ed=range[i].r;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;res;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h3><p>因为是不相交的，所以一定是可行解</p>
+<p>因为ans是答案，所以ans&gt;&#x3D;cnt,</p>
+<p>证明ans&lt;&#x3D;cnt 下面用反证法</p>
+<p>假设ans&gt;cnt</p>
+<p>按照题目中给出的方法，一共有cnt个不相交的区间，对于这cnt个区间里面的小区间，每个大区间只能选择一个小区间，而如果ans&gt;cnt，则说明连续的大区间里面取了超过一个的小区间，与题目条件不符，所以ans&lt;&#x3D;cnt</p>
+<h2 id="区间分组"><a href="#区间分组" class="headerlink" title="区间分组"></a>区间分组</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e0ccb5a1a.jpg" alt="img"></p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>将所有区间按照左端点从小到大排序</li>
+<li>从前往后处理每个区间<br>判断能否将其放到某个现有的组中 L[i]&gt;Max_r<ol>
+<li>如果不存在这样的组，则开新组，将其放进去</li>
+<li>如果存在这样的组，将其放进去，更新当前组的Max_r(如果存在这样的组，随便挑一个放进去)</li>
+</ol>
+</li>
+</ol>
+<p>如何快速判断L[i]&gt;Max_r，判断最小的一个Max_r小于L[i]就可以，如何动态维护一个数组的最小值，用小根堆</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Range</span>&#123;</span><br><span class="line">    <span class="type">int</span> l,r;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> &lt; (Range &amp;W) <span class="type">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> l&lt;W.l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;range[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> l,r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;l,&amp;r);</span><br><span class="line">        range[i]=&#123;l,r&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(range,range+n);  <span class="comment">//排好序，按照左端点的顺序排序</span></span><br><span class="line">    priority_queue&lt;<span class="type">int</span>,vector&lt;<span class="type">int</span>&gt;,greater&lt;<span class="type">int</span>&gt;&gt; heap;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">auto</span> r=range[i];</span><br><span class="line">        <span class="keyword">if</span>(heap.<span class="built_in">empty</span>() || heap.<span class="built_in">top</span>()&gt;=r.l) heap.<span class="built_in">push</span>(r.r);  <span class="comment">//如果是空的，或者最小的都收不进去，只能再加一个</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            heap.<span class="built_in">pop</span>();   <span class="comment">//把现在最小的合适的那个踢出去</span></span><br><span class="line">            heap.<span class="built_in">push</span>(r.r);  <span class="comment">//把新加入的尾巴放进去 （这时候优先队列会进行相应排序了）</span></span><br><span class="line">            <span class="comment">//优先队列里面存的是每个组的最小值，也就代表着每一个组</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,heap.<span class="built_in">size</span>());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<h2 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h2><p>C ++中的优先队列是STL中的派生容器，它仅考虑最高优先级元素。队列遵循FIFO策略，而优先队列根据优先级弹出元素，即，优先级最高的元素首先弹出</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e0dcb420a.png" alt="image-20220412221008057"></p>
+<h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">和队列基本操作相同:</span><br><span class="line"></span><br><span class="line">top 访问队头元素</span><br><span class="line">empty 队列是否为空</span><br><span class="line">size 返回队列内元素个数</span><br><span class="line">push 插入元素到队尾 (并排序)</span><br><span class="line">emplace 原地构造一个元素并插入队列</span><br><span class="line">pop 弹出队头元素</span><br><span class="line">swap 交换内容</span><br></pre></td></tr></table></figure>
+
+<p>定义</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">priority_queue&lt;Type, Container, Functional&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Type</strong> 数据类型<br><strong>Container</strong> 必须是用数组实现的容器，比如vector,deque等等，但不能用 list。STL里面默认用的是vector<br><strong>Functional</strong> 比较的方式</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//升序队列</span></span><br><span class="line">priority_queue &lt;<span class="type">int</span>,vector&lt;<span class="type">int</span>&gt;,greater&lt;<span class="type">int</span>&gt; &gt; q;</span><br><span class="line"><span class="comment">//降序队列</span></span><br><span class="line">priority_queue &lt;<span class="type">int</span>,vector&lt;<span class="type">int</span>&gt;,less&lt;<span class="type">int</span>&gt; &gt;q;</span><br><span class="line"></span><br><span class="line"><span class="comment">//greater和less是std实现的两个仿函数（就是使一个类的使用看上去像一个函数。其实现就是类中实现一个operator()，这个类就有了类似函数的行为，就是一个仿函数类了）</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>用自定义类型做优先队列的例子</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法1</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tmp1</span> <span class="comment">//运算符重载&lt;</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="built_in">tmp1</span>(<span class="type">int</span> a) &#123;x = a;&#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">const</span> tmp1&amp; a) <span class="type">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> x &lt; a.x; <span class="comment">//大顶堆</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tmp2</span> <span class="comment">//重写仿函数</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(tmp1 a, tmp1 b)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.x &lt; b.x; <span class="comment">//大顶堆</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">tmp1 <span class="title">a</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="function">tmp1 <span class="title">b</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="function">tmp1 <span class="title">c</span><span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line">    priority_queue&lt;tmp1&gt; d;</span><br><span class="line">    d.<span class="built_in">push</span>(b);</span><br><span class="line">    d.<span class="built_in">push</span>(c);</span><br><span class="line">    d.<span class="built_in">push</span>(a);</span><br><span class="line">    <span class="keyword">while</span> (!d.<span class="built_in">empty</span>()) </span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; d.<span class="built_in">top</span>().x &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        d.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;归纳</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    priority_queue&lt;tmp1, vector&lt;tmp1&gt;, tmp2&gt; f;</span><br><span class="line">    f.<span class="built_in">push</span>(b);</span><br><span class="line">    f.<span class="built_in">push</span>(c);</span><br><span class="line">    f.<span class="built_in">push</span>(a);</span><br><span class="line">    <span class="keyword">while</span> (!f.<span class="built_in">empty</span>()) </span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; f.<span class="built_in">top</span>().x &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        f.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h3><p>ans&lt;&#x3D;cnt  ans&gt;&#x3D;cnt  ans代表的是题目要求的答案，cnt代表的是用这个方法求出来的解</p>
+<ol>
+<li>按照这个方法一定是合法方案，由题意 ans&gt;cnt</li>
+<li>ans&gt;&#x3D;cnt  看cnt-1 的情况，这个时候（数学归纳法）<br><img src="https://tu.sunning.fit/i/2022/04/26/6267e0e53ed4b.jpg" alt="img"></li>
+</ol>
+<p>当按照这种方法，前面cnt-1都是按照我们的这种方法，对于第cnt项，每个区间都和第cnt项相交，这个时候最少的只能是cnt,所以ans&gt;&#x3D;cnt</p>
+<h2 id="区间覆盖"><a href="#区间覆盖" class="headerlink" title="区间覆盖"></a>区间覆盖</h2><h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e0e9c223f.jpg" alt="img"></p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>将所有区间按左端点从小到大排序</li>
+<li>从前往后枚举每个区间，在所有能覆盖start的区间中，选择右端点最大的区间然后将start更新成右端点的最大值</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Range</span>&#123;</span><br><span class="line">    <span class="type">int</span> l,r;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> Range &amp;W) <span class="type">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> l&lt;W.l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;range[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> st,ed;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;st,&amp;ed);</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> l,r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;l, &amp;r);</span><br><span class="line">        range[i]=&#123;l,r&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sort</span>(range,range+n);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="type">bool</span> success=<span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> j=i,r=<span class="number">-2e9</span>;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;n &amp;&amp; range[j].l&lt;=st)&#123;   <span class="comment">//双指针算法</span></span><br><span class="line">            r=<span class="built_in">max</span>(r,range[j].r);</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(r&lt;st)&#123;</span><br><span class="line">            res=<span class="number">-1</span>;  <span class="comment">//双指针算法的作用在这里，如果r&lt;st说明之后的j都不能满足要求，i就没必要增加成j的大小了，</span></span><br><span class="line">            <span class="comment">//j相当与探路的</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        res++;</span><br><span class="line">        <span class="keyword">if</span>(r&gt;=ed)&#123;</span><br><span class="line">            success=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        st=r;</span><br><span class="line">        i=j<span class="number">-1</span>;  <span class="comment">//i=j-1 ,然后执行的是for循环，i++,i就等于j了，然后从下面一个位置开始看大小</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!success) res=<span class="number">-1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="证明-3"><a href="#证明-3" class="headerlink" title="证明"></a>证明</h3><p>还是，假设ans是题目答案，cnt是按照这个方法得出来的答案<br>因为定义，ans&lt;&#x3D;cnt<br>用反证法证另外一半，假设存在一种选择方法，</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267e0f57fc96.jpg" alt="img"></p>
+<p>对比这俩种方案，从前往后找到第一个不一样的区间，因为我们的方法找的是最右侧的值，所以ans此时的最右侧一定是比cnt的最右侧更加右的，所以，把这个不一样的区间从cnt替换成ans一定是可以而且不亏的</p>
+<p>所以每一个不一样的线段都可以被替换掉，则ans不可能比cnt小，每一步都是合法替换，所以ans&#x3D;cnt</p>
+<p>（好像不用反证法？反正反证法是种思路啦）</p>
+<h1 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h1><h2 id="合并果子"><a href="#合并果子" class="headerlink" title="合并果子"></a>合并果子</h2><h3 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e106f0dd0.jpg" alt="img"> </p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>是哈夫曼树</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267e112c2eae.jpg" alt="img"></p>
+<p>a的高度是3,也就是a在这个过程中被算了3次，所以每次都找小的数进行相加，局部最优解变成总体的最优解，对于这个题，数最小的俩个数一定深度最深可以互为兄弟</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    priority_queue&lt;<span class="type">int</span>,vector&lt;<span class="type">int</span>&gt;,greater&lt;<span class="type">int</span>&gt;&gt; heap;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">        heap.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(heap.<span class="built_in">size</span>()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="type">int</span> a=heap.<span class="built_in">top</span>();heap.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> b=heap.<span class="built_in">top</span>();heap.<span class="built_in">pop</span>();</span><br><span class="line">        res+=a+b;</span><br><span class="line">        heap.<span class="built_in">push</span>(a+b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="证明-4"><a href="#证明-4" class="headerlink" title="证明"></a>证明</h3><ol>
+<li>把俩个最小的点合并，一定能得到最优解</li>
+</ol>
+<p>反证法</p>
+<img src="https://tu.sunning.fit/i/2022/04/26/6267e119af137.jpg" alt="img" style="zoom:67%;" />
+
+<p>假设不按照这种方法，f比b小，但是f放的高度却比b小，这是一定可以交换f和b,交换后的结果一定比交换之前小，与题目矛盾，所以不成立。</p>
+<ol start="2">
+<li>对于每一个都用找到最小的俩个点合并的方法能得到最优解（局部最优解也是全局最优解）</li>
+</ol>
+<p>假设F(n)是n个点的最小值，F(n-1)是n-1个点的最小值，F(n)&#x3D;F(n-1)+a+b；（a,b是F(n)的最小值），所以对每一个都相当于去掉最小的俩个数之后求剩下的最小值，局部最优也是全局最优</p>
+<h1 id="排序不等式"><a href="#排序不等式" class="headerlink" title="排序不等式"></a>排序不等式</h1><h2 id="排队打水"><a href="#排队打水" class="headerlink" title="排队打水"></a>排队打水</h2><h3 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a>题目</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e12399747.jpg" alt="img"></p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><img src="https://tu.sunning.fit/i/2022/04/26/6267e12a5faea.jpg" alt="img" style="zoom: 33%;" />
+
+<p><strong>让用时长的放在后面，用时短的放在前面，按照从小到达的顺序排队，总时间最小</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">100010</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="type">int</span> t[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(t,t+n);</span><br><span class="line">    LL res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d   &quot;</span>,t[i]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">        res+=t[i]*(n-i<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可能会保爆int,所以用long long来存</p>
+<h3 id="证明-5"><a href="#证明-5" class="headerlink" title="证明"></a>证明</h3><p>反证法，假设最优解不是按照从小到大排序的，</p>
+<p>找到第一个不是按照从小到大排序的数，看如果交换完之后会怎么样</p>
+<img src="https://tu.sunning.fit/i/2022/04/26/6267e13c59594.jpg" alt="img" style="zoom: 67%;" />
+
+
+
+<h1 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h1><h2 id="货舱选址"><a href="#货舱选址" class="headerlink" title="货舱选址"></a>货舱选址</h2><h3 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a>题目</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e14133e02.jpg" alt="img"></p>
+<h3 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> t[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(t,t+n);</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        sum+= <span class="built_in">abs</span>(t[i]-t[n/<span class="number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="证明-6"><a href="#证明-6" class="headerlink" title="证明"></a>证明</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e145cd472.jpg" alt="img"></p>
+<p>一对一对去配，对于每一个对，<img src="https://tu.sunning.fit/i/2022/04/26/6267e1493aa20.jpg" alt="img">当x在xi和x(n-i)之间的时候最小，对于每个对都是这样，所以最小的情况就是当x<br>如果是奇数个，x在中位数的时候最小，如果是偶数个，x在最中间的俩个数之间的任何一个点（包括端点)都可以</p>
+<p>（绝对值不等式）</p>
+<h1 id="推公式"><a href="#推公式" class="headerlink" title="推公式"></a>推公式</h1><h2 id="耍杂技的牛"><a href="#耍杂技的牛" class="headerlink" title="耍杂技的牛"></a>耍杂技的牛</h2><h3 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a>题目</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267e14e3c0de.jpg" alt="img"></p>
+<h3 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; PII;</span><br><span class="line">PII cow[N];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> w,s;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;w,&amp;s);</span><br><span class="line">        cow[i]=&#123;w+s,w&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(cow,cow+n);</span><br><span class="line">    <span class="type">int</span> res=<span class="number">-2e9</span>,sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> w=cow[i].second;</span><br><span class="line">        <span class="type">int</span> s=cow[i].first-w;</span><br><span class="line">        res=<span class="built_in">max</span>(res,sum-s);</span><br><span class="line">        sum+=w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,res);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>证明<br><img src="https://tu.sunning.fit/i/2022/04/26/6267e13c59594.jpg" alt="img"><br>贪心得到的答案&gt;&#x3D;最优解<br>贪心得到的答案&lt;&#x3D;最优解</p>
+<p>算按照这种方法和不按这种方法的区别</p>
+<img src="https://tu.sunning.fit/i/2022/04/26/6267e1604d923.jpg" alt="img"  />
+
+<p>加减变化之后</p>
+<img src="https://tu.sunning.fit/i/2022/04/26/6267e16474f28.jpg" alt="img" style="zoom:80%;" />
+
+<p>所以贪心得到的答案一定是小于等于最优解的</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Sun wen xiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/07/21/%E8%B4%AA%E5%BF%83/">http://example.com/2022/07/21/%E8%B4%AA%E5%BF%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">孙文祥的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a><a class="post-meta__tags" href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a></div><div class="post_share"><div class="social-share" data-image="https://tu.sunning.fit/i/y/7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/GUI/"><img class="prev-cover" src="https://tu.sunning.fit/i/y/55.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">GUI</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/%E8%87%AA%E8%A1%8C%E8%BD%A6/"><img class="next-cover" src="https://tu.sunning.fit/i/y/68.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">自行车</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/21/BFS/" title="BFS"><img class="cover" src="https://tu.sunning.fit/i/y/46.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">BFS</div></div></a></div><div><a href="/2022/07/21/DFS/" title="DFS"><img class="cover" src="https://tu.sunning.fit/i/y/88.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">DFS</div></div></a></div><div><a href="/2022/07/21/%E4%BC%AA%E4%BB%A3%E7%A0%81/" title="伪代码"><img class="cover" src="https://tu.sunning.fit/i/y/60.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">伪代码</div></div></a></div><div><a href="/2022/07/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划"><img class="cover" src="https://tu.sunning.fit/i/y/2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">动态规划</div></div></a></div><div><a href="/2022/07/21/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" title="时间复杂度"><img class="cover" src="https://tu.sunning.fit/i/y/101.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">时间复杂度</div></div></a></div><div><a href="/2022/07/21/%E7%AE%97%E6%B3%95%E8%80%83%E8%AF%95/" title="算法考试"><img class="cover" src="https://tu.sunning.fit/i/y/78.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">算法考试</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sun wen xiang</div><div class="author-info__description">遇到困难睡大觉</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sunwenxiang133"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E8%A7%A3%E4%BD%93%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%88%E7%8C%9C-%E8%AF%81%E6%98%8E%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">贪心解体的思路（猜+证明）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E8%AF%81%E6%98%8E"><span class="toc-number">1.2.</span> <span class="toc-text">贪心证明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">区间问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E9%80%89%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">区间选点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">2.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-number">2.1.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-number">2.1.3.</span> <span class="toc-text">证明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E4%B8%8D%E7%9B%B8%E4%BA%A4%E5%8C%BA%E9%97%B4%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">最大不相交区间的数量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3%EF%BC%88%E5%92%8C%E4%B8%8A%E4%B8%80%E9%A2%98%E5%87%A0%E4%B9%8E%E4%B8%80%E6%A0%B7%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">题解（和上一题几乎一样）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">证明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E5%88%86%E7%BB%84"><span class="toc-number">2.3.</span> <span class="toc-text">区间分组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="toc-number">2.4.</span> <span class="toc-text">优先队列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.4.0.1.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">2.4.0.2.</span> <span class="toc-text">基本操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">证明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E8%A6%86%E7%9B%96"><span class="toc-number">2.5.</span> <span class="toc-text">区间覆盖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">2.5.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="toc-number">2.5.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-3"><span class="toc-number">2.5.3.</span> <span class="toc-text">证明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="toc-number">3.</span> <span class="toc-text">哈夫曼树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90"><span class="toc-number">3.1.</span> <span class="toc-text">合并果子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="toc-number">3.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-3"><span class="toc-number">3.1.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-4"><span class="toc-number">3.1.3.</span> <span class="toc-text">证明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">排序不等式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E9%98%9F%E6%89%93%E6%B0%B4"><span class="toc-number">4.1.</span> <span class="toc-text">排队打水</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="toc-number">4.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-4"><span class="toc-number">4.1.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-5"><span class="toc-number">4.1.3.</span> <span class="toc-text">证明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%80%BC%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">绝对值不等式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A7%E8%88%B1%E9%80%89%E5%9D%80"><span class="toc-number">5.1.</span> <span class="toc-text">货舱选址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="toc-number">5.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-5"><span class="toc-number">5.1.2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-6"><span class="toc-number">5.1.3.</span> <span class="toc-text">证明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A8%E5%85%AC%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">推公式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%8D%E6%9D%82%E6%8A%80%E7%9A%84%E7%89%9B"><span class="toc-number">6.1.</span> <span class="toc-text">耍杂技的牛</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="toc-number">6.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-6"><span class="toc-number">6.1.2.</span> <span class="toc-text">题解</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Axios/" title="Axios"><img src="https://tu.sunning.fit/i/y/119.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Axios"/></a><div class="content"><a class="title" href="/2022/07/21/Axios/" title="Axios">Axios</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BFS/" title="BFS"><img src="https://tu.sunning.fit/i/y/46.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BFS"/></a><div class="content"><a class="title" href="/2022/07/21/BFS/" title="BFS">BFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BOM/" title="BOM"><img src="https://tu.sunning.fit/i/y/70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2022/07/21/BOM/" title="BOM">BOM</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用"><img src="https://tu.sunning.fit/i/y/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clion使用"/></a><div class="content"><a class="title" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用">Clion使用</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/DFS/" title="DFS"><img src="https://tu.sunning.fit/i/y/88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS"/></a><div class="content"><a class="title" href="/2022/07/21/DFS/" title="DFS">DFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Sun wen xiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

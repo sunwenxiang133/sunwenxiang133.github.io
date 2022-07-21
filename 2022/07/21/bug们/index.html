@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>bug们 | 孙文祥的博客</title><meta name="keywords" content="ArchLinux,bug们"><meta name="author" content="Sun wen xiang"><meta name="copyright" content="Sun wen xiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="pacman的问题gpg签名损坏（遇到再说）可能会有gpg签名损坏的问题，注意，在换源的时候后面的注释要删掉 需要安装archlinuxcn-keyring导入GPG key sudo pacman -Sy archlinuxcn-keyring  再更新一下源,如果有未信任的证书应该是源没有更新的问题 sudo pacman -Syu  密钥环错误（遇到再说）遇到无法远程查找到密钥环错误（如果没">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bug们">
+<meta property="og:url" content="http://example.com/2022/07/21/bug%E4%BB%AC/index.html">
+<meta property="og:site_name" content="孙文祥的博客">
+<meta property="og:description" content="pacman的问题gpg签名损坏（遇到再说）可能会有gpg签名损坏的问题，注意，在换源的时候后面的注释要删掉 需要安装archlinuxcn-keyring导入GPG key sudo pacman -Sy archlinuxcn-keyring  再更新一下源,如果有未信任的证书应该是源没有更新的问题 sudo pacman -Syu  密钥环错误（遇到再说）遇到无法远程查找到密钥环错误（如果没">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tu.sunning.fit/i/y/40.jpg">
+<meta property="article:published_time" content="2022-07-21T00:43:01.000Z">
+<meta property="article:modified_time" content="2022-07-21T00:43:01.000Z">
+<meta property="article:author" content="Sun wen xiang">
+<meta property="article:tag" content="ArchLinux">
+<meta property="article:tag" content="bug们">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tu.sunning.fit/i/y/40.jpg"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="http://example.com/2022/07/21/bug%E4%BB%AC/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'bug们',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 08:43:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tu.sunning.fit/i/y/40.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">孙文祥的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">bug们</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T00:43:01.000Z" title="发表于 2022-07-21 08:43:01">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T00:43:01.000Z" title="更新于 2022-07-21 08:43:01">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ArchLinux/">ArchLinux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="bug们"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="pacman的问题"><a href="#pacman的问题" class="headerlink" title="pacman的问题"></a>pacman的问题</h1><h2 id="gpg签名损坏（遇到再说）"><a href="#gpg签名损坏（遇到再说）" class="headerlink" title="gpg签名损坏（遇到再说）"></a>gpg签名损坏（遇到再说）</h2><p>可能会有gpg签名损坏的问题，注意，在换源的时候后面的注释要删掉</p>
+<p>需要安装archlinuxcn-keyring导入GPG key</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -Sy archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
+
+<p>再更新一下源,如果有未信任的证书应该是源没有更新的问题</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -Syu</span><br></pre></td></tr></table></figure>
+
+<h2 id="密钥环错误（遇到再说）"><a href="#密钥环错误（遇到再说）" class="headerlink" title="密钥环错误（遇到再说）"></a>密钥环错误（遇到再说）</h2><p>遇到无法远程查找到密钥环错误（如果没有用把后面的archlinuxcn给去掉（应该是没换源的结果）管理员执行）</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -R /etc/pacman.d/gnupg/</span><br><span class="line"><span class="built_in">rm</span> -R /root/.gnupg/</span><br><span class="line">only <span class="keyword">if</span> the directory exists</span><br><span class="line">gpg --refresh-keys</span><br><span class="line">pacman-key --init &amp;&amp; pacman-key --populate archlinuxcn</span><br><span class="line">pacman-key --refresh-keys archlinuxcn</span><br></pre></td></tr></table></figure>
+
+<p>如果还是密钥环错误</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S archlinux-keyring archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
+
+<p>yay     &#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist</p>
+<p>如果yay下载速度很慢，连手机（别连校园网</p>
+<p>开全局代理，重新打开konsole再开始下载即可</p>
+<h2 id="GPGME-error-No-data"><a href="#GPGME-error-No-data" class="headerlink" title="GPGME error: No data"></a>GPGME error: No data</h2><p>一句命令就ok了</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> /var/lib/pacman/sync/*.sig</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>原因</p>
+<p>pacman在更新数据库文件时也会尝试下载<code>$repo.db.sig</code>，这里的<code>$repo</code>可以是core、extra、community、archlinuxcn等仓库名。</p>
+<p>但是无论是官方源还是archlinuxcn源，大多数源的数据库文件都不会被签名，也就不会存在 .db.sig 文件。</p>
+<p>pacman 尝试下载时这些数据库文件的签名文件时，镜像站就会返回 <strong>404 的http状态码</strong>告诉pacman: “你个傻叉，神他妈没有这个文件！”</p>
+<p>pacman 挨了一顿骂，也就善罢甘休，没有再动这个念头，所以我们每次更新也都相安无事。</p>
+<p>而出现这种错误的情况大多是发生在 校园网、酒店免费WIFI 这种<strong>需要登陆以后才能上网的网络环境</strong>。</p>
+<p>因为 pacman 尝试下载 <code>.db.sig</code> 文件时被登陆网页劫持了（这点你们应该深有感受，如果你在这种网络环境下没有登陆，你无论访问什么网页都会被重定向到登录界面，http的状态码此时是200，不是404）。从没见过 <code>.db.sig</code>的 pacman 此时两眼放光，由于没有挨骂，他就迅速地把登录界面当成是<code>.db.sig</code>下载下来了。</p>
+<p>下载下来以后，pacman 激动地摆弄起 <code>.db.sig</code>，甚至发现里面没有自己期待已久的 GPG签名数据并开始报错时仍然不愿意撒手，因此此时无论再怎么同步源码、再怎么 Syyu 也不会有效果，必须人工干预。</p>
+</blockquote>
+<h2 id="文件-x2F-var-x2F-cache-x2F-pacman-x2F-pkg-x2F-libinih-55-2-x86-64-pkg-tar-zst-已损坏-打算删除吗"><a href="#文件-x2F-var-x2F-cache-x2F-pacman-x2F-pkg-x2F-libinih-55-2-x86-64-pkg-tar-zst-已损坏-打算删除吗" class="headerlink" title="文件 &#x2F;var&#x2F;cache&#x2F;pacman&#x2F;pkg&#x2F;libinih-55-2-x86_64.pkg.tar.zst 已损坏,打算删除吗"></a>文件 &#x2F;var&#x2F;cache&#x2F;pacman&#x2F;pkg&#x2F;libinih-55-2-x86_64.pkg.tar.zst 已损坏,打算删除吗</h2><p>更新一下密钥环然后再进行更新</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pacman -Sy archlinux-keyring &amp;&amp; pacman -Su</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="无法打开文件-x2F-var-x2F-lib-x2F-pacman-x2F-sync-x2F-community-db-Unrecognized-archive-format"><a href="#无法打开文件-x2F-var-x2F-lib-x2F-pacman-x2F-sync-x2F-community-db-Unrecognized-archive-format" class="headerlink" title="无法打开文件 &#x2F;var&#x2F;lib&#x2F;pacman&#x2F;sync&#x2F;community.db: Unrecognized archive format"></a>无法打开文件 &#x2F;var&#x2F;lib&#x2F;pacman&#x2F;sync&#x2F;community.db: Unrecognized archive format</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> -R /var/lib/pacman/sync/</span><br></pre></td></tr></table></figure>
+
+<p>删除掉这个文件夹即可</p>
+<p>下次更新的时候要用</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pacman -Syyu</span><br></pre></td></tr></table></figure>
+
+<h2 id="Arch-Linux使用pacman时无法锁定数据库"><a href="#Arch-Linux使用pacman时无法锁定数据库" class="headerlink" title="[Arch Linux使用pacman时无法锁定数据库 ]"></a>[Arch Linux使用pacman时无法锁定数据库 ]</h2><p>由于<code>/var/lib/pacman/db.lck</code>文件锁定了pacman的数据库，那么需要运行以下命令进行解决：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> /var/lib/pacman/db.lck</span><br></pre></td></tr></table></figure>
+
+<p>删除之后就能继续正常使用了</p>
+<h1 id="字体问题"><a href="#字体问题" class="headerlink" title="字体问题"></a>字体问题</h1><h2 id="Wps-字体撕裂和office识别成压缩包"><a href="#Wps-字体撕裂和office识别成压缩包" class="headerlink" title="Wps 字体撕裂和office识别成压缩包"></a>Wps 字体撕裂和office识别成压缩包</h2><h3 id="office文件和wps关联"><a href="#office文件和wps关联" class="headerlink" title="office文件和wps关联"></a>office文件和wps关联</h3><p><img src="/bug%E4%BB%AC.assets/6267df0586a9e.png" alt="Untitled"></p>
+<p>进一步查找应该是匹配方式的问题，现在这个问题还没解决，资料如下</p>
+<p>wps文件关联</p>
+<p><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/770436">从烦人的 WPS “打开方式不对”到翻 Qt 源码 - V2EX</a></p>
+<p>和桌面文件的mimetype匹配有关系，所以把把重复匹配 .doc&#x2F;.docx&#x2F;.ppt&#x2F;.pptx 等等的 mimetype 删的只剩下一个，保证每个后缀名只在一个 mimetype 里出现一次</p>
+<p>并用合适的参数调用 <code>update-mime-database</code></p>
+<blockquote>
+<p>后来发现问题在下面，在配置字体撕裂的时候没注意看archwiki</p>
+<p>不是把第四行的Exce删了，而是在第四行添加</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">env</span> QT_SCREEN_SCALE_FACTORS=1</span><br></pre></td></tr></table></figure>
+
+<p>例如下面这样</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Exec= <span class="built_in">env</span> QT_SCREEN_SCALE_FACTORS=1 /usr/bin/wps %U</span><br><span class="line">Exec= <span class="built_in">env</span> QT_SCREEN_SCALE_FACTORS=1 /usr/bin/wpp %F</span><br></pre></td></tr></table></figure>
+
+<p>自己挖坑自己跳了属于</p>
+</blockquote>
+<h3 id="字体撕裂"><a href="#字体撕裂" class="headerlink" title="字体撕裂"></a>字体撕裂</h3><p>原因是wps的dpi默认是96,如果系统dpi和96不一样会有dpi问题</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/WPS_Office_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#KDE%E4%B8%8Bdpi%E4%B8%8D%E5%AF%B9%E7%A7%B0%E5%AF%BC%E8%87%B4%E7%9A%84%E5%AD%97%E4%BD%93%E6%A8%A1%E7%B3%8A">WPS Office (简体中文)</a></p>
+<p>应用程序的desktop位置</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/usr/share/applications/</span><br><span class="line">sudo vim wps  剩下的用tap自动补全</span><br></pre></td></tr></table></figure>
+
+<p>把第四行的Exec删了，换成</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Exec= <span class="built_in">env</span> QT_SCREEN_SCALE_FACTORS=1 /usr/bin/wps %U</span><br><span class="line">Exec= <span class="built_in">env</span> QT_SCREEN_SCALE_FACTORS=1 /usr/bin/wpp %F</span><br></pre></td></tr></table></figure>
+
+<p>每一个wps的东西都需要改</p>
+<p><img src="/bug%E4%BB%AC.assets/6267df1150b16.png" alt="Untitled"></p>
+<h2 id="Ark解压字体乱码"><a href="#Ark解压字体乱码" class="headerlink" title="Ark解压字体乱码"></a>Ark解压字体乱码</h2><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>主要是编码问题，windows下默认gb2312于linux中默认uft-8不兼容</p>
+<p>直接原因是Ark中用于zip打开和解压的插件不支持gb2312</p>
+<h3 id="安装p7zip-natspec"><a href="#安装p7zip-natspec" class="headerlink" title="安装p7zip-natspec****"></a>安装p7zip-natspec****</h3><p>yay -S p7zip-natspec</p>
+<p>和7zip插件会有冲突，删掉即可</p>
+<p>在ark设置里面关掉Libzip包</p>
+<p><img src="/bug%E4%BB%AC.assets/6267df166e5a5.png" alt="Untitled"></p>
+<h1 id="蓝牙连接不稳定，容易断开连接"><a href="#蓝牙连接不稳定，容易断开连接" class="headerlink" title="蓝牙连接不稳定，容易断开连接"></a>蓝牙连接不稳定，容易断开连接</h1><p>双系统，windows的适配器和arch的适配器冲突了，把windows蓝牙设备删除，蓝牙服务关了之后，在设备管理器把蓝牙设备删除</p>
+<blockquote>
+<p>windows设备管理器扫描更改设备可以把设备再安装回来</p>
+</blockquote>
+<p>安装必要软件包</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pacman -S bluez bluez-utils pulseaudio-bluetooth pavucontrol pulseaudio-alsa</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>启动蓝牙服务</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> bluetooth</span><br><span class="line">systemctl start bluetooth</span><br></pre></td></tr></table></figure>
+
+<p>启动pluseaudio服务</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pulseaudio -k                   <span class="comment"># 确保没有pulseaudio启动</span></span><br><span class="line">pulseaudio --start              <span class="comment"># 启动pulseaudio服务</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="内存不够了，清内存"><a href="#内存不够了，清内存" class="headerlink" title="内存不够了，清内存"></a>内存不够了，清内存</h1><h2 id="软件包清理"><a href="#软件包清理" class="headerlink" title="软件包清理"></a>软件包清理</h2><p>查看缓存文件夹里面有多少缓存包可以使用</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /var/cache/pacman/pkg/ | <span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
+
+<p>查看混村文件夹使用的磁盘总空间</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">du</span> -sh /var/cache/pacman/pkg/</span><br></pre></td></tr></table></figure>
+
+<p>清理3个最新版本之外的所有软件包</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo paccache -r</span><br></pre></td></tr></table></figure>
+
+<p>如果您只想保留一个最新版本，请运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo paccache -rk 1</span><br></pre></td></tr></table></figure>
+
+<p> ķ 表示保留 <code>num</code> 缓存中的每个包。</p>
+<p>删除已卸载软件包的所有缓存版本</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo paccache -ruk0</span><br></pre></td></tr></table></figure>
+
+
+
+<p>删除所有已卸载的软件包</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -Sc</span><br></pre></td></tr></table></figure>
+
+
+
+<p>完全删除所有包</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -Scc</span><br></pre></td></tr></table></figure>
+
+<p>使用此命令时请小心。 一旦缓存的包被删除，就无法检索它们</p>
+<h2 id="日志清理"><a href="#日志清理" class="headerlink" title="日志清理"></a>日志清理</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">journalctl --disk-usage  //清理日志</span><br><span class="line">journalctl --vacuum-time=1months  //指定日志的保留时间</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>authorized_keys</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Sun wen xiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/07/21/bug%E4%BB%AC/">http://example.com/2022/07/21/bug%E4%BB%AC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">孙文祥的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ArchLinux/">ArchLinux</a><a class="post-meta__tags" href="/tags/bug%E4%BB%AC/">bug们</a></div><div class="post_share"><div class="social-share" data-image="https://tu.sunning.fit/i/y/40.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/%E5%8F%8D%E5%B0%84/"><img class="prev-cover" src="https://tu.sunning.fit/i/y/105.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">反射</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/arco%20%E5%AE%89%E8%A3%85/"><img class="next-cover" src="https://tu.sunning.fit/i/y/97.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">arco 安装</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/21/Vim%20/" title="Vim"><img class="cover" src="https://tu.sunning.fit/i/y/36.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Vim</div></div></a></div><div><a href="/2022/07/21/arco%20%E5%AE%89%E8%A3%85/" title="arco 安装"><img class="cover" src="https://tu.sunning.fit/i/y/97.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">arco 安装</div></div></a></div><div><a href="/2022/07/21/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" title="基本操作命令的使用"><img class="cover" src="https://tu.sunning.fit/i/y/83.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">基本操作命令的使用</div></div></a></div><div><a href="/2022/07/21/%E6%9C%AC%E6%9C%BA%E5%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="本机当服务器"><img class="cover" src="https://tu.sunning.fit/i/y/100.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">本机当服务器</div></div></a></div><div><a href="/2022/07/21/%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="组管理和权限管理"><img class="cover" src="https://tu.sunning.fit/i/y/80.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">组管理和权限管理</div></div></a></div><div><a href="/2022/07/21/%E7%BE%8E%E5%8C%96/" title="美化"><img class="cover" src="https://tu.sunning.fit/i/y/7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">美化</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sun wen xiang</div><div class="author-info__description">遇到困难睡大觉</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sunwenxiang133"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pacman%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">pacman的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gpg%E7%AD%BE%E5%90%8D%E6%8D%9F%E5%9D%8F%EF%BC%88%E9%81%87%E5%88%B0%E5%86%8D%E8%AF%B4%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">gpg签名损坏（遇到再说）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E7%8E%AF%E9%94%99%E8%AF%AF%EF%BC%88%E9%81%87%E5%88%B0%E5%86%8D%E8%AF%B4%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">密钥环错误（遇到再说）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPGME-error-No-data"><span class="toc-number">1.3.</span> <span class="toc-text">GPGME error: No data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-x2F-var-x2F-cache-x2F-pacman-x2F-pkg-x2F-libinih-55-2-x86-64-pkg-tar-zst-%E5%B7%B2%E6%8D%9F%E5%9D%8F-%E6%89%93%E7%AE%97%E5%88%A0%E9%99%A4%E5%90%97"><span class="toc-number">1.4.</span> <span class="toc-text">文件 &#x2F;var&#x2F;cache&#x2F;pacman&#x2F;pkg&#x2F;libinih-55-2-x86_64.pkg.tar.zst 已损坏,打算删除吗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-x2F-var-x2F-lib-x2F-pacman-x2F-sync-x2F-community-db-Unrecognized-archive-format"><span class="toc-number">1.5.</span> <span class="toc-text">无法打开文件 &#x2F;var&#x2F;lib&#x2F;pacman&#x2F;sync&#x2F;community.db: Unrecognized archive format</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arch-Linux%E4%BD%BF%E7%94%A8pacman%E6%97%B6%E6%97%A0%E6%B3%95%E9%94%81%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.6.</span> <span class="toc-text">[Arch Linux使用pacman时无法锁定数据库 ]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E4%BD%93%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">字体问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Wps-%E5%AD%97%E4%BD%93%E6%92%95%E8%A3%82%E5%92%8Coffice%E8%AF%86%E5%88%AB%E6%88%90%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-number">2.1.</span> <span class="toc-text">Wps 字体撕裂和office识别成压缩包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#office%E6%96%87%E4%BB%B6%E5%92%8Cwps%E5%85%B3%E8%81%94"><span class="toc-number">2.1.1.</span> <span class="toc-text">office文件和wps关联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%BD%93%E6%92%95%E8%A3%82"><span class="toc-number">2.1.2.</span> <span class="toc-text">字体撕裂</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ark%E8%A7%A3%E5%8E%8B%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">Ark解压字体乱码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.2.1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85p7zip-natspec"><span class="toc-number">2.2.2.</span> <span class="toc-text">安装p7zip-natspec****</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%93%9D%E7%89%99%E8%BF%9E%E6%8E%A5%E4%B8%8D%E7%A8%B3%E5%AE%9A%EF%BC%8C%E5%AE%B9%E6%98%93%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">蓝牙连接不稳定，容易断开连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%B8%8D%E5%A4%9F%E4%BA%86%EF%BC%8C%E6%B8%85%E5%86%85%E5%AD%98"><span class="toc-number">4.</span> <span class="toc-text">内存不够了，清内存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%B8%85%E7%90%86"><span class="toc-number">4.1.</span> <span class="toc-text">软件包清理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">日志清理</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Axios/" title="Axios"><img src="https://tu.sunning.fit/i/y/119.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Axios"/></a><div class="content"><a class="title" href="/2022/07/21/Axios/" title="Axios">Axios</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BFS/" title="BFS"><img src="https://tu.sunning.fit/i/y/46.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BFS"/></a><div class="content"><a class="title" href="/2022/07/21/BFS/" title="BFS">BFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BOM/" title="BOM"><img src="https://tu.sunning.fit/i/y/70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2022/07/21/BOM/" title="BOM">BOM</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用"><img src="https://tu.sunning.fit/i/y/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clion使用"/></a><div class="content"><a class="title" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用">Clion使用</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/DFS/" title="DFS"><img src="https://tu.sunning.fit/i/y/88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS"/></a><div class="content"><a class="title" href="/2022/07/21/DFS/" title="DFS">DFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Sun wen xiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

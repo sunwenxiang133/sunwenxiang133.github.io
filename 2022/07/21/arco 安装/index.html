@@ -1,0 +1,667 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>arco 安装 | 孙文祥的博客</title><meta name="keywords" content="ArchLinux,Arco安装"><meta name="author" content="Sun wen xiang"><meta name="copyright" content="Sun wen xiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="换源和基本操作注意，timeshift一定一定要装 安装第一步，把windows的快速启动关了 换源在 &#x2F;etc&#x2F;pacman.conf里面 [archlinuxcn]SigLevel &#x3D; Optional TrustedOnlyServer &#x3D; https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;archlinuxcn&#x2F;$archsudo Server &#x3D; https:&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="arco 安装">
+<meta property="og:url" content="http://example.com/2022/07/21/arco%20%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="孙文祥的博客">
+<meta property="og:description" content="换源和基本操作注意，timeshift一定一定要装 安装第一步，把windows的快速启动关了 换源在 &#x2F;etc&#x2F;pacman.conf里面 [archlinuxcn]SigLevel &#x3D; Optional TrustedOnlyServer &#x3D; https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;archlinuxcn&#x2F;$archsudo Server &#x3D; https:&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tu.sunning.fit/i/y/97.jpg">
+<meta property="article:published_time" content="2022-07-21T00:43:01.000Z">
+<meta property="article:modified_time" content="2022-07-21T00:43:01.000Z">
+<meta property="article:author" content="Sun wen xiang">
+<meta property="article:tag" content="ArchLinux">
+<meta property="article:tag" content="Arco安装">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tu.sunning.fit/i/y/97.jpg"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="http://example.com/2022/07/21/arco%20%E5%AE%89%E8%A3%85/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'arco 安装',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 08:43:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tu.sunning.fit/i/y/97.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">孙文祥的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">arco 安装</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T00:43:01.000Z" title="发表于 2022-07-21 08:43:01">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T00:43:01.000Z" title="更新于 2022-07-21 08:43:01">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ArchLinux/">ArchLinux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>27分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="arco 安装"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="换源和基本操作"><a href="#换源和基本操作" class="headerlink" title="换源和基本操作"></a>换源和基本操作</h1><p>注意，timeshift一定一定要装</p>
+<p>安装第一步，把windows的快速启动关了</p>
+<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><p>在 &#x2F;etc&#x2F;pacman.conf里面</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/<span class="variable">$archsudo</span> </span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/<span class="variable">$arch</span> <span class="comment"># 中国科学技术大学开源镜像站</span></span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span> <span class="comment"># 清华大学开源软件镜像站</span></span><br><span class="line">Server = https://mirrors.hit.edu.cn/archlinuxcn/<span class="variable">$arch</span> <span class="comment"># 哈尔滨工业大学开源镜像站</span></span><br><span class="line">Server = https://repo.huaweicloud.com/archlinuxcn/<span class="variable">$arch</span> <span class="comment"># 华为开源镜像站</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="为archlinux选择国内镜像"><a href="#为archlinux选择国内镜像" class="headerlink" title="为archlinux选择国内镜像"></a>为archlinux选择国内镜像</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pacman-mirrors --country China &amp;&amp; pacman -Syyu</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="pacman和yay"><a href="#pacman和yay" class="headerlink" title="pacman和yay"></a>pacman和yay</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S package_name <span class="comment"># 安装软件包</span></span><br><span class="line">pacman -Ss <span class="comment"># 在同步数据库中搜索包，包括包的名称和描述</span></span><br><span class="line">sudo pacman -Syyu <span class="comment"># 升级系统。-yy：标记强制刷新、-u：标记升级动作</span></span><br><span class="line">sudo pacman -Rns package_name <span class="comment"># 删除软件包，及其所有没有被其他已安装软件包使用的依赖包</span></span><br><span class="line">sudo pacman -R package_name <span class="comment"># 删除软件包，保留其全部已经安装的依赖关系</span></span><br><span class="line">pacman -Qi package_name <span class="comment"># 检查已安装包的相关信息。-Q：查询本地软件包数据库</span></span><br><span class="line">pacman -Qdt <span class="comment"># 找出孤立包。-d：标记依赖包、-t：标记不需要的包、-dt：合并标记孤立包</span></span><br><span class="line">sudo pacman -Rns $(pacman -Qtdq) <span class="comment"># 删除孤立包</span></span><br><span class="line">sudo pacman -Fy <span class="comment"># 更新命令查询文件列表数据库</span></span><br><span class="line">pacman -F some_command <span class="comment"># 当不知道某个命令属于哪个包时，用来在远程软件包中查询某个命令属于哪个包（即使没有安装）</span></span><br><span class="line">pactree package_name <span class="comment"># 查看一个包的依赖树</span></span><br><span class="line"></span><br><span class="line">yay的特殊的命令</span><br><span class="line">yay <span class="comment"># 等同于 yay -Syu</span></span><br><span class="line">yay package_name <span class="comment"># 等同于 yay -Ss package_name &amp;&amp; yay -S package_name</span></span><br><span class="line">yay -Ps <span class="comment"># 打印系统统计信息</span></span><br><span class="line">yay -Yc <span class="comment"># 清理不需要的依赖</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="pacman清理-yay清理"><a href="#pacman清理-yay清理" class="headerlink" title="pacman清理 yay清理"></a>pacman清理 yay清理</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -Rns $(pacman -Qtdq) <span class="comment"># 如上文所述，删除孤立软件包（常用）</span></span><br><span class="line">sudo pacman -Sc <span class="comment"># 删除当前未安装的所有缓存包和未使用的同步数据库（可选）</span></span><br><span class="line">sudo pacman -Scc <span class="comment"># 从缓存中删除所有文件，这是最激进的方法，不会在缓存文件夹中留下任何内容（一般不使用）</span></span><br><span class="line">paccache -r <span class="comment"># 删除已安装和未安装包的所有缓存版本，但最近 3 个版本除外</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -rf ~/.cache/yay <span class="comment">#清理 yay 的缓存目录：</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>熟悉使用vim可以打开vimtutor进行训练</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">:wq —— 保存退出</span><br><span class="line">:q! —— 不保存，强制退出</span><br><span class="line"><span class="built_in">dd</span> —— 删除一行</span><br><span class="line">2dd —— 删除两行</span><br><span class="line">gg —— 回到文本第一行</span><br><span class="line"><span class="built_in">shift</span> + g —— 转到文本最后一行</span><br><span class="line">/xxx —— 在文中搜索 xxx 内容。回车 Enter 搜索，按 n 键转到下一个</span><br><span class="line">?xxx —— 反向搜索</span><br></pre></td></tr></table></figure>
+
+<h2 id="图标渐变色"><a href="#图标渐变色" class="headerlink" title="图标渐变色"></a>图标渐变色</h2><p>先 yay -S lolcat </p>
+<p>neofetch | lolcat</p>
+<h1 id="常用软件安装"><a href="#常用软件安装" class="headerlink" title="常用软件安装"></a>常用软件安装</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo                                               </span><br><span class="line">yay -S elisa <span class="comment"># 轻量级的小型音乐播放器</span></span><br><span class="line">yay -S vlc <span class="comment"># 强大又小巧的视频播放器。</span></span><br><span class="line">yay -S typora-free <span class="comment"># 这也是因为近期Typora正式升级版本v1.0，就此转变为收费软件，如果不考虑支付费用的话暂时还是只能用v0.11.8这个最后的测试版。</span></span><br><span class="line">yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts <span class="comment"># WPS软件</span></span><br><span class="line">yay -S solaar logiops <span class="comment"># 安装相应的无线接收器管理软件和罗技鼠标驱动</span></span><br><span class="line">yay -S visual-studio-code-bin <span class="comment"># 其实可以直接安装code,二选一而已，我用起来感觉没什么区别。</span></span><br><span class="line">sudo pacman -S clion clion-cmake make clion-lldb clion-jre <span class="comment"># 安装Clion环境</span></span><br><span class="line">sudo pacman -S intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre <span class="comment"># 安装IntelliJ Idea</span></span><br><span class="line">sudo pacman -S flameshot <span class="comment"># 强大的截图软件                                                           </span></span><br><span class="line">yay -S fim <span class="comment"># 终端平台的图片查看器                                                           </span></span><br><span class="line">sudo pacman -S bat <span class="comment"># 具有语法高亮和Git集成的Cat类命令</span></span><br><span class="line">sudo pacman -S piper <span class="comment">#鼠标键位映射</span></span><br><span class="line">yay -S baidunetdisk  <span class="comment">#安装百度网盘，选择第二个基于 electron 的版本</span></span><br><span class="line">yay -S icalingua  <span class="comment">#qq</span></span><br><span class="line">sudo pacman -S pacman-contrib   <span class="comment">#安装可以使用packman额外的命令</span></span><br><span class="line">sudo pacman -S filelight <span class="comment">#查看磁盘占用情况的软件</span></span><br><span class="line">sudo pacman -S unarchiver <span class="comment">#windwos下的一些软件可能会有解压的问题，解压用   unar xxx.zip命令即可</span></span><br><span class="line">sudo pacman -S ktimer   <span class="comment">#倒计时软件</span></span><br><span class="line">yay -S listen1-desktop-appimage  <span class="comment">#听歌不要钱 </span></span><br><span class="line">yay -S mindmaxter-cn <span class="comment">#思维导图软件 #不交钱不如xmind</span></span><br><span class="line">yay -S xmimd</span><br></pre></td></tr></table></figure>
+
+<p>Plasma Integration by KDE 火狐浏览器里面的设置</p>
+<p>火焰截图安装完记得设置下快捷键，我设置的是f1,f2设置成共同的帮助快捷键，默认的截图存储位置在~&#x2F;Pictures里面</p>
+<p>Okular是自带的pdf和电子书阅读器</p>
+<p>yay -S icalingua这个会有丢失信息的问题,但是传一般的文件之类的功能还是可以滴</p>
+<p><strong>timeshift 一定要装一定要装</strong></p>
+<blockquote>
+<p>timeshift 提供两种模式的备份方式：</p>
+<ul>
+<li>RSYNCy</li>
+<li>BTRFS</li>
+</ul>
+<p>RSYNC 在第一次使用时会拷贝所有文件，以后每次备份都是增量备份，使用硬链接创建从上一次快照未修改的系统文件。快照文件可以保存到任何 Linux 文件系统的硬盘格式下，保存快照到非系统盘或者外部硬盘上，这样即使系统盘损坏或者被格式化也能够快速从外部硬盘恢复数据。RSYNC 支持排除文件和目录来节省硬盘空间。</p>
+<p>BTRFS 需要安装 <code>btrfs-tools</code>，快照通过 BTRFS 文件系统创建，快照备份和恢复的速度要比 RSYNC 快，快照创建和恢复都是原子事务的，不能中断。快照通过替换系统 subvolumns 来恢复，因为文件没有拷贝，删除或者覆盖，不会有文件丢失的风险。恢复后的系统会作为一次新的快照。快照在备份时是完美地逐字节拷贝，不能排除任何文件。快照会存在系统相同的硬盘上，暂时还不支持备份到其他硬盘，如果系统盘损坏，那么快照也会丢失。初始 BTRFS 备份是 0 字节，但是随着系统使用占用内容会逐日增多，快照中的文件依然还是会指向原始的文件 block. 系统必须安装在 BTRFS 分区上，并使用 Ubuntu-type subvolumn layout(@ and @home subvolumns)，其他的 layouts 不支持。</p>
+<p>若在使用了 RSYNC 方式的 Timeshift 快照，还应考虑 Timeshift 快照占用情况。</p>
+<p>一般来说 RSYNC 方式的快照大小略大于当前实际使用大小。因为虽然 RSYNC 方式的快照是增量的，但<strong>历史最久远的快照依然是完整备份</strong>，随后才是增量的。而简单来说增量大小取决于历史最久远的快照和最新快照之间的差异。</p>
+<p>通过 Timeshift 自动清理历史最久远的快照是简单有效的方法，但仍然需要注意不要保存太多快照</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wf19930209/article/details/104236358">Timeshift系统备份与还原_FlyWine的博客-CSDN博客_timeshift</a></p>
+</blockquote>
+<h3 id="discover配置"><a href="#discover配置" class="headerlink" title="discover配置"></a>discover配置</h3><p>discover并没有自动安装后端程序，启示者也很好理解，kde并不是为Arch设计的，其管理工具不一定是pacman。因此，为了能在Arch上使用discover我们需安装一下discover的后端程序</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S packagekit-qt5 flatpak fwupd </span><br></pre></td></tr></table></figure>
+
+<p>假如还是有下载上的问题，网络代理设置全局模式就ok啦</p>
+<p>后来发现，把这玩意删了更有用</p>
+<h1 id="KDE-安装Fcitx5"><a href="#KDE-安装Fcitx5" class="headerlink" title="KDE    安装Fcitx5"></a>KDE    安装Fcitx5</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yay -S fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt fcitx5-configtool fcitx5-material-color</span><br><span class="line"><span class="comment"># 安装输入法</span></span><br><span class="line">yay -S fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki</span><br><span class="line"><span class="comment"># 安装词库</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p><code>vim ~/.pam_environment</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">GTK_IM_MODULE DEFAULT=fcitx</span><br><span class="line">QT_IM_MODULE  DEFAULT=fcitx</span><br><span class="line">XMODIFIERS    DEFAULT=\@im=fcitx</span><br><span class="line">INPUT_METHOD  DEFAULT=fcitx</span><br><span class="line">SDL_IM_MODULE DEFAULT=fcitx</span><br><span class="line">GLFW_IM_MODULE DEFAULT=ibus</span><br></pre></td></tr></table></figure>
+
+<h2 id="键盘键位设置"><a href="#键盘键位设置" class="headerlink" title="键盘键位设置"></a>键盘键位设置</h2><p>在区域设置的输入法一栏里面建立双拼和键盘英语，之后用ctrl+space可以切换</p>
+<h2 id="云拼音"><a href="#云拼音" class="headerlink" title="云拼音"></a>云拼音</h2><p>开启关闭快捷键 ctrl-alt-shift-c</p>
+<p>启用禁用输入法使用shift,上下翻页键使用,和句号</p>
+<h2 id="皮肤"><a href="#皮肤" class="headerlink" title="皮肤"></a>皮肤</h2><p>输入法的附加组件里面可以对皮肤进行设置，皮肤已经在上文安装了</p>
+<p>附加组件的经典用户界面里面，还有这个</p>
+<p>~&#x2F;.local&#x2F;share&#x2F;fcitx5&#x2F;themes&#x2F;</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sxqsfun/fcitx5-sogou-themes">https://github.com/sxqsfun/fcitx5-sogou-themes</a></p>
+<h2 id="词库"><a href="#词库" class="headerlink" title="词库"></a>词库</h2><p>可以使用搜狗词库</p>
+<p>fcitx5-&gt;附加组件-&gt;拼音,选择字典可以选择不同的字库</p>
+<p>模糊音之类乱七八糟的关了,这个只会影响响应速度opt</p>
+<p>在配置附加组件里面把乱七八糟的关了</p>
+<h2 id="字体大小等基础命令"><a href="#字体大小等基础命令" class="headerlink" title="字体大小等基础命令"></a>字体大小等基础命令</h2><p>如果只是更改大小之类的操作，推荐使用命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim ~/.config/fcitx5/conf/classicui.conf <span class="comment">#更改配置文件</span></span><br><span class="line">fcitx5 -r   <span class="comment">#重启</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Fcitx5无法打出-、号"><a href="#Fcitx5无法打出-、号" class="headerlink" title="Fcitx5无法打出 、号"></a>Fcitx5无法打出 、号</h2><p>在之前的东西配置好之后</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S fcitx5-rime</span><br><span class="line"></span><br><span class="line">sudo pacman -S rime-cloverpinyin</span><br></pre></td></tr></table></figure>
+
+<p>能用顿号就行了，这个双拼要配，我懒，方法在这里</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/mobile?id=14690644"></a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rime/home/wiki/CustomizationGuide#%E4%B8%80%E4%BE%8B%E5%AE%9A%E8%A3%BD%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F">CustomizationGuide · rime&#x2F;home Wiki</a></p>
+<h1 id="墙外的世界"><a href="#墙外的世界" class="headerlink" title="墙外的世界"></a>墙外的世界</h1><h2 id="qv2ray配置"><a href="#qv2ray配置" class="headerlink" title="qv2ray配置"></a>qv2ray配置</h2><p>友链<a target="_blank" rel="noopener" href="https://breezeshane.github.io/Linux/ArcolinuxAndAwesomeWM/#%E5%AE%89%E8%A3%85fcitx5%E8%BE%93%E5%85%A5%E6%B3%95%E4%BB%A5%E5%8F%8A%E8%AE%BE%E7%BD%AE%E8%BD%AF%E4%BB%B6%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8">https://breezeshane.github.io/Linux/ArcolinuxAndAwesomeWM/#安装fcitx5输入法以及设置软件开机自动启动</a></p>
+<p>下载</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yay -S xray v2ray qv2ray</span><br></pre></td></tr></table></figure>
+
+<p>引入全局变量在 &#x2F;etc&#x2F;environment 里面</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:8889</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:8889</span><br><span class="line"><span class="built_in">export</span> ftp_proxy=http://127.0.0.1:8889</span><br><span class="line"><span class="built_in">export</span> rsync_proxy=http://127.0.0.1:8889</span><br><span class="line"><span class="built_in">export</span> no_proxy=<span class="string">&#x27;localhost,127.0.0.1,localaddress,.localdomain.com&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>8889是主机的端口号，127.0.0.1是本机的监听地址</p>
+<h2 id="clash配置"><a href="#clash配置" class="headerlink" title="clash配置"></a>clash配置</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/460826583">https://zhuanlan.zhihu.com/p/460826583</a></p>
+<p>clash文档<a target="_blank" rel="noopener" href="https://docs.cfw.lbyczf.com/contents/ui/general.html">https://docs.cfw.lbyczf.com/contents/ui/general.html</a></p>
+<p>因为买的飞机场没有qv2ray的订阅，所以转用clash</p>
+<ol>
+<li>下载<a target="_blank" rel="noopener" href="https://github.com/Fndroid/clash_for_windows_pkg/releases">https://github.com/Fndroid/clash_for_windows_pkg&#x2F;releases</a>，下载这个的clashforwindows的linux压缩包gz<br>arch文件的默认存储位置在&#x2F;usr&#x2F;local里，所以也解压到这个位置</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mv</span> xxx xxx</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>更改端口号，因为之前用了qv2ray，所以全局的端口号还是8889,所以把clash的端口号也改为8889</li>
+<li>设置开机自动启动</li>
+</ol>
+<p>KDE有图形化界面,下载的时候是有默认自启动的，但是因为修改了文件的位置，KDE没有发现，所以要手动修改一下</p>
+<p>使用过程中发现一个诡异的事情，之前安装Firefox可以正常使用谷歌，但是chrome浏览器不能，试了各种方法后，把上面的端口的配置删了，然后在KDE的setting里面，通过网络设置的代理→使用系统代理服务器配置→自动检测，之后应用就可以正常上网了</p>
+<p>使用手动配置的代理服务器</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/29/626bc2ee4ef54.png" alt="image-20220412191709041"></p>
+<p>很多时候，kde提供了很多有用的工具，解决不了的时候，试试kde有没有图形化的界面，和archlinux文档</p>
+<ol start="4">
+<li>点击 general 勾选 allow lan、tun mode、mixin、start with linux</li>
+</ol>
+<blockquote>
+<p><strong>TUN 模式</strong></p>
+<p>对于不遵循系统代理的软件，TUN 模式可以接管其流量并交由 CFW 处理，在 Windows 中，TUN 模式性能比 TAP 模式好</p>
+<p><strong>minxin</strong></p>
+<p>支持向所有配置文件中注入公共属性设置,没配置公共属性开不开也就无所谓了</p>
+<p><strong>Allow</strong> <strong>LAN</strong></p>
+<p>是否允许局域网代理</p>
+</blockquote>
+<ol start="5">
+<li>不幸的是当我把默认浏览器从firefox改成google的时候网络链接又挂了,发现是我上面的操作把配置文件qv2ray那里的删了的缘故,重新补上然后更新又回来了</li>
+</ol>
+<h1 id="电源管理"><a href="#电源管理" class="headerlink" title="电源管理"></a>电源管理</h1><h2 id="ASUSCTl-华硕电源风扇管理"><a href="#ASUSCTl-华硕电源风扇管理" class="headerlink" title="ASUSCTl   华硕电源风扇管理"></a>ASUSCTl   华硕电源风扇管理</h2><p>我是双风扇的笔记本，但是linux内核都是只能驱动一个风扇的</p>
+<p>后来发现貌似是主板控制的风扇转速，想要什么在windows调好就ok了，现在没出现什么恶心的问题，就不乱动了</p>
+<h2 id="安装asusctl（为了btrfs安全现在用tlp了）"><a href="#安装asusctl（为了btrfs安全现在用tlp了）" class="headerlink" title="安装asusctl（为了btrfs安全现在用tlp了）"></a>安装asusctl（为了btrfs安全现在用tlp了）</h2><p><a target="_blank" rel="noopener" href="https://asus-linux.org/wiki/arch-guide/">ASUS NoteBook Linux</a></p>
+<p>添加仓库  &#x2F;etc&#x2F;pacman.conf</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[g14]</span><br><span class="line">SigLevel = DatabaseNever Optional TrustAll</span><br><span class="line">Server = https://arch.asus-linux.org</span><br></pre></td></tr></table></figure>
+
+<p>更新</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pacman -Suy</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pacman -S asusctl</span><br></pre></td></tr></table></figure>
+
+<p>asusd 服务在键盘驱动程序准备好后由 udev 规则触发，该服务不需要启用，也不应该启用。</p>
+<p>asusctl 需要安装并运行 power-profiles-daemon。它会在安装 asusctl 时自动安装，但您需要启用它：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now power-profiles-daemon.service</span><br></pre></td></tr></table></figure>
+
+<p>与tlp冲突，删除tlp</p>
+<p>在没有进行调整的时候用asusctl -s 查看目前支持的功能，很遗憾对于我目前的笔记本只支持电量控制，风扇，节电控制都不支持</p>
+<p>常用命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">asusctl -c 电量 <span class="comment">#设置最大充电电量</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>power-profiles-daemon</p>
+<p>它为许多与电源配置文件守护进程不直接相关的华硕特定功能提供了一个接口，例如处理键盘 LED 设置或设置电池充电限制。在 5.14 内核开发周期中，相关功能被移至 asus-wmi 内核驱动程序，power-profiles-daemon 可以在其中使用它。这两个守护进程现在是互补的。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">powerprofilesctl <span class="built_in">set</span> balanced</span><br><span class="line">powerporfilesctl <span class="built_in">set</span> power-saver</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>开机自动执行最大电量60</p>
+<p>创建一个脚本,开机自启动</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim powersaving60.shell</span><br><span class="line"><span class="built_in">chmod</span> +rwx powersaving60.shell </span><br></pre></td></tr></table></figure>
+
+<p>#在shell里面是注释的意思，第一句一定要有，sudo就不用开机再输密码了</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">   2   │ <span class="comment">#设置电池最大充电值</span></span><br><span class="line">   3   │ sudo systemctl start asusd</span><br><span class="line">   4   │ asusctl -c 60</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为tlp的电源管理需要调整一些地方以免btrfs格式发生损坏，怕asusctl也有相同的问题，决定把电源管理模式调整回tlp</p>
+</blockquote>
+<h2 id="华硕灵耀16pro2-5k版本："><a href="#华硕灵耀16pro2-5k版本：" class="headerlink" title="华硕灵耀16pro2.5k版本："></a>华硕灵耀16pro2.5k版本：</h2><p>这里面提到的几个方法都使用了，但是发现都不生效，目前确定的是只有第一个是有效的</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Askannz/optimus-manager/wiki/A-guide--to-power-management-options">A guide to power management options · Askannz&#x2F;optimus-manager Wiki</a></p>
+<p>先按照3的方法配置，之后再专用1的方法</p>
+<p><a target="_blank" rel="noopener" href="https://arch.icekylin.online/rookie/graphic-driver.html#%E5%8F%8C%E6%98%BE%E5%8D%A1-%E6%A0%B8%E6%98%BE-%E7%8B%AC%E6%98%BE">archlinux 简明指南 - Arch Linux 安装使用教程</a></p>
+<h2 id="显卡切换"><a href="#显卡切换" class="headerlink" title="显卡切换"></a>显卡切换</h2><p><strong>在只用核显的模式下，确保正确关闭独立显卡</strong>；而在混合模式下，绝大多数情况下 NVIDIA 模块实际是始终开启的，<strong>电源管理并不生效</strong>。</p>
+<p>通用的注意点：</p>
+<p>配置文件在：</p>
+<p><code>/etc/optimus-manager/optimus-manager.conf</code></p>
+<p>prime-offload</p>
+<p>安装对应的驱动，集成显卡和独显都需要安装</p>
+<p>集成显卡</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon</span><br></pre></td></tr></table></figure>
+
+<p>核显</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S nvidia nvidia-settings lib32-nvidia-utils <span class="comment"># 必须安装</span></span><br></pre></td></tr></table></figure>
+
+<p>相互切换软件</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yay -S optimus-manager optimus-manager-qt</span><br></pre></td></tr></table></figure>
+
+<p>设置程序自启动</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> optimus-manager.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果需要在独显和核显模式间切换，要注意你没安装各类 GPU 监控插件，它们会阻止显卡切换，导致不可预料的错误<br>不要使用 Nvidia Control Panel 中的 Save to X Configuration file ，会导致配置冲突</p>
+<p>出现无法打开界面的情况</p>
+<p>Create a script to launch prime-offload on login. Don’t forget to make it executable.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># not sure why but needs to sleep before launching, otherwise, it doesn&#x27;t work.</span></span><br><span class="line"><span class="built_in">sleep</span> 2</span><br><span class="line">prime-offload &amp;&gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<p><strong>Under <code>~/.config/autostart</code>. Create a file called <code>prime-offload.desktop</code> with the following contents.</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Exec=&lt;insert-path-to-script-here&gt;/prime-offload.sh</span><br><span class="line">Name=Prime Offload</span><br><span class="line">Comment=Required <span class="keyword">for</span> Optimus Prime Graphics switching</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/Askannz/optimus-manager/issues/356">https://github.com/Askannz/optimus-manager/issues/356</a></p>
+<p>一个控制自启动的shell脚本</p>
+<h2 id="Tlp配置"><a href="#Tlp配置" class="headerlink" title="Tlp配置"></a>Tlp配置</h2><h3 id="tlp安装"><a href="#tlp安装" class="headerlink" title="tlp安装"></a>tlp安装</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S tlp tlp-rdw</span><br><span class="line">yay -S tlpui <span class="comment">#图形化界面</span></span><br></pre></td></tr></table></figure>
+
+<p>为了防止 Btrfs 文件系统损坏，需要修改 <code>/etc/etc/tlp.conf</code> 配置文件：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/tlp.conf <span class="comment">#是添加不是修改 </span></span><br></pre></td></tr></table></figure>
+
+<p>将对应行改为如下内容：</p>
+<p><code>SATA_LINKPWR_ON_BAT=max_performance</code></p>
+<p><img src="https://tu.sunning.fit/i/2022/04/29/626bc2f6f2bb0.png" alt="Untitled"></p>
+<h3 id="配置-和修改语言"><a href="#配置-和修改语言" class="headerlink" title="配置  和修改语言"></a>配置  和修改语言</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> tlp.service</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> NetworkManager-dispatcher.service</span><br><span class="line">sudo systemctl mask systemd-rfkill.service <span class="comment"># 屏蔽以下服务以避免冲突，确保 TLP 无线设备的开关选项可以正确运行</span></span><br><span class="line">sudo systemctl mask systemd-rfkill.socket</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tu.sunning.fit/i/2022/04/29/626bc2ff257df.png" alt="Untitled"></p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267de727dde1.png" alt="Untitled"></p>
+<h3 id="用这个命令检查电池限制情况"><a href="#用这个命令检查电池限制情况" class="headerlink" title="用这个命令检查电池限制情况"></a>用这个命令检查电池限制情况</h3><p><img src="https://tu.sunning.fit/i/2022/04/26/6267de768e0ff.png" alt="Untitled"></p>
+<h1 id="zsh-安装"><a href="#zsh-安装" class="headerlink" title="zsh 安装"></a>zsh 安装</h1><h2 id="配置非root账户的默认编辑器"><a href="#配置非root账户的默认编辑器" class="headerlink" title="配置非root账户的默认编辑器"></a>配置非root账户的默认编辑器</h2><p><code>vim ~/.bashrc</code></p>
+<p>把 export EDITOR改成vim</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> EDITOR=<span class="string">&#x27;vim&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="OMZ安装"><a href="#OMZ安装" class="headerlink" title="OMZ安装"></a>OMZ安装</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>先执行完上面的字体安装,才能执行zsh安装</p>
+<p>听说oh-my-zsh会拖慢zsh的执行速度,但是介于比较方便（好看省事）,还是用omz,官网链接<a target="_blank" rel="noopener" href="https://ohmyz.sh/#install">https://ohmyz.sh/#install</a></p>
+<p>首先修改默认shell为zsh</p>
+<p><code>chsh -s /usr/bin/zsh</code></p>
+<p> <a target="_blank" rel="noopener" href="https://ohmyz.sh/#install">Oh My Zsh - a delightful &amp; open source framework for Zsh</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行之后会自动下载,到zsh的目录文件下面,cd回到根目录</p>
+<p>安装的时候出现了一次bug,所以在这里再进行一次更改默认的shell</p>
+<p><code>chsh -s /usr/bin/zsh</code></p>
+<p>这个时候重启，就变成自带的oh-my-zsh了</p>
+<p>可以用ozh命令进行各种操作</p>
+<blockquote>
+<p>配置文件修改</p>
+<p>配置文件的路径是~.&#x2F;zshrc,想要修改某个部分就更改配置文件即可,很多的功能把里面的注释取消就可以使用了</p>
+</blockquote>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><ul>
+<li><strong>autojump</strong> <br>任何位置使用<code>j xxx</code>即可跳转到对应的目录，而且不用写全目录名称。前提是这个目录之前访问过。</li>
+<li><strong>zsh-autosuggestions</strong> <br>会记住之前的命令输入历史，在输入命令时自动显示出过去输入过的命令，按右方向键<code>&gt;</code>即可自动填充。</li>
+<li><strong>zsh-syntax-highlighting</strong> <br>会给输入的命令高亮，输错了的命令会显示成红色。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yay -S autojump</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+
+<p>和ohmyzsh有关的配置文件在</p>
+<p>启用上面安装的几个插件</p>
+<p>sudo是ohmyzsh自带的插件，功能s是在你输入的命令的开头添加sudo ，方法是双击Esc</p>
+<p>extract也是自带插件，不用再去记不同文件的解压命令，方法是extract +你要解压的文件名</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo extract)</span><br></pre></td></tr></table></figure>
+
+<p>更新配置文件命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc  <span class="comment">#也就是执行的命令</span></span><br></pre></td></tr></table></figure>
+
+<p>安装主题 powerlevel10k  这个主题是异步加载的策略,能够增快zsh的启动速度,推荐使用这个主题</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k#oh-my-zsh">GitHub - romkatv&#x2F;powerlevel10k: A Zsh theme</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://gitee.com/romkatv/powerlevel10k.git <span class="variable">$&#123;ZSH_CUSTOM:-<span class="variable">$HOME</span>/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
+
+<p>下载之后还是更改配置文件</p>
+<p>Set <code>ZSH_THEME=&quot;powerlevel10k/powerlevel10k&quot;</code> in <code>~/.zshrc</code></p>
+<p>关于皮肤,输入p10k configure即可执行配置</p>
+<h3 id="小bug"><a href="#小bug" class="headerlink" title="小bug"></a>小bug</h3><ol>
+<li></li>
+</ol>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267de7e5c73c.png" alt="Untitled"></p>
+<p>对这power10k的omz安装一下再执行 source .zshrc即可</p>
+<ol start="2">
+<li></li>
+</ol>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267de832fd61.png" alt="Untitled"></p>
+<p>这里我设置的是quiet,等zsh加载之后输出arch的那个图标</p>
+<h1 id="平铺式桌面（伪）"><a href="#平铺式桌面（伪）" class="headerlink" title="平铺式桌面（伪）"></a>平铺式桌面（伪）</h1><p>KDE仿i3平铺式界面</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/lingtjien/Grid-Tiling-Kwin">https://github.com/lingtjien/Grid-Tiling-Kwin</a></p>
+<p>在这里下载压缩包，解压</p>
+<p>执行命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kpackagetool5 --<span class="built_in">type</span> KWin/Script -i *path*   <span class="comment">#path是对应的解压后的文件路径</span></span><br></pre></td></tr></table></figure>
+
+<p>在&#x2F;home&#x2F;sun&#x2F;.local&#x2F;share&#x2F;kservices5&#x2F;目录下面把metadata.desktop复制到这个文件夹下面，并且重命名为<code>kwin-script-grid-tiling.desktop</code></p>
+<p>在窗口管理的kwin脚本里开启这个即可</p>
+<p>所有的快捷键都可以在设置里面的快捷键里面自定义和找到</p>
+<h3 id="常用快捷键记录"><a href="#常用快捷键记录" class="headerlink" title="常用快捷键记录"></a>常用快捷键记录</h3><p>遍历窗口  Alt+Tab</p>
+<p>关闭窗口 alt+f4</p>
+<p>窗口快速平铺至对应位置  meta+对应方向键</p>
+<p>在不同窗口之间进行切换   meta+alt+方向键</p>
+<p>切换到对应桌面  ctrl+f1234</p>
+<p>显示所有窗口应用 ctrl+f9</p>
+<p>以小视窗显示所有 ctrl+f8</p>
+<p>最大化，最小化 meta+pgup&#x2F;pgdown </p>
+<p>窗口移动到另外的桌面  mata+ctrl+shift+方向键</p>
+<p>显示桌面meta+d</p>
+<p>开启关闭间隔 meta+g</p>
+<p>扩大，缩小当页窗口 win+-&#x2F;&#x3D;</p>
+<p>最小化窗口  win+b</p>
+<p>窗口浮动 win+f</p>
+<p> 改一下键位</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267de9911cb2.png" alt="Untitled"></p>
+<h3 id="kwin-tiling"><a href="#kwin-tiling" class="headerlink" title="kwin-tiling"></a>kwin-tiling</h3><p>有些东西不好实现，可以启动plasma的时候加个环境变量KDEWM&#x3D;&#x2F;usr&#x2F;bin&#x2F;i3换成i3wm 平铺式桌面布局</p>
+<h2 id="窗口规则"><a href="#窗口规则" class="headerlink" title="窗口规则"></a>窗口规则</h2><p>（因为上面的那个主题会有边框过粗的问题）</p>
+<p>窗口无标题栏和边框</p>
+<p>窗口装饰元素设置个好看的</p>
+<blockquote>
+<p> 窗口装饰元素</p>
+<p>有的在放大倍数的影响下边框太大了，有的放大缩小不够丝滑，有的上边框太大，最终发现默认的微风边框主题才是最好的</p>
+</blockquote>
+<h3 id="latter-docker"><a href="#latter-docker" class="headerlink" title="latter-docker"></a>latter-docker</h3><p><code>sudo pacman -S latte-dock</code></p>
+<p>docker使用了一下,感觉不是很有必要,挺降低效率的,但是把配置记下来</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267de9e29448.png" alt="Untitled"></p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267dea3e4a97.png" alt="Untitled"></p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267deb2d20ab.png" alt="Untitled"></p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267deae80829.png" alt="Untitled"></p>
+<h3 id="Kvantum-Manager"><a href="#Kvantum-Manager" class="headerlink" title="Kvantum Manager"></a>Kvantum Manager</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S kvantum-qt5</span><br></pre></td></tr></table></figure>
+
+<p>打开 Kvantum Manager,选择主题并安装，接下来在<code>Change/Delete Theme</code>中选择 Layan,Use this theme。最后在系统设置，外观中的应用程序风格中选择 kvantum 即可</p>
+<p><a target="_blank" rel="noopener" href="https://www.pling.com/p/1325246/">https://www.pling.com/p/1325246/</a>  主题下载网址</p>
+<p>如果透明的效果没有显示，确保 KDE 的全局缩放比例为整数倍。或者尝试切换混成器中 openGL 的设置</p>
+<p>在这里可以设置透明，半透明的效果和对于应用使用特殊的效果</p>
+<p>移除最大化窗口的边框</p>
+<p><a target="_blank" rel="noopener" href="https://qastack.cn/ubuntu/253337/remove-title-bar-and-borders-on-maximized-windows-in-kubuntu">在Kubuntu中移除最大化窗口上的标题栏和边框</a></p>
+<h1 id="其他常用配置"><a href="#其他常用配置" class="headerlink" title="其他常用配置"></a>其他常用配置</h1><h2 id="非静默启动"><a href="#非静默启动" class="headerlink" title="非静默启动"></a>非静默启动</h2><p>编辑&#x2F;etc&#x2F;default&#x2F;grub，<code>GRUB_CMDLINE_LINUX_DEFAULT</code>这一关键字修改，把引号中的quiet参数去掉</p>
+<p>创建一个&#x2F;usr&#x2F;sbin&#x2F;update-grub脚本</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"><span class="built_in">exec</span> grub-mkconfig -o /boot/grub/grub.cfg <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>到对应的文件目录，添加可执行权限（一般执行显示没有对应的命令是这个原因）</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> a+x 文件名</span><br></pre></td></tr></table></figure>
+
+<p>然后在那个目录下</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+
+<h2 id="开机自动挂载硬盘"><a href="#开机自动挂载硬盘" class="headerlink" title="开机自动挂载硬盘"></a>开机自动挂载硬盘</h2><p>关于硬盘的格式选择</p>
+<p>exfat可以被linux和win直接读取，用ntfs通过安装ntfs-3g的包可以使linux读取win的内容，但有较多的性能损失</p>
+<p>exfat也存在缺点，单日志，性能提高了，但是文件更加容易丢失，因此不能出现强制断电，接触不良等意外，鉴于是笔电遂选用exfat</p>
+<h2 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h2><p>在设置的开机和关机那一栏可以设置后台启动或者关闭那些程序</p>
+<p>ctrl+esc键可以打开关闭任务监视器</p>
+<p>dolphin 在那三个横纲那里把信息和终端打开</p>
+<p>任务调度器是什么</p>
+<h2 id="触摸板配置"><a href="#触摸板配置" class="headerlink" title="触摸板配置"></a>触摸板配置</h2><h2 id="更新系统时钟"><a href="#更新系统时钟" class="headerlink" title="更新系统时钟"></a>更新系统时钟</h2><p>因为双系统win和linux会有8个小时时差</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">timedatectl set-ntp <span class="literal">true</span> <span class="comment"># 将系统时间与网络时间进行同步</span></span><br><span class="line">timedatectl status <span class="comment"># 检查服务状态</span></span><br></pre></td></tr></table></figure>
+
+<p>更新，问题没有解决，后来用下面的方法</p>
+<p>最根本的原因是两个系统的时间管理差异造成的。Ubuntu 默认把 BIOS 时间当做 GMT+0，也就是协调世界时；而 Windows 则是看做当前时区 GMT+8。于是就出现时间被两个系统改来改去，切换系统时发生时间错乱。</p>
+<p>将 Windows 的时区改为世界协调时间，和 Ubuntu 一致。</p>
+<p>具体就是将系统时区改为 GMT+0，windows改了没啥用啊</p>
+<p>linux也可以改，怕有签名之类的乱七八糟的bug麻烦</p>
+<p>最终解决方案linux</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">timedatectl set-local-rtc 1</span><br></pre></td></tr></table></figure>
+
+<p>- </p>
+<h2 id="deb包转换"><a href="#deb包转换" class="headerlink" title="deb包转换"></a>deb包转换</h2><p>可能一些软件需要我们手动转换 deb 包后安装，这时候就需要 debtab 工具来转换。</p>
+<p>安装deb</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yay -S debtap</span><br></pre></td></tr></table></figure>
+
+<p>更新debtap数据库</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo debtap -u</span><br></pre></td></tr></table></figure>
+
+<p>这一步可能会比较慢，开全局代理等待即可</p>
+<p>使用debtap转换deb包</p>
+<p>debtap xxx.deb</p>
+<p>这一步会有输入签名，维护者等等，为了方便可以</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">debtap -Q xxx.deb</span><br></pre></td></tr></table></figure>
+
+<p>最后转换完成的包</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -U </span><br></pre></td></tr></table></figure>
+
+<p>下载好待转换的 deb 包，将其转换，以下步骤一路回车即可：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo debtap ~/Downloads/包名.deb</span><br></pre></td></tr></table></figure>
+
+<p>安装转换后的包：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo pacman -U ~/Downloads/包名.pkg.tar.zst</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="硬件信息检测"><a href="#硬件信息检测" class="headerlink" title="硬件信息检测"></a>硬件信息检测</h2><p>搞机全家桶（硬件信息检测）  GPU和CPUkde没有,其他两个kde自带而且有图形化界面  注意，当安装这个之后显卡切换模式出现了些问题，考虑到这东西没什么实质的作用，就别安装了</p>
+<h3 id="磁盘信息"><a href="#磁盘信息" class="headerlink" title="磁盘信息"></a>磁盘信息</h3><h3 id="Smartmontools"><a href="#Smartmontools" class="headerlink" title="Smartmontools"></a><strong>Smartmontools</strong></h3><ol>
+<li><p>安装 Smartmontools：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S smartmontools</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看磁盘信息：</p>
+<ul>
+<li><strong>SATA</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo smartctl -A /dev/sdx <span class="comment"># 硬盘</span></span><br><span class="line">sudo smartctl -d sat -A /dev/sdx <span class="comment"># USB 设备</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>NVME</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo smartctl -A /dev/nvmexn1 <span class="comment"># 硬盘</span></span><br><span class="line">sudo smartctl -d sat -A /dev/sdx <span class="comment"># USB 设备</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="CPU-信息"><a href="#CPU-信息" class="headerlink" title="CPU 信息"></a><strong>CPU 信息</strong></h3><p>像是win下面的CPU-Z</p>
+<ol>
+<li><p>安装 CPU-X：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S cpu-x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 CPU-X 即可看到 CPU 详细信息：</p>
+</li>
+</ol>
+<h3 id="GPU-信息"><a href="#GPU-信息" class="headerlink" title="GPU 信息"></a><strong>GPU 信息</strong></h3><ol>
+<li><p>安装 GPU-Viewer：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yay -S gpu-viewer</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 GPU-Viewer 即可看到 GPU 详细信息：</p>
+</li>
+</ol>
+<h3 id="硬件完整信息"><a href="#硬件完整信息" class="headerlink" title="硬件完整信息"></a><strong>硬件完整信息</strong></h3><ol>
+<li><p>安装 Dmidecode：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S dmidecode</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入以下命令使用 Dmidecode 查看系统硬件信息：</p>
+<p><code>sudo dmidecode</code></p>
+</li>
+</ol>
+<h2 id="archlinux-设置休眠到swap文件-直接建立一个swap分区更方便"><a href="#archlinux-设置休眠到swap文件-直接建立一个swap分区更方便" class="headerlink" title="archlinux 设置休眠到swap文件(直接建立一个swap分区更方便)"></a>archlinux 设置休眠到swap文件(直接建立一个swap分区更方便)</h2><p>虽然现在的物理内存基本可以满足内存需求，但有些软件</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/didayuye/article/details/121449321">Archlinux 设置休眠到swap文件_风言风语-CSDN博客</a></p>
+<h2 id="安装wine"><a href="#安装wine" class="headerlink" title="安装wine"></a>安装wine</h2><p>好处是在wine对应的文件夹里面对应的windows破解版软件该怎么用就怎么用</p>
+<p>坏处是把系统弄乱，而且wine的应用也会有各种各样的问题，不如模拟器，而且装了之后我还不会删</p>
+<p>文件默认路径</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/home/sun/.wine/dosdevices/c:/users/sun/</span><br></pre></td></tr></table></figure>
+
+<p>性能不会有模拟器那样巨大的损失</p>
+<h3 id="安装包及其依赖"><a href="#安装包及其依赖" class="headerlink" title="安装包及其依赖"></a>安装包及其依赖</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -Rns</span><br><span class="line">wine-mono wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls \</span><br><span class="line">mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error </span><br><span class="line">lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo \</span><br><span class="line">sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama \</span><br><span class="line">ncurses lib32-ncurses  libxslt lib32-libxslt libva lib32-libva gtk3 \</span><br><span class="line">lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pacman -S wine wine-mono wine_gecko wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls \</span><br><span class="line">mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error \</span><br><span class="line">lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo \</span><br><span class="line">sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama \</span><br><span class="line">ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 \</span><br><span class="line">lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader</span><br></pre></td></tr></table></figure>
+
+<p>安装好后用配置wine        Wine的默认路径在 ～&#x2F;.wine</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">winecfg </span><br></pre></td></tr></table></figure>
+
+<h3 id="运行windows程序"><a href="#运行windows程序" class="headerlink" title="运行windows程序"></a>运行windows程序</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wine /path/of/xxx.exe</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://notes.wadeism.net/post/linux-run-win-program-by-wine/#:~:text=Wine%20%E6%98%AF%E8%AE%93Linux%E3%80%81macOS,%E5%83%8F%E6%98%AF%E5%8E%9F%E7%94%9F%E7%9A%84%E7%A8%8B%E5%BC%8F%E3%80%82">Linux 使用 Wine 執行 Windows 程式</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hillwoodroc/winetricks-zh">https://github.com/hillwoodroc/winetricks-zh</a></p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Wine_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Wine (简体中文)</a></p>
+<p>注意不要用管理员身份运行wine</p>
+<h3 id="关于wine应用的打开"><a href="#关于wine应用的打开" class="headerlink" title="关于wine应用的打开"></a>关于wine应用的打开</h3><p>打开对应的windows程序需要在对应的文件目录下面才能打开</p>
+<p>推荐用wine打开而不是用其他方式打开</p>
+<p>写一个xmind.shell的脚本放在&#x2F;usr&#x2F;local&#x2F;bin里面 ，并给予对应的权限</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> ~/.wine/drive_c/<span class="string">&quot;Program Files&quot;</span>/<span class="string">&quot;XMind&quot;</span>/</span><br><span class="line">wine XMind.EXE   <span class="comment">#这个exe必须先cd到所在文件夹才可以执行</span></span><br></pre></td></tr></table></figure>
+
+<p>之后在konsole里面执行xmind.shell脚本即可</p>
+<h2 id="Smplayer"><a href="#Smplayer" class="headerlink" title="Smplayer"></a>Smplayer</h2><p>播放视频时出错，一部分的mp4有声音，一部分没有，不知道是怎么回事<br>有时您可以打开 VLC 并使用它来播放音频文件，但在播放视频时它会关闭。你也会得到一个段错误。当您在一台计算机上使用不同的图形卡时，尤其会发生这种情况。然后硬件视频加速配置错误，导致VLC无法引用图形设备。您可以安装以下依赖项来解决问题。</p>
+<p>对于 Nvidia 显卡用户：安装libva-vdpau-driver。</p>
+<p>英特尔显卡用户：安装libva-intel-driver。</p>
+<p>貌似也没有用，换了个视频播放器就好了</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yay -S smplayer</span><br><span class="line">yay -S smplayer-skins</span><br><span class="line">yay -S smplayer-themes</span><br></pre></td></tr></table></figure>
+
+<h3 id="皮肤美化"><a href="#皮肤美化" class="headerlink" title="皮肤美化"></a>皮肤美化</h3><p><a target="_blank" rel="noopener" href="https://store.kde.org/p/1183792">Uniform+ for SMPlayer</a></p>
+<p>界面的gui改成mpcgui</p>
+<h3 id="自定义播放速度"><a href="#自定义播放速度" class="headerlink" title="自定义播放速度"></a>自定义播放速度</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">normal_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed inc_speed</span><br></pre></td></tr></table></figure>
+
+<p>每一个inc_speed播放速度加0.1</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267dee51361b.png" alt="Untitled"></p>
+<p>左右切换的时候有进度提示条</p>
+<p>查看—显示—音量提示条</p>
+<h2 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h2><p>有时候关机时间太长是因为有的进程它不停止</p>
+<p>进行下截至时间的设置</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/etc/systemd/system.conf</span><br></pre></td></tr></table></figure>
+
+<p>找到其中 <code>DefaultTimeoutStopSec</code> 一项，将其前方的井号去掉，并赋值为 30s 即可</p>
+<p>执行这个使其生效</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>以及开启sudo echo “kernel.sysrq &#x3D; 1” &gt; &#x2F;etc&#x2F;sysctl.d&#x2F;99-sysctl.conf 这个要切换成su root来执行</p>
+<p><a target="_blank" rel="noopener" href="https://breezeshane.github.io/Linux/ArcolinuxAndAwesomeWM/#%E7%BB%84%E5%90%88%E9%94%AE%E5%AE%89%E5%85%A8%E4%BB%8E%E5%AE%B9%E5%BA%94%E5%AF%B9%E5%85%B3%E6%9C%BA-%E9%87%8D%E5%90%AF%E5%8D%A1%E6%AD%BB%E9%97%AE%E9%A2%98">Arcolinux &amp; AwesomeWM</a></p>
+<h2 id="关于更新"><a href="#关于更新" class="headerlink" title="关于更新"></a>关于更新</h2><p>没事多更新，越不更新可能遗留的问题越多</p>
+<p>如果更新之后有图形驱动找不到之类的问题，先重启，大概率是没有重启但是显卡驱动已经更新了的问题</p>
+<p>如果出现安装 nvidia-utils (510.54-1) 破坏依赖 ‘nvidia-utils&#x3D;510.47.03’这个的问题，可以先把nvidia-utils，这个东西删了，然后再重装，即可解决</p>
+<h2 id="arco-的任务管理器和查看功耗"><a href="#arco-的任务管理器和查看功耗" class="headerlink" title="arco 的任务管理器和查看功耗"></a>arco 的任务管理器和查看功耗</h2><p>资源监视器</p>
+<p>搜索电量</p>
+<p><img src="https://tu.sunning.fit/i/2022/04/26/6267def0ab0d2.png" alt="Untitled"></p>
+<h2 id="ssh连接服务器"><a href="#ssh连接服务器" class="headerlink" title="ssh连接服务器"></a>ssh连接服务器</h2><p>启动ssh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl start ssh</span><br></pre></td></tr></table></figure>
+
+<p>连接ip</p>
+<p>ssh 用户名@地址</p>
+<h2 id="终端走代理服务器"><a href="#终端走代理服务器" class="headerlink" title="终端走代理服务器"></a>终端走代理服务器</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<p>这个只在当前环境下面有，每次使用要重新执行一边指令</p>
+<p>（貌似没有用</p>
+<p>安装privoxy</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pacman -S privoxy</span><br></pre></td></tr></table></figure>
+
+<p>更改其值为ss代理 监听的地址即可</p>
+<p>位置 &#x2F;etc&#x2F;privoxy&#x2F;config</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">forward-socks5t   /               127.0.0.1:7890 .</span><br></pre></td></tr></table></figure>
+
+<p>7890对应的是privoxy监听的默认地址</p>
+<p>重启privoxy</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl restart privoxy</span><br></pre></td></tr></table></figure>
+
+
+
+<p>终端添加代理</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">      </span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">如果不希望使用8118作为privoxy 监听的地址，则需要在config文件中找到listen-address 127.0.0.1:8118一行，将8118改为自己想要的端口，并相应地在终端中输入：</span><br><span class="line"></span><br><span class="line">➜  ~ <span class="built_in">export</span> http_proxy=<span class="string">&quot;127.0.0.1:自己的端口&quot;</span></span><br><span class="line">➜  ~ <span class="built_in">export</span> https_proxy=<span class="string">&quot;127.0.0.1:自己的端口</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>想要取消终端代理</p>
+<p>直接关掉privoxy即可</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart privoxy</span><br></pre></td></tr></table></figure>
+
+
+
+<p>测试一下终端是否链接成功</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl www.google.com</span><br></pre></td></tr></table></figure>
+
+<p>有反应就说明连接成功了</p>
+<h3 id="把开启关闭终端写入命令"><a href="#把开启关闭终端写入命令" class="headerlink" title="把开启关闭终端写入命令"></a>把开启关闭终端写入命令</h3><p>把命令写在omz配置文件里面 <code>~/.zshrc</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#终端启动关闭代理</span></span><br><span class="line">sudo systemctl start privoxy <span class="comment">#先把代理开开</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">proxy_on</span></span>() &#123;</span><br><span class="line">    <span class="built_in">export</span> http_proxy=<span class="string">&quot;127.0.0.1:8118&quot;</span></span><br><span class="line">    <span class="built_in">export</span> https_proxy=<span class="string">&quot;127.0.0.1:8118&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">&quot;终端代理已开启。&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">proxy_off</span></span>()&#123;</span><br><span class="line">    <span class="built_in">unset</span> http_proxy https_proxy</span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">&quot;终端代理已关闭。&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后重新加载脚本即可</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>之后只需要执行</p>
+<p><code>proxy_on</code>和<code>proxy_off</code>即可</p>
+<h2 id="Vim复制到系统剪切板"><a href="#Vim复制到系统剪切板" class="headerlink" title="Vim复制到系统剪切板"></a>Vim复制到系统剪切板</h2><p>vim会有一些存储空间来暂存内容，vim中将这些存储空间叫<strong>寄存器</strong>。此寄存器非我们硬件所说的寄存器，可以理解为是一种cache。</p>
+<p>例如我们在vim中<code>y</code>操作复制的内容，实际就是暂存到寄存器中。</p>
+<p>查看寄存器的内容<code>:reg</code>，vim中的寄存器也有好几个</p>
+<p>原生的arch中的vim是不支持把粘贴的东西复制到系统剪切板里面的，所以</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pacman -S gvim</span><br></pre></td></tr></table></figure>
+
+<p>会提示冲突，然后确定删除vim的提示就行了</p>
+<p>然后创建文件</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
+
+<p>写入</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> clipboard^=unnamed,unnamedplus</span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.vimrc </span><br></pre></td></tr></table></figure>
+
+<p>关掉当前的终端，之后用vim的p（粘贴）操作就可以粘贴到剪切板上了</p>
+<h2 id="Typora-和-Pandoc"><a href="#Typora-和-Pandoc" class="headerlink" title="Typora 和 Pandoc"></a>Typora 和 Pandoc</h2><p>pandoc文档格式转换</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装pandoc</span></span><br><span class="line">sudo pacman -S pandoc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装texlive和中文支持</span></span><br><span class="line">sudo pacman -S texlive-core texlive-langchinese</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Sun wen xiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/07/21/arco%20%E5%AE%89%E8%A3%85/">http://example.com/2022/07/21/arco%20%E5%AE%89%E8%A3%85/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">孙文祥的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ArchLinux/">ArchLinux</a><a class="post-meta__tags" href="/tags/Arco%E5%AE%89%E8%A3%85/">Arco安装</a></div><div class="post_share"><div class="social-share" data-image="https://tu.sunning.fit/i/y/97.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/bug%E4%BB%AC/"><img class="prev-cover" src="https://tu.sunning.fit/i/y/40.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">bug们</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/Vim%20/"><img class="next-cover" src="https://tu.sunning.fit/i/y/36.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vim</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/21/Vim%20/" title="Vim"><img class="cover" src="https://tu.sunning.fit/i/y/36.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Vim</div></div></a></div><div><a href="/2022/07/21/bug%E4%BB%AC/" title="bug们"><img class="cover" src="https://tu.sunning.fit/i/y/40.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">bug们</div></div></a></div><div><a href="/2022/07/21/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" title="基本操作命令的使用"><img class="cover" src="https://tu.sunning.fit/i/y/83.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">基本操作命令的使用</div></div></a></div><div><a href="/2022/07/21/%E6%9C%AC%E6%9C%BA%E5%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="本机当服务器"><img class="cover" src="https://tu.sunning.fit/i/y/100.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">本机当服务器</div></div></a></div><div><a href="/2022/07/21/%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="组管理和权限管理"><img class="cover" src="https://tu.sunning.fit/i/y/80.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">组管理和权限管理</div></div></a></div><div><a href="/2022/07/21/%E7%BE%8E%E5%8C%96/" title="美化"><img class="cover" src="https://tu.sunning.fit/i/y/7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">美化</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sun wen xiang</div><div class="author-info__description">遇到困难睡大觉</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sunwenxiang133"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">换源和基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">换源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BAarchlinux%E9%80%89%E6%8B%A9%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F"><span class="toc-number">1.2.</span> <span class="toc-text">为archlinux选择国内镜像</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pacman%E5%92%8Cyay"><span class="toc-number">2.1.</span> <span class="toc-text">pacman和yay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pacman%E6%B8%85%E7%90%86-yay%E6%B8%85%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">pacman清理 yay清理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim"><span class="toc-number">2.3.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E6%A0%87%E6%B8%90%E5%8F%98%E8%89%B2"><span class="toc-number">2.4.</span> <span class="toc-text">图标渐变色</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">常用软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#discover%E9%85%8D%E7%BD%AE"><span class="toc-number">3.0.1.</span> <span class="toc-text">discover配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#KDE-%E5%AE%89%E8%A3%85Fcitx5"><span class="toc-number">4.</span> <span class="toc-text">KDE    安装Fcitx5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.1.</span> <span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E9%94%AE%E4%BD%8D%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.2.</span> <span class="toc-text">键盘键位设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E6%8B%BC%E9%9F%B3"><span class="toc-number">4.3.</span> <span class="toc-text">云拼音</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9A%AE%E8%82%A4"><span class="toc-number">4.4.</span> <span class="toc-text">皮肤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%8D%E5%BA%93"><span class="toc-number">4.5.</span> <span class="toc-text">词库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F%E7%AD%89%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">4.6.</span> <span class="toc-text">字体大小等基础命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fcitx5%E6%97%A0%E6%B3%95%E6%89%93%E5%87%BA-%E3%80%81%E5%8F%B7"><span class="toc-number">4.7.</span> <span class="toc-text">Fcitx5无法打出 、号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A2%99%E5%A4%96%E7%9A%84%E4%B8%96%E7%95%8C"><span class="toc-number">5.</span> <span class="toc-text">墙外的世界</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#qv2ray%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.</span> <span class="toc-text">qv2ray配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#clash%E9%85%8D%E7%BD%AE"><span class="toc-number">5.2.</span> <span class="toc-text">clash配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">电源管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ASUSCTl-%E5%8D%8E%E7%A1%95%E7%94%B5%E6%BA%90%E9%A3%8E%E6%89%87%E7%AE%A1%E7%90%86"><span class="toc-number">6.1.</span> <span class="toc-text">ASUSCTl   华硕电源风扇管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85asusctl%EF%BC%88%E4%B8%BA%E4%BA%86btrfs%E5%AE%89%E5%85%A8%E7%8E%B0%E5%9C%A8%E7%94%A8tlp%E4%BA%86%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">安装asusctl（为了btrfs安全现在用tlp了）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E7%A1%95%E7%81%B5%E8%80%8016pro2-5k%E7%89%88%E6%9C%AC%EF%BC%9A"><span class="toc-number">6.3.</span> <span class="toc-text">华硕灵耀16pro2.5k版本：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E5%8D%A1%E5%88%87%E6%8D%A2"><span class="toc-number">6.4.</span> <span class="toc-text">显卡切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">6.5.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tlp%E9%85%8D%E7%BD%AE"><span class="toc-number">6.6.</span> <span class="toc-text">Tlp配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tlp%E5%AE%89%E8%A3%85"><span class="toc-number">6.6.1.</span> <span class="toc-text">tlp安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-%E5%92%8C%E4%BF%AE%E6%94%B9%E8%AF%AD%E8%A8%80"><span class="toc-number">6.6.2.</span> <span class="toc-text">配置  和修改语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E8%BF%99%E4%B8%AA%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E7%94%B5%E6%B1%A0%E9%99%90%E5%88%B6%E6%83%85%E5%86%B5"><span class="toc-number">6.6.3.</span> <span class="toc-text">用这个命令检查电池限制情况</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zsh-%E5%AE%89%E8%A3%85"><span class="toc-number">7.</span> <span class="toc-text">zsh 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%9D%9Eroot%E8%B4%A6%E6%88%B7%E7%9A%84%E9%BB%98%E8%AE%A4%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">7.1.</span> <span class="toc-text">配置非root账户的默认编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OMZ%E5%AE%89%E8%A3%85"><span class="toc-number">7.2.</span> <span class="toc-text">OMZ安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">7.2.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">7.2.2.</span> <span class="toc-text">插件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8Fbug"><span class="toc-number">7.2.3.</span> <span class="toc-text">小bug</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B3%E9%93%BA%E5%BC%8F%E6%A1%8C%E9%9D%A2%EF%BC%88%E4%BC%AA%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">平铺式桌面（伪）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95"><span class="toc-number">8.0.1.</span> <span class="toc-text">常用快捷键记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kwin-tiling"><span class="toc-number">8.0.2.</span> <span class="toc-text">kwin-tiling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E8%A7%84%E5%88%99"><span class="toc-number">8.1.</span> <span class="toc-text">窗口规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#latter-docker"><span class="toc-number">8.1.1.</span> <span class="toc-text">latter-docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kvantum-Manager"><span class="toc-number">8.1.2.</span> <span class="toc-text">Kvantum Manager</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">9.</span> <span class="toc-text">其他常用配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E9%9D%99%E9%BB%98%E5%90%AF%E5%8A%A8"><span class="toc-number">9.1.</span> <span class="toc-text">非静默启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98"><span class="toc-number">9.2.</span> <span class="toc-text">开机自动挂载硬盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="toc-number">9.3.</span> <span class="toc-text">其他配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E6%91%B8%E6%9D%BF%E9%85%8D%E7%BD%AE"><span class="toc-number">9.4.</span> <span class="toc-text">触摸板配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%92%9F"><span class="toc-number">9.5.</span> <span class="toc-text">更新系统时钟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#deb%E5%8C%85%E8%BD%AC%E6%8D%A2"><span class="toc-number">9.6.</span> <span class="toc-text">deb包转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF%E6%A3%80%E6%B5%8B"><span class="toc-number">9.7.</span> <span class="toc-text">硬件信息检测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E4%BF%A1%E6%81%AF"><span class="toc-number">9.7.1.</span> <span class="toc-text">磁盘信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Smartmontools"><span class="toc-number">9.7.2.</span> <span class="toc-text">Smartmontools</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU-%E4%BF%A1%E6%81%AF"><span class="toc-number">9.7.3.</span> <span class="toc-text">CPU 信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPU-%E4%BF%A1%E6%81%AF"><span class="toc-number">9.7.4.</span> <span class="toc-text">GPU 信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%AE%8C%E6%95%B4%E4%BF%A1%E6%81%AF"><span class="toc-number">9.7.5.</span> <span class="toc-text">硬件完整信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#archlinux-%E8%AE%BE%E7%BD%AE%E4%BC%91%E7%9C%A0%E5%88%B0swap%E6%96%87%E4%BB%B6-%E7%9B%B4%E6%8E%A5%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AAswap%E5%88%86%E5%8C%BA%E6%9B%B4%E6%96%B9%E4%BE%BF"><span class="toc-number">9.8.</span> <span class="toc-text">archlinux 设置休眠到swap文件(直接建立一个swap分区更方便)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85wine"><span class="toc-number">9.9.</span> <span class="toc-text">安装wine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B5%96"><span class="toc-number">9.9.1.</span> <span class="toc-text">安装包及其依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8Cwindows%E7%A8%8B%E5%BA%8F"><span class="toc-number">9.9.2.</span> <span class="toc-text">运行windows程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Ewine%E5%BA%94%E7%94%A8%E7%9A%84%E6%89%93%E5%BC%80"><span class="toc-number">9.9.3.</span> <span class="toc-text">关于wine应用的打开</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smplayer"><span class="toc-number">9.10.</span> <span class="toc-text">Smplayer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9A%AE%E8%82%A4%E7%BE%8E%E5%8C%96"><span class="toc-number">9.10.1.</span> <span class="toc-text">皮肤美化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%92%AD%E6%94%BE%E9%80%9F%E5%BA%A6"><span class="toc-number">9.10.2.</span> <span class="toc-text">自定义播放速度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA"><span class="toc-number">9.11.</span> <span class="toc-text">关机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9B%B4%E6%96%B0"><span class="toc-number">9.12.</span> <span class="toc-text">关于更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#arco-%E7%9A%84%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E5%92%8C%E6%9F%A5%E7%9C%8B%E5%8A%9F%E8%80%97"><span class="toc-number">9.13.</span> <span class="toc-text">arco 的任务管理器和查看功耗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">9.14.</span> <span class="toc-text">ssh连接服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E8%B5%B0%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">9.15.</span> <span class="toc-text">终端走代理服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E5%BC%80%E5%90%AF%E5%85%B3%E9%97%AD%E7%BB%88%E7%AB%AF%E5%86%99%E5%85%A5%E5%91%BD%E4%BB%A4"><span class="toc-number">9.15.1.</span> <span class="toc-text">把开启关闭终端写入命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim%E5%A4%8D%E5%88%B6%E5%88%B0%E7%B3%BB%E7%BB%9F%E5%89%AA%E5%88%87%E6%9D%BF"><span class="toc-number">9.16.</span> <span class="toc-text">Vim复制到系统剪切板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Typora-%E5%92%8C-Pandoc"><span class="toc-number">9.17.</span> <span class="toc-text">Typora 和 Pandoc</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Axios/" title="Axios"><img src="https://tu.sunning.fit/i/y/119.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Axios"/></a><div class="content"><a class="title" href="/2022/07/21/Axios/" title="Axios">Axios</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BFS/" title="BFS"><img src="https://tu.sunning.fit/i/y/46.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BFS"/></a><div class="content"><a class="title" href="/2022/07/21/BFS/" title="BFS">BFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BOM/" title="BOM"><img src="https://tu.sunning.fit/i/y/70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2022/07/21/BOM/" title="BOM">BOM</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用"><img src="https://tu.sunning.fit/i/y/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clion使用"/></a><div class="content"><a class="title" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用">Clion使用</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/DFS/" title="DFS"><img src="https://tu.sunning.fit/i/y/88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS"/></a><div class="content"><a class="title" href="/2022/07/21/DFS/" title="DFS">DFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Sun wen xiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

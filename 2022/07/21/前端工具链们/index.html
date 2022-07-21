@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>前端工具链们 | 孙文祥的博客</title><meta name="keywords" content="前端,工具链"><meta name="author" content="Sun wen xiang"><meta name="copyright" content="Sun wen xiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="包管理器npmpnpm 安装出现command failed: pnpm install –reporter silent –shamefully-hoist 报错 估计是文件系统不支持硬链接的原因 安装的时候  指定安装依赖的时候使用npm vue create vue-demo -m npm      yarn安装npm install --global yarn  查看是否安装成功 yarn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端工具链们">
+<meta property="og:url" content="http://example.com/2022/07/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E9%93%BE%E4%BB%AC/index.html">
+<meta property="og:site_name" content="孙文祥的博客">
+<meta property="og:description" content="包管理器npmpnpm 安装出现command failed: pnpm install –reporter silent –shamefully-hoist 报错 估计是文件系统不支持硬链接的原因 安装的时候  指定安装依赖的时候使用npm vue create vue-demo -m npm      yarn安装npm install --global yarn  查看是否安装成功 yarn">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tu.sunning.fit/i/y/47.jpg">
+<meta property="article:published_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:modified_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:author" content="Sun wen xiang">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="工具链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tu.sunning.fit/i/y/47.jpg"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="http://example.com/2022/07/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E9%93%BE%E4%BB%AC/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前端工具链们',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 08:43:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tu.sunning.fit/i/y/47.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">孙文祥的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">前端工具链们</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T00:43:02.000Z" title="更新于 2022-07-21 08:43:02">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">473</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前端工具链们"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="包管理器"><a href="#包管理器" class="headerlink" title="包管理器"></a>包管理器</h1><h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><h2 id="pnpm-安装"><a href="#pnpm-安装" class="headerlink" title="pnpm 安装"></a>pnpm 安装</h2><p>出现command failed: pnpm install –reporter silent –shamefully-hoist 报错</p>
+<p>估计是文件系统不支持硬链接的原因</p>
+<p>安装的时候  指定安装依赖的时候使用npm</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vue create vue-demo -m npm</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="yarn安装"><a href="#yarn安装" class="headerlink" title="yarn安装"></a>yarn安装</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install --global yarn</span><br></pre></td></tr></table></figure>
+
+<p>查看是否安装成功</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yarn --version</span><br></pre></td></tr></table></figure>
+
+<p>升级成最新版本</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install yarn@latest -g</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>使用xxx作为默认的包管理器</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vue config --<span class="built_in">set</span> packageManager npm</span><br></pre></td></tr></table></figure>
+
+<p>设置完成后可以验证一下</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vue config --get packageManager</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Nvm和Nrm"><a href="#Nvm和Nrm" class="headerlink" title="Nvm和Nrm"></a>Nvm和Nrm</h2><h3 id="Nvm"><a href="#Nvm" class="headerlink" title="Nvm"></a>Nvm</h3><p>查看现在所有安装的node版本</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nvm list</span><br></pre></td></tr></table></figure>
+
+<p>查看nodejs官方的所有版本</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
+
+<p> 下载对应的node版本号</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nvm install （版本号）</span><br></pre></td></tr></table></figure>
+
+<p>切换node版本</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nvm use </span><br></pre></td></tr></table></figure>
+
+<h3 id="Nrm"><a href="#Nrm" class="headerlink" title="Nrm"></a>Nrm</h3><p>npm源管理器，可以快速地在npm源之间切换</p>
+<p>安装</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
+
+<p>查看可选源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nrm <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p>切换源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure>
+
+<p>添加源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nrm add jnpm www.xxxx.com</span><br></pre></td></tr></table></figure>
+
+<p>测试速度</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nrm <span class="built_in">test</span> npm</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="webstrom"><a href="#webstrom" class="headerlink" title="webstrom"></a>webstrom</h1><p>代码补全  ctrl + space</p>
+<h2 id="ESlint-Prettier"><a href="#ESlint-Prettier" class="headerlink" title="ESlint+Prettier"></a>ESlint+Prettier</h2><p>ESlint</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">ESLint</span> <span class="keyword">with</span> error prevention only  <span class="comment">//仅包含错误的ESlint</span></span><br><span class="line"><span class="title class_">ESLint</span>+<span class="title class_">Airbnb</span> config <span class="comment">//Airbnb的延伸规则</span></span><br><span class="line"><span class="title class_">ESLint</span>+<span class="title class_">Stadard</span> config <span class="comment">//标准的ESLint规则</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="comment">//表示当前目录是否为根目录，ESLint规则被现在到该目录下</span></span><br><span class="line">  <span class="attr">root</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">      <span class="comment">//在node环境下启动ESlint检测</span></span><br><span class="line">    <span class="attr">node</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">    <span class="comment">//ESLint中基础配置需要继承的配置</span></span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="string">&quot;plugin:vue/essential&quot;</span>,</span><br><span class="line">    <span class="string">&quot;eslint:recommended&quot;</span>,</span><br><span class="line">    <span class="string">&quot;plugin:prettier/recommended&quot;</span>,</span><br><span class="line">  ],</span><br><span class="line">    <span class="comment">//解析器</span></span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="attr">parser</span>: <span class="string">&quot;@babel/eslint-parser&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">    <span class="comment">//需要修改的启用规则及各自的错误级别</span></span><br><span class="line">    <span class="comment">// off 或 0 关闭规则    warn &amp; 1 warn警告级别的错误  error &amp; 2 错误级别的错误</span></span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;no-console&quot;</span>: process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&quot;production&quot;</span> ? <span class="string">&quot;warn&quot;</span> : <span class="string">&quot;off&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-debugger&quot;</span>: process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&quot;production&quot;</span> ? <span class="string">&quot;warn&quot;</span> : <span class="string">&quot;off&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>prettier</p>
+<p>可以在保存的时候直接格式化成规范的代码</p>
+<h2 id="node代码补全"><a href="#node代码补全" class="headerlink" title="node代码补全"></a>node代码补全</h2><p>在设置里面的语言和框架——Node.js——Node.js编码协助</p>
+<p>语言和框架——JS——库——下载——node</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Sun wen xiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/07/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E9%93%BE%E4%BB%AC/">http://example.com/2022/07/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E9%93%BE%E4%BB%AC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">孙文祥的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7%E9%93%BE/">工具链</a></div><div class="post_share"><div class="social-share" data-image="https://tu.sunning.fit/i/y/47.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/%E5%90%8E%E7%AB%AF/"><img class="prev-cover" src="https://tu.sunning.fit/i/y/21.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">后端</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/%E5%86%85%E5%AD%98%E8%B6%85%E9%A2%91/"><img class="next-cover" src="https://tu.sunning.fit/i/y/98.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">内存超频</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/21/Axios/" title="Axios"><img class="cover" src="https://tu.sunning.fit/i/y/119.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Axios</div></div></a></div><div><a href="/2022/07/21/BOM/" title="BOM"><img class="cover" src="https://tu.sunning.fit/i/y/70.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">BOM</div></div></a></div><div><a href="/2022/07/21/Echarts%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="Echarts数据可视化"><img class="cover" src="https://tu.sunning.fit/i/y/20.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Echarts数据可视化</div></div></a></div><div><a href="/2022/07/21/JavaScript%E5%9F%BA%E7%A1%80/" title="JavaScript基础"><img class="cover" src="https://tu.sunning.fit/i/y/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">JavaScript基础</div></div></a></div><div><a href="/2022/07/21/Mock/" title="Mock"><img class="cover" src="https://tu.sunning.fit/i/y/67.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Mock</div></div></a></div><div><a href="/2022/07/21/Pinia/" title="Pinia"><img class="cover" src="https://tu.sunning.fit/i/y/12.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Pinia</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sun wen xiang</div><div class="author-info__description">遇到困难睡大觉</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sunwenxiang133"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">包管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#npm"><span class="toc-number">1.1.</span> <span class="toc-text">npm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pnpm-%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">pnpm 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yarn%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">yarn安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nvm%E5%92%8CNrm"><span class="toc-number">1.4.</span> <span class="toc-text">Nvm和Nrm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nvm"><span class="toc-number">1.4.1.</span> <span class="toc-text">Nvm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nrm"><span class="toc-number">1.4.2.</span> <span class="toc-text">Nrm</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#webstrom"><span class="toc-number">2.</span> <span class="toc-text">webstrom</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ESlint-Prettier"><span class="toc-number">2.1.</span> <span class="toc-text">ESlint+Prettier</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8"><span class="toc-number">2.2.</span> <span class="toc-text">node代码补全</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Axios/" title="Axios"><img src="https://tu.sunning.fit/i/y/119.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Axios"/></a><div class="content"><a class="title" href="/2022/07/21/Axios/" title="Axios">Axios</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BFS/" title="BFS"><img src="https://tu.sunning.fit/i/y/46.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BFS"/></a><div class="content"><a class="title" href="/2022/07/21/BFS/" title="BFS">BFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BOM/" title="BOM"><img src="https://tu.sunning.fit/i/y/70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2022/07/21/BOM/" title="BOM">BOM</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用"><img src="https://tu.sunning.fit/i/y/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clion使用"/></a><div class="content"><a class="title" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用">Clion使用</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/DFS/" title="DFS"><img src="https://tu.sunning.fit/i/y/88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS"/></a><div class="content"><a class="title" href="/2022/07/21/DFS/" title="DFS">DFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Sun wen xiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Vuetify | 孙文祥的博客</title><meta name="keywords" content="前端,Vuetify"><meta name="author" content="Sun wen xiang"><meta name="copyright" content="Sun wen xiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="环境搭建安装正常创建一个vue项目，然后在文件夹下面 vue add vuetify  安装图标字体库默认用的是material design图标，cdn的形式 &lt;link href&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;@mdi&#x2F;font@6.x&#x2F;css&#x2F;materialdesignicons.min.css&quot; rel&#x3D;&quot;styleshe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuetify">
+<meta property="og:url" content="http://example.com/2022/07/21/Vuetify/index.html">
+<meta property="og:site_name" content="孙文祥的博客">
+<meta property="og:description" content="环境搭建安装正常创建一个vue项目，然后在文件夹下面 vue add vuetify  安装图标字体库默认用的是material design图标，cdn的形式 &lt;link href&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;@mdi&#x2F;font@6.x&#x2F;css&#x2F;materialdesignicons.min.css&quot; rel&#x3D;&quot;styleshe">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tu.sunning.fit/i/y/102.jpg">
+<meta property="article:published_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:modified_time" content="2022-07-21T00:43:02.000Z">
+<meta property="article:author" content="Sun wen xiang">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Vuetify">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tu.sunning.fit/i/y/102.jpg"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="http://example.com/2022/07/21/Vuetify/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vuetify',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 08:43:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tu.sunning.fit/i/y/102.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">孙文祥的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vuetify</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T00:43:02.000Z" title="更新于 2022-07-21 08:43:02">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">912</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vuetify"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>正常创建一个vue项目，然后在文件夹下面</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vue add vuetify</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装图标字体库"><a href="#安装图标字体库" class="headerlink" title="安装图标字体库"></a>安装图标字体库</h3><p>默认用的是material design图标，cdn的形式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;link href=<span class="string">&quot;https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>引入的位置在public的index.html文件里面(最后一行)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;icon&quot; href=&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css&quot;&gt;</span><br><span class="line">  &lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>安装本地依赖</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install @mdi/font -D</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>src/plugins/vuetify.js</code>里进行配置</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/plugins/vuetify.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;@mdi/font/css/materialdesignicons.css&#x27;</span> <span class="comment">// Ensure you are using css-loader</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vuetify</span> <span class="keyword">from</span> <span class="string">&#x27;vuetify/lib&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Vuetify</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Vuetify</span>(&#123;</span><br><span class="line">  <span class="attr">icons</span>: &#123;</span><br><span class="line">    <span class="attr">iconfont</span>: <span class="string">&#x27;mdi&#x27;</span>, <span class="comment">// 默认值 - 仅用于展示目的</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="v-app布局"><a href="#v-app布局" class="headerlink" title="v-app布局"></a>v-app布局</h1><h2 id="v-app"><a href="#v-app" class="headerlink" title="v-app"></a>v-app</h2><p>所有组件都要放到v-app里面，是应用程序的根节点，这样样式才是对的</p>
+<p>如果添加v-app-bar，这个组件必须加上app属性</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-app</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 必须有app属性 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">v-app-bar</span> <span class="attr">app</span>&gt;</span><span class="tag">&lt;/<span class="name">v-app-bar</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">v-main</span>&gt;</span></span><br><span class="line">    Hello World</span><br><span class="line">  <span class="tag">&lt;/<span class="name">v-main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">v-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>因为我们给了 <code>v-app-bar</code> <strong>app</strong> prop, Vuetify 知道它是布局的一部分。 <code>v-main</code>然后获取我们的bar的注册高度，并从其可用内容区域中移除相同数量的空间。在这个例子中，<strong>64px</strong>的空间从<code>v-main</code>的容器顶部移除</p>
+<h2 id="v-main"><a href="#v-main" class="headerlink" title="v-main"></a>v-main</h2><p>充满整个窗口</p>
+<h1 id="首页制作"><a href="#首页制作" class="headerlink" title="首页制作"></a>首页制作</h1><h2 id="最上面应用栏模块"><a href="#最上面应用栏模块" class="headerlink" title="最上面应用栏模块"></a>最上面应用栏模块</h2><p>由v-app-bar和v-tabs组成</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-app-bar</span></span></span><br><span class="line"><span class="tag">  <span class="attr">dense</span></span></span><br><span class="line"><span class="tag">  <span class="attr">elevation</span>=<span class="string">&quot;4&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">app</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">v-tabs</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-tab</span>&gt;</span>商品页面<span class="tag">&lt;/<span class="name">v-tab</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-tab</span>&gt;</span>购物车<span class="tag">&lt;/<span class="name">v-tab</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-tab</span>&gt;</span>订单<span class="tag">&lt;/<span class="name">v-tab</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">v-tabs</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">v-app-bar</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>为了让每个组件之间有一些空隙，使用网格系统中<code>v-container</code>子组件</p>
+<p>作用：</p>
+<p>将网站的内容居中和水平填充，可以用fluid属性将容器在所有是口和设备尺寸上完全扩展，默认不是占满整个父空间的，用fiuld属性可以</p>
+<h2 id="登陆按钮"><a href="#登陆按钮" class="headerlink" title="登陆按钮"></a>登陆按钮</h2><p>直接写默认会占用空间，挤其它的元素，加上一个absolute属性，就不会挤占空间了</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-btn</span> <span class="attr">absolute</span>&gt;</span>登陆<span class="tag">&lt;/<span class="name">v-btn</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>加上text属性，把按钮的颜色改成一个纯文本的样子</p>
+<h2 id="视差"><a href="#视差" class="headerlink" title="视差"></a>视差</h2><p>图片的滑动速度和滚动条滑动的速度不一样</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-parallax</span> <span class="attr">:src</span>=<span class="string">&quot;picSrc&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;text-center&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;text-h2 font-weight-black mb-3&quot;</span>&gt;</span></span><br><span class="line">            Web大作业<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">p</span> <span class="attr">data-text</span>=<span class="string">&quot;2000301136&quot;</span> <span class="attr">class</span>=<span class="string">&quot;text-h5&quot;</span>&gt;</span>2000301136<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">v-parallax</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="设置下方卡片之前存在距离"><a href="#设置下方卡片之前存在距离" class="headerlink" title="设置下方卡片之前存在距离"></a>设置下方卡片之前存在距离</h2><p>用<code>ml-3</code>这个类，但是这样就不是水平居中的了，左边也会有3的边距</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-card</span> <span class="attr">hover</span> <span class="attr">v-for</span>=<span class="string">&quot;(card,index) in tabMenus&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;index&quot;</span> <span class="attr">:to</span>=<span class="string">&quot;card.href&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;&#123;&#x27;ml-3&#x27;:(index!==0)&#125;&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>用这个方法确定是不是第一个，index是tabMenus中的子对象有的属性</p>
+<h1 id="学习到的东西"><a href="#学习到的东西" class="headerlink" title="学习到的东西"></a>学习到的东西</h1><p>了解了vue推荐的代码规范，所有的数据放到data里面，<code>template</code>里面如果有需要数据的地方往数据里面找对应的数据即可</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Sun wen xiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/07/21/Vuetify/">http://example.com/2022/07/21/Vuetify/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">孙文祥的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/Vuetify/">Vuetify</a></div><div class="post_share"><div class="social-share" data-image="https://tu.sunning.fit/i/y/102.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/Vuex/"><img class="prev-cover" src="https://tu.sunning.fit/i/y/60.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vuex</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/TypeScript/"><img class="next-cover" src="https://tu.sunning.fit/i/y/47.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">TypeScript</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/21/Axios/" title="Axios"><img class="cover" src="https://tu.sunning.fit/i/y/119.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Axios</div></div></a></div><div><a href="/2022/07/21/BOM/" title="BOM"><img class="cover" src="https://tu.sunning.fit/i/y/70.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">BOM</div></div></a></div><div><a href="/2022/07/21/Echarts%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="Echarts数据可视化"><img class="cover" src="https://tu.sunning.fit/i/y/20.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Echarts数据可视化</div></div></a></div><div><a href="/2022/07/21/JavaScript%E5%9F%BA%E7%A1%80/" title="JavaScript基础"><img class="cover" src="https://tu.sunning.fit/i/y/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">JavaScript基础</div></div></a></div><div><a href="/2022/07/21/Mock/" title="Mock"><img class="cover" src="https://tu.sunning.fit/i/y/67.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Mock</div></div></a></div><div><a href="/2022/07/21/Pinia/" title="Pinia"><img class="cover" src="https://tu.sunning.fit/i/y/12.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Pinia</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sun wen xiang</div><div class="author-info__description">遇到困难睡大觉</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sunwenxiang133"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%9B%BE%E6%A0%87%E5%AD%97%E4%BD%93%E5%BA%93"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装图标字体库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#v-app%E5%B8%83%E5%B1%80"><span class="toc-number">2.</span> <span class="toc-text">v-app布局</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#v-app"><span class="toc-number">2.1.</span> <span class="toc-text">v-app</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-main"><span class="toc-number">2.2.</span> <span class="toc-text">v-main</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%96%E9%A1%B5%E5%88%B6%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">首页制作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E4%B8%8A%E9%9D%A2%E5%BA%94%E7%94%A8%E6%A0%8F%E6%A8%A1%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">最上面应用栏模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E9%99%86%E6%8C%89%E9%92%AE"><span class="toc-number">3.2.</span> <span class="toc-text">登陆按钮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%B7%AE"><span class="toc-number">3.3.</span> <span class="toc-text">视差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%8B%E6%96%B9%E5%8D%A1%E7%89%87%E4%B9%8B%E5%89%8D%E5%AD%98%E5%9C%A8%E8%B7%9D%E7%A6%BB"><span class="toc-number">3.4.</span> <span class="toc-text">设置下方卡片之前存在距离</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%88%B0%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="toc-number">4.</span> <span class="toc-text">学习到的东西</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Axios/" title="Axios"><img src="https://tu.sunning.fit/i/y/119.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Axios"/></a><div class="content"><a class="title" href="/2022/07/21/Axios/" title="Axios">Axios</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BFS/" title="BFS"><img src="https://tu.sunning.fit/i/y/46.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BFS"/></a><div class="content"><a class="title" href="/2022/07/21/BFS/" title="BFS">BFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BOM/" title="BOM"><img src="https://tu.sunning.fit/i/y/70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2022/07/21/BOM/" title="BOM">BOM</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用"><img src="https://tu.sunning.fit/i/y/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clion使用"/></a><div class="content"><a class="title" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用">Clion使用</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/DFS/" title="DFS"><img src="https://tu.sunning.fit/i/y/88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS"/></a><div class="content"><a class="title" href="/2022/07/21/DFS/" title="DFS">DFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Sun wen xiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

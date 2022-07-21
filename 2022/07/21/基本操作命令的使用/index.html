@@ -1,0 +1,480 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>基本操作命令的使用 | 孙文祥的博客</title><meta name="keywords" content="ArchLinux,Linux,基本操作命令的使用"><meta name="author" content="Sun wen xiang"><meta name="copyright" content="Sun wen xiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基础了解&#x2F; 是根目录 ~ 是家目录 tab能够自动补全 向前滚动一屏，向后滚动一屏 Ctrl+F（front）    Ctrl+B（behing）   clear 能把之前显示的东西都清理掉  Linux下没有消息一般是成功了，消息基本是失败的消息 隐藏文件是以 ‘.’开头的 不同的类型linux里面颜色不一样，文件，目录，压缩包，可执行文件等等颜色都是不同的 .&#x2F;  代表在当">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本操作命令的使用">
+<meta property="og:url" content="http://example.com/2022/07/21/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="孙文祥的博客">
+<meta property="og:description" content="基础了解&#x2F; 是根目录 ~ 是家目录 tab能够自动补全 向前滚动一屏，向后滚动一屏 Ctrl+F（front）    Ctrl+B（behing）   clear 能把之前显示的东西都清理掉  Linux下没有消息一般是成功了，消息基本是失败的消息 隐藏文件是以 ‘.’开头的 不同的类型linux里面颜色不一样，文件，目录，压缩包，可执行文件等等颜色都是不同的 .&#x2F;  代表在当">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tu.sunning.fit/i/y/83.jpg">
+<meta property="article:published_time" content="2022-07-21T00:43:01.000Z">
+<meta property="article:modified_time" content="2022-07-21T00:43:01.000Z">
+<meta property="article:author" content="Sun wen xiang">
+<meta property="article:tag" content="ArchLinux">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="基本操作命令的使用">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tu.sunning.fit/i/y/83.jpg"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="http://example.com/2022/07/21/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基本操作命令的使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 08:43:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tu.sunning.fit/i/y/83.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">孙文祥的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基本操作命令的使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T00:43:01.000Z" title="发表于 2022-07-21 08:43:01">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T00:43:01.000Z" title="更新于 2022-07-21 08:43:01">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ArchLinux/">ArchLinux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基本操作命令的使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h1><p>&#x2F; 是根目录</p>
+<p>~ 是家目录</p>
+<p>tab能够自动补全</p>
+<p>向前滚动一屏，向后滚动一屏 Ctrl+F（front）    Ctrl+B（behing）  </p>
+<p>clear 能把之前显示的东西都清理掉 </p>
+<p>Linux下没有消息一般是成功了，消息基本是失败的消息</p>
+<p>隐藏文件是以 ‘.’开头的</p>
+<p>不同的类型linux里面颜色不一样，文件，目录，压缩包，可执行文件等等颜色都是不同的</p>
+<p>.&#x2F;  代表在当前目录找某个指令</p>
+<p>环境变量，为了在任何一个地方都能找到某个文件，需要配置环境变量</p>
+<h2 id="linux的后缀"><a href="#linux的后缀" class="headerlink" title="linux的后缀"></a>linux的后缀</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> 一谈到文件类型，大家就能想到Windows的文件类型，比如file.txt、file.doc、file.sys、file.mp3、file.exe等，根据</span><br><span class="line">文件的后缀就能判断文件的类型。但在Linux一个文件是否能被执行，和后缀名没有太大的关系，主要看文件的属性有关。但我们了解一下Linux文件的后缀名还是有必要的，</span><br><span class="line">特别是我们自己创建一些文件，最好还是加后缀名，这样做的目的是仅仅是为了我们的在应用时方便。</span><br><span class="line"></span><br><span class="line">现在的Linux桌面环境和Windows一样智能化，文件的类型是和相应的程序关联的。在我们打开某个文件时，系统会自动判断用哪个应用程序打开。</span><br><span class="line">如果从这方面来说，Linux桌面环境和Windows桌面没有太大的区别。</span><br><span class="line"></span><br><span class="line">在Linux中，带有扩展名的文件，只能代表程序的关联，并不能说明文件是可以执行，从这方面来说，Linux的扩展名没有太大的意义。</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意文件目录的-x2F-问题"><a href="#注意文件目录的-x2F-问题" class="headerlink" title="注意文件目录的&#x2F;问题"></a>注意文件目录的&#x2F;问题</h2><ol>
+<li>linux里一切皆文件</li>
+<li>文件前面有&#x2F;代表绝对路径，没有则代表相对路径</li>
+<li>文件的后面有&#x2F;代表这个目录，如果没有代表这个文件  cd sun&#x2F;  代表的是sun这个目录，没有意指这个文件</li>
+</ol>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>如果没有指令路径的话，Javac是在这几个地方去找（环境变量里面）,所以在家目录里面是找不到javac的</p>
+<p><img src="https://tu.sunning.fit/i/2022/07/12/62cd3a5cb179b.png" alt="Untitled"></p>
+<h1 id="linux目录结构"><a href="#linux目录结构" class="headerlink" title="linux目录结构"></a>linux目录结构</h1><p>在linux世界里，一切皆文件</p>
+<p>层级式的树状目录结构，在此结构中的最上层是跟目录“&#x2F;” 然后在在目录下再创建其他的目录</p>
+<p>linux的目录什么东西放在什么地方是规划好的，不是自己想怎么弄就怎么弄的（Windows也是这样的，只是厂家不按照这个规则放文件）</p>
+<p>boot 用户启动的时候用到的核心文件</p>
+<p>root root这个用户用到的文件</p>
+<p>dev 设备管理器，会把所有的硬件映射成一个文件进行管理</p>
+<h2 id="系统启动必须："><a href="#系统启动必须：" class="headerlink" title="系统启动必须："></a>系统启动必须：</h2><p><strong>&#x2F;boot：</strong>存放的启动Linux 时使用的内核文件，包括连接文件以及镜像文件。</p>
+<p><strong>&#x2F;etc【常用】：</strong>存放<strong>所有</strong>的系统需要的<strong>配置文件</strong>和<strong>子目录列表，</strong>更改目录下的文件可能会导致系统不能启动。</p>
+<p><strong>&#x2F;lib</strong>：存放基本代码库（比如c++库），其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。</p>
+<p><strong>&#x2F;sys</strong>：【不能动】 这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统、针对设备的devfs文件系统以及针对伪终端的devpts文件系统。该文件系统是内核设备树的一个直观反映。当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中</p>
+<h2 id="指令集合："><a href="#指令集合：" class="headerlink" title="指令集合："></a>指令集合：</h2><p><strong>&#x2F;bin：</strong>存放着最常用的程序和指令</p>
+<p><strong>&#x2F;sbin：</strong>只有系统管理员能使用的程序和指令。</p>
+<h2 id="外部文件管理："><a href="#外部文件管理：" class="headerlink" title="外部文件管理："></a>外部文件管理：</h2><p><strong>&#x2F;dev ：</strong>Device(设备)的缩写, 存放的是Linux的外部设备。<strong>注意：</strong>在Linux中访问设备和访问文件的方式是相同的。</p>
+<p><strong>&#x2F;media【常用】</strong>：类windows的<strong>其他设备，</strong>例如U盘、光驱等等，识别后linux会把设备放到这个目录下。</p>
+<p><strong>&#x2F;mnt</strong>：临时挂载别的文件系统的，我们可以将光驱挂载在&#x2F;mnt&#x2F;上，然后进入该目录就可以查看光驱里的内容了。挂载，就是开机的时候能读其它盘的信息的那个，挂载在某个目录之下</p>
+<h2 id="临时文件："><a href="#临时文件：" class="headerlink" title="临时文件："></a>临时文件：</h2><p><strong>&#x2F;run</strong>：是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 &#x2F;var&#x2F;run 目录，应该让它指向 run。</p>
+<p><strong>&#x2F;lost+found</strong>：一般情况下为空的，系统非法关机后，这里就存放一些文件。</p>
+<p><strong>&#x2F;tmp</strong>：这个目录是用来存放一些临时文件的。</p>
+<h2 id="账户："><a href="#账户：" class="headerlink" title="账户："></a>账户：</h2><p><strong>&#x2F;root【常用】</strong>：系统管理员的用户主目录。</p>
+<p><strong>&#x2F;home【常用】</strong>：用户的主目录，以用户的账号命名的。</p>
+<p><strong>&#x2F;usr【常用】</strong>：用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。</p>
+<p><strong>&#x2F;usr&#x2F;bin【常用】：</strong>系统用户使用的应用程序与指令。</p>
+<p><strong>&#x2F;usr&#x2F;sbin：</strong>超级用户使用的比较高级的管理程序和系统守护程序。</p>
+<p><strong>&#x2F;usr&#x2F;src：</strong>内核源代码默认的放置目录。</p>
+<p><strong>&#x2F;usr&#x2F;local:</strong> 另一个给主机额外安装软件所安装的目录，一般是通过编译源码方式安装的程序（安装好的放在这个目录里面）</p>
+<h2 id="运行过程中要用："><a href="#运行过程中要用：" class="headerlink" title="运行过程中要用："></a>运行过程中要用：</h2><p><strong>&#x2F;var</strong>：存放经常修改的数据，比如程序运行的日志文件（&#x2F;var&#x2F;log 目录下）。</p>
+<p><strong>&#x2F;proc</strong>：【不能动】管理<strong>内存空间！</strong>虚拟的目录，是系统内存的映射，我们可以直接访问这个目录来，获取系统信息。这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件来做修改。    不能动，动了可能就开不了机了</p>
+<h2 id="扩展用的："><a href="#扩展用的：" class="headerlink" title="扩展用的："></a>扩展用的：</h2><p><strong>&#x2F;opt</strong>：默认是空的，我们安装额外软件可以放在这个里面。如安装oracle数据库就可放到改目录下面</p>
+<p><strong>&#x2F;srv</strong>：【不能动】存放服务启动后需要提取的数据<strong>（不用服务器就是空）</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-system-contents.html">Linux 系统目录结构</a></p>
+<h1 id="windows下远程登陆linux服务器"><a href="#windows下远程登陆linux服务器" class="headerlink" title="windows下远程登陆linux服务器"></a>windows下远程登陆linux服务器</h1><h2 id="xshell"><a href="#xshell" class="headerlink" title="xshell"></a>xshell</h2><h3 id="无法用密码链接？"><a href="#无法用密码链接？" class="headerlink" title="无法用密码链接？"></a>无法用密码链接？</h3><p>sudo su  -  root 管理员权限</p>
+<p>passwd root 改root用户的密码</p>
+<p>修改文件 vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config</p>
+<p>把   前面的注释取消</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PasswordAuthentication yes</span><br><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+
+<p>重启ssh服务   systemctl restart sshd.service     systemctl是初始化系统命令</p>
+<h3 id="护眼"><a href="#护眼" class="headerlink" title="护眼"></a>护眼</h3><p>背景色调成灰色的</p>
+<p>主题变为传统灰色</p>
+<p>一个叫monokai的配色文件，用文本编辑器即可，后缀改为xcs</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">[<span class="meta">monokai</span>]</span><br><span class="line">text=<span class="function">ffffff</span></span><br><span class="line"><span class="function"><span class="title">cyan</span>(<span class="params">bold</span>)</span>=<span class="function">a6e22e</span></span><br><span class="line"><span class="function"><span class="title">text</span>(<span class="params">bold</span>)</span>=ffffff</span><br><span class="line">magenta=f92672</span><br><span class="line">green=<span class="number">80f</span><span class="function">f80</span></span><br><span class="line"><span class="function"><span class="title">green</span>(<span class="params">bold</span>)</span>=<span class="number">80f</span>f80</span><br><span class="line">background=<span class="number">272822</span></span><br><span class="line">cyan=<span class="function">a6e22e</span></span><br><span class="line"><span class="function"><span class="title">red</span>(<span class="params">bold</span>)</span>=de8e30</span><br><span class="line">yellow=<span class="number">66</span><span class="function">d9ef</span></span><br><span class="line"><span class="function"><span class="title">magenta</span>(<span class="params">bold</span>)</span>=<span class="function">f92672</span></span><br><span class="line"><span class="function"><span class="title">yellow</span>(<span class="params">bold</span>)</span>=<span class="number">66</span>d9ef</span><br><span class="line">red=de8e30</span><br><span class="line">white=<span class="function">c0c0c0</span></span><br><span class="line"><span class="function"><span class="title">blue</span>(<span class="params">bold</span>)</span>=<span class="function">ae81ff</span></span><br><span class="line"><span class="function"><span class="title">white</span>(<span class="params">bold</span>)</span>=ffffff</span><br><span class="line">black=<span class="number">000000</span></span><br><span class="line">blue=<span class="function">ae81ff</span></span><br><span class="line"><span class="function"><span class="title">black</span>(<span class="params">bold</span>)</span>=<span class="number">000000</span></span><br><span class="line">[<span class="meta">Names</span>]</span><br><span class="line">name0=monokai</span><br><span class="line">count=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Xftp7"><a href="#Xftp7" class="headerlink" title="Xftp7"></a>Xftp7</h2><p>没啥</p>
+<h1 id="关机重启命令"><a href="#关机重启命令" class="headerlink" title="关机重启命令"></a>关机重启命令</h1><p>shutdown -h -now   立刻进行关机</p>
+<p>shutdown -h -1      “Hello，1分钟后会关机了”</p>
+<p>shutdown -r now    现在重新启动计算机</p>
+<p>halt                          关机，作用和上面一样</p>
+<p>reboot                     现在重新启动计算机</p>
+<p>sync                         把内存的数据同步到磁盘，虽然关机等指令会默认执行一下sync，但是小心<br>使得万年船，关机前手动执行一遍sync</p>
+<h1 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h1><h2 id="用户登陆和注销"><a href="#用户登陆和注销" class="headerlink" title="用户登陆和注销"></a>用户登陆和注销</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><ol>
+<li>登陆时尽量少用root账号登陆，因为它是系统管理员，最大的权限，避免操作失误。可以利用普通用户登陆，登录后再用“su-用户名”命令来切换成系统管理员身份</li>
+<li>在提示符下输入logout即可注销用户</li>
+</ol>
+<h3 id="使用细节"><a href="#使用细节" class="headerlink" title="使用细节"></a>使用细节</h3><ol>
+<li>logout注销指令在图形运行界别无效，在运行级别3下有效（即在能看到桌面的这个情况下是无效的）</li>
+</ol>
+<p><img src="https://tu.sunning.fit/i/2022/07/12/62cd3a82864ff.png" alt="Untitled"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>useradd 用户名</p>
+<p>pwd 显示当前用户所在的目录（这其实是显示绝对路径的指令）</p>
+<h3 id="指定-x2F-修改密码"><a href="#指定-x2F-修改密码" class="headerlink" title="指定&#x2F;修改密码"></a>指定&#x2F;修改密码</h3><p>passwd 用户名 更改用户的密码</p>
+<p>它会提示无效的密码，但是这个密码其实已经更新成功了</p>
+<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><h3 id="删除用户，保留家目录"><a href="#删除用户，保留家目录" class="headerlink" title="删除用户，保留家目录"></a>删除用户，保留家目录</h3><p>userdel 用户名</p>
+<h3 id="删除用户及其用户目录"><a href="#删除用户及其用户目录" class="headerlink" title="删除用户及其用户目录"></a>删除用户及其用户目录</h3><p>userdel -r 用户名</p>
+<p>需要保留家目录嘛 一般情况下建议保留</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>创建用户成功后，会自动创建和用户同名的家目录</p>
+<p>可以通过useradd -d 目录 用户名 ，给创建的用户执行家目录</p>
+<p>这个不是指定目录，然后再目录下面创建文件夹，而是直接建立一个目录作为这个用户的名称</p>
+<h2 id="查询用户信息"><a href="#查询用户信息" class="headerlink" title="查询用户信息"></a>查询用户信息</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p>id 用户名</p>
+<h3 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h3><h4 id="su-用户名"><a href="#su-用户名" class="headerlink" title="su -用户名"></a>su -用户名</h4><p>切换到原来的用户时用logout或exit</p>
+<p>从低权限到高权限需输入密码，高权限到低权限无需密码</p>
+<h4 id="who-am-i"><a href="#who-am-i" class="headerlink" title="who am i"></a>who am i</h4><p>显示的是登陆到了的用户的信息</p>
+<h4 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h4><p>类似于角色，系统可以对有共性的多个用户进行统一的管理</p>
+<h5 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h5><ul>
+<li><p>新增组 groupadd 组名</p>
+</li>
+<li><p>删除组 groupdel  删除组</p>
+</li>
+<li><p>增加用户时直接加上组 useradd -g 用户组 用户名  这个用户名需要没存在  用户组要预先存在   注意是组在前，用户名在后</p>
+</li>
+<li><p>修改用户的组 usermod -g 用户组 用户名</p>
+</li>
+<li><p>如果新建的用户没有指定组，会新建一个同名的组</p>
+</li>
+<li><p>一些文件“在Linux里，一切皆文件”</p>
+<p>  <img src="https://tu.sunning.fit/i/2022/07/12/62cd3a88ba74a.png" alt="Untitled"></p>
+</li>
+</ul>
+<h4 id="如何找回root密码（每个系统不一样）"><a href="#如何找回root密码（每个系统不一样）" class="headerlink" title="如何找回root密码（每个系统不一样）"></a>如何找回root密码（每个系统不一样）</h4><p>本质是刚开机的时候通过单用户模式进入命令行修改密码</p>
+<h1 id="使用指令"><a href="#使用指令" class="headerlink" title="使用指令"></a>使用指令</h1><h2 id="不同的运行级别"><a href="#不同的运行级别" class="headerlink" title="不同的运行级别"></a>不同的运行级别</h2><p>0  关机</p>
+<p>1  单用户【找回丢失密码】</p>
+<p>2  多用户状态没有网络服务</p>
+<p>3  多用户状态有网络服务</p>
+<p>4  系统未使用保留给用户</p>
+<p>5  图形界面</p>
+<p>6  系统重启</p>
+<p>常用运行级别是3（默认的命令行运行级别是3）和5（图形界面）</p>
+<h3 id="指定运行级别"><a href="#指定运行级别" class="headerlink" title="指定运行级别"></a>指定运行级别</h3><p>运行级别的切换 init 运行级别</p>
+<p>systemctl set-default 目标运行级别</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://multi-user.target/">multi-user.target</a>: 运行级别3</li>
+<li>graphical.target: 运行级别5</li>
+</ul>
+<h2 id="帮助指令"><a href="#帮助指令" class="headerlink" title="帮助指令"></a>帮助指令</h2><ul>
+<li>man 【命令或配置文件】 获得帮助信息<ul>
+<li>按q就退出帮助界面了</li>
+<li>选项可以组合使用   ls -la    ls -al</li>
+</ul>
+</li>
+<li>help 命令  获得shell内置命令的帮助信息</li>
+</ul>
+<h2 id="文件目录类"><a href="#文件目录类" class="headerlink" title="文件目录类"></a>文件目录类</h2><ul>
+<li><p>pwd 指令 显示当前工作目录的绝对路径</p>
+<ul>
+<li>绝对路径 从根目录开始寻找文件</li>
+<li>相对路径 从当前目录位置开始找文件</li>
+</ul>
+</li>
+<li><p>ls 【选项】【目录或者文件】</p>
+<ul>
+<li>-a 显示当前目录所有的文件和目录，包括隐藏的</li>
+<li>-l 以列表的方式显示信息<ul>
+<li>-lm 加上了个m代表更方面human看的方式显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>cd 【参数】 切换到指定目录    这里相对路径，绝对路径的切换要学会</p>
+<ul>
+<li>cd ~ 或者 cd   切换到当前用户的家目录</li>
+<li>cd .. 回到当前目录的上一级目录<ul>
+<li>使用绝对路径切换到root目录，cd&#x2F;root</li>
+<li>使用相对路径切换到root目录，比如在&#x2F;home&#x2F;tom ,cd ..&#x2F;..&#x2F;tom</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>mkdir 【选项】 要创建的目录   用于创建目录</p>
+<ul>
+<li>-P 创建多级目录 mkdir -p &#x2F;home&#x2F;animal&#x2F;tiger</li>
+</ul>
+</li>
+<li><p>rmdir 【选项】 要删除的空目录   用于删除空目录</p>
+<ul>
+<li>如果删除的是非空目录，用 rm -rf 要删除的目录 -f强制删除 -r联级删除 在根目录使用有奇效</li>
+<li>rm -rf 【地址】</li>
+</ul>
+</li>
+<li><p>touch 【文件名称】 创建空文件</p>
+</li>
+<li><p>cp 【选项】 source dest  指令拷贝文件到指定目录</p>
+<ul>
+<li>-r : 递归复制整个文件夹</li>
+<li>将 &#x2F;home&#x2F;hello.txt 拷贝到 &#x2F;home&#x2F;bbb 下  cp hello.txt &#x2F;home&#x2F;bbb</li>
+<li>递归复制整个文件夹 &#x2F;home&#x2F;bbb拷贝到 &#x2F;opt目录下 cp -r &#x2F;home&#x2F;bbb &#x2F;opt</li>
+<li>强制覆盖不提示的方法 \cp           \cp -r &#x2F;home&#x2F;bbb  &#x2F;opt</li>
+</ul>
+</li>
+<li><p>rm 【选项】 要删除的文件或目录</p>
+<ul>
+<li>-r: 递归删除整个文件夹</li>
+<li>-f : 强制删除不提示</li>
+</ul>
+</li>
+<li><p>mv oldNameFile newNameFile 重命名 mv &#x2F;temp&#x2F;movefile &#x2F;targetFolder 移动文件或移动整个目录</p>
+</li>
+<li><p>cat 【选项】要查看的文件  cat只能浏览文件，不能修改</p>
+<ul>
+<li>-n显示行号</li>
+<li>为了浏览方便，一般会带上管道命令（即执行完一条命令之后继续执行下一条） |more</li>
+</ul>
+</li>
+<li><p>more  基于vi 的查看文件内容的指令</p>
+<ol>
+<li>空格键  向下翻一页</li>
+<li>enter 向下饭一行</li>
+<li>q 立刻离开more，不再显示文件内容</li>
+<li>&#x3D; 输出当前行的行号</li>
+<li>：f 输出文件名和当前行的行号</li>
+</ol>
+</li>
+<li><p>less 与more类似，但比类强大，这个是根据显示需要加载的内容，对显示大文件有较高的效率</p>
+</li>
+<li><p>echo 【选项】 【输出内容】 输出内容到控制台</p>
+<ul>
+<li>用echo指令输出环境变量，eg.$PATH (记得大写</li>
+<li>输出字符串  echo “hello world”</li>
+</ul>
+</li>
+<li><p>head -n 5 文件  查看文件前5行</p>
+<ul>
+<li>如果去掉 -n 5 默认显示前10行</li>
+</ul>
+</li>
+<li><p>tail 和head类似，这个是显示后面5行</p>
+<ul>
+<li>tail -f 文件  实时追踪文档的所有更新，执行这个指令系统就停止在这里一直监视tail -f 有没有更新了</li>
+</ul>
+</li>
+<li><blockquote>
+<p>指令和 &gt;&gt; 指令    输出重定向和追加指令</p>
+</blockquote>
+<ul>
+<li>ls -l &gt; 文件     （将列表的内容写入文件a.txt中） 重定向是覆盖写</li>
+<li>ls -al &gt;&gt; 文件   （将列表中的内容追加写道文件aa.txt的末尾）</li>
+<li>cat 文件1 &gt; 文件2  （将文件1的内容覆盖到文件2）</li>
+<li>echo “内容” &gt;&gt; 文件  （追加）</li>
+<li>如果被输入的文件不存在，会自动创建</li>
+</ul>
+</li>
+<li><p>ln -s 【原文件路径】【软连接名】  给原文件创建一个软连接</p>
+<ul>
+<li>软连接就类似Windows里面的快捷方式，硬链接如果原文件删除了，硬链接仍然能够访问，软连接不行</li>
+<li>用 ls -l 进行按行输出的话，是可以看出来谁是软连接的</li>
+</ul>
+</li>
+<li><p>history 指令 查看系统执行过的操作</p>
+<ul>
+<li>后面加上数字n，看的是最后执行的n步操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="时间日期类"><a href="#时间日期类" class="headerlink" title="时间日期类"></a>时间日期类</h2><ul>
+<li><p>date  显示当前日期</p>
+<ul>
+<li>date +%Y  显示当前时间</li>
+<li>date +%m 显示当前月份</li>
+<li>date +%d 显示当前是哪一天</li>
+<li>date  “+%Y-%M-%d%H:%M%S”  显示年月日时分秒  注意这个是字符串的格式 只要显示的不是单独的某个东西，就要有字符串</li>
+<li>设置日期 date -s “日期”</li>
+</ul>
+</li>
+<li><p>cal 显示当前日历</p>
+</li>
+<li><p>搜索查找类</p>
+<ul>
+<li>find【搜索范围】【选项】 从指定目录向下递归地遍历各个子目<ul>
+<li>-name 文件名 按照指定的文件名查找文件，如果文件名不固定，查找某一类型 用 *.txt</li>
+<li>-user 用户名 查找属于指定用户名所有文件</li>
+<li>-size 文件大小 按照指定的文件大小查找文件  “+”代表大于，“-”代表小于</li>
+</ul>
+</li>
+<li>locate指令<ul>
+<li>locate可以快速定位文件路径，利用实现建立的系统中所有文件名称及路径的locate数据库快速定位给定的文件，无需遍历整个文件系统，查询速度较快。为了保证查询结果的准确度，管理员必须定期更新locate时刻</li>
+<li>第一次运行前，必须用updatedb指令创建locate数据库</li>
+</ul>
+</li>
+<li>which 查看某个指定在哪个目录下</li>
+<li>grep指令和管道符号 |  管道符可以连续使用  grep【选项】查找内容 源文件<ul>
+<li>grep过滤查找，管道符“|” 表示将前一个命令的处理结果</li>
+<li>常用选项<ul>
+<li>-n显示匹配行及行号</li>
+<li>-i 忽略字母大小写</li>
+</ul>
+</li>
+<li>例：在hello.txt 中查找“yes”所在行，并显示行号<ul>
+<li>cat &#x2F;home&#x2F;hello.txt | grep -n “yes”</li>
+<li>grep -n “yes” &#x2F;home&#x2F;hello.txt</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="压缩和解压类"><a href="#压缩和解压类" class="headerlink" title="压缩和解压类"></a>压缩和解压类</h2><ul>
+<li>gzip &#x2F; gunzip 压缩和解压  这个只是对文件进行的操作 这个是文件操作之后原文件就没了<ul>
+<li>gzip 文件 压缩文件，只能压缩为*.gz文件</li>
+<li>gunzip 文件.gz 解压缩文件命令</li>
+</ul>
+</li>
+<li>zip&#x2F; unzip 压缩和解压   这个操作之后原文件还在<ul>
+<li>zip【选项】XXX.zip 将要压缩的内容（功能描述：压缩文件和目录的命令）<ul>
+<li>-r 递归压缩，即压缩目录</li>
+</ul>
+</li>
+<li>unzip 【选项】 XXX.zip （功能描述：解压缩文件）<ul>
+<li>-d 目录 ：指定解压后文件的存放目录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>tar 压缩和解压都是这个指令  最后打包后的文件是.tar.gz的文件 可压文件，也可压目录<ul>
+<li>tar【选项】 XXX.tar.gz 打包的内容 如何确定是压缩还是解压是通过选项来实现的<ul>
+<li>-c 产生.tar打包文件</li>
+<li>-v 显示详细信息</li>
+<li>-f 指定压缩后的文件名</li>
+<li>-z 打包同时压缩</li>
+<li>-x 解包.tar文件</li>
+</ul>
+</li>
+<li>例：压缩多个文件，将&#x2F;home&#x2F;pig.txt 和 &#x2F;home&#x2F;cat.txt 压缩成 pc.tar.gz<ul>
+<li>tar -zcvf pc.tar.gz &#x2F;home&#x2F;pig.txt &#x2F;home&#x2F;cat.txt  如果是解压，指令推荐zxvf</li>
+</ul>
+</li>
+<li>例：myhome.tar.gz 解压到 &#x2F;opt&#x2F;tmp2下<ul>
+<li>mkdir&#x2F;opt&#x2F;tmp2</li>
+<li>tar -zxvf &#x2F;home&#x2F;myhome.tar.gz -C &#x2F;opt&#x2F;tmp2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>  <img src="https://tu.sunning.fit/i/2022/07/12/62cd3a97221e1.png" alt="Untitled"></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Sun wen xiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/07/21/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">http://example.com/2022/07/21/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">孙文祥的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ArchLinux/">ArchLinux</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">基本操作命令的使用</a></div><div class="post_share"><div class="social-share" data-image="https://tu.sunning.fit/i/y/83.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/%E5%AE%89%E5%8D%93/"><img class="prev-cover" src="https://tu.sunning.fit/i/y/47.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">安卓</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/%E5%AD%97%E6%AE%B5%20%E5%B1%9E%E6%80%A7%20%E7%B4%A2%E5%BC%95%E5%99%A8%20%E5%B8%B8%E9%87%8F/"><img class="next-cover" src="https://tu.sunning.fit/i/y/79.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">字段 属性 索引器 常量</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/21/Vim%20/" title="Vim"><img class="cover" src="https://tu.sunning.fit/i/y/36.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">Vim</div></div></a></div><div><a href="/2022/07/21/%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="组管理和权限管理"><img class="cover" src="https://tu.sunning.fit/i/y/80.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">组管理和权限管理</div></div></a></div><div><a href="/2022/07/21/arco%20%E5%AE%89%E8%A3%85/" title="arco 安装"><img class="cover" src="https://tu.sunning.fit/i/y/97.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">arco 安装</div></div></a></div><div><a href="/2022/07/21/bug%E4%BB%AC/" title="bug们"><img class="cover" src="https://tu.sunning.fit/i/y/40.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">bug们</div></div></a></div><div><a href="/2022/07/21/%E6%9C%AC%E6%9C%BA%E5%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="本机当服务器"><img class="cover" src="https://tu.sunning.fit/i/y/100.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">本机当服务器</div></div></a></div><div><a href="/2022/07/21/%E7%BE%8E%E5%8C%96/" title="美化"><img class="cover" src="https://tu.sunning.fit/i/y/7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">美化</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sun wen xiang</div><div class="author-info__description">遇到困难睡大觉</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sunwenxiang133"><i class="fab fa-github"></i><span>Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E4%BA%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">基础了解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E7%9A%84%E5%90%8E%E7%BC%80"><span class="toc-number">1.1.</span> <span class="toc-text">linux的后缀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%9A%84-x2F-%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">注意文件目录的&#x2F;问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.</span> <span class="toc-text">环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">linux目录结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%BF%85%E9%A1%BB%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">系统启动必须：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E9%9B%86%E5%90%88%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">指令集合：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">外部文件管理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">临时文件：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%EF%BC%9A"><span class="toc-number">2.5.</span> <span class="toc-text">账户：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%A6%81%E7%94%A8%EF%BC%9A"><span class="toc-number">2.6.</span> <span class="toc-text">运行过程中要用：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%94%A8%E7%9A%84%EF%BC%9A"><span class="toc-number">2.7.</span> <span class="toc-text">扩展用的：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#windows%E4%B8%8B%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86linux%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">windows下远程登陆linux服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#xshell"><span class="toc-number">3.1.</span> <span class="toc-text">xshell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E7%94%A8%E5%AF%86%E7%A0%81%E9%93%BE%E6%8E%A5%EF%BC%9F"><span class="toc-number">3.1.1.</span> <span class="toc-text">无法用密码链接？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A4%E7%9C%BC"><span class="toc-number">3.1.2.</span> <span class="toc-text">护眼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xftp7"><span class="toc-number">3.2.</span> <span class="toc-text">Xftp7</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">关机重启命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%E5%92%8C%E6%B3%A8%E9%94%80"><span class="toc-number">5.1.</span> <span class="toc-text">用户登陆和注销</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.1.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%86%E8%8A%82"><span class="toc-number">5.1.2.</span> <span class="toc-text">使用细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-number">5.2.</span> <span class="toc-text">创建用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A-x2F-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-number">5.2.1.</span> <span class="toc-text">指定&#x2F;修改密码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-number">5.3.</span> <span class="toc-text">删除用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%EF%BC%8C%E4%BF%9D%E7%95%99%E5%AE%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">5.3.1.</span> <span class="toc-text">删除用户，保留家目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E5%8F%8A%E5%85%B6%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95"><span class="toc-number">5.3.2.</span> <span class="toc-text">删除用户及其用户目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">5.3.3.</span> <span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">5.4.</span> <span class="toc-text">查询用户信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">5.4.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7"><span class="toc-number">5.4.2.</span> <span class="toc-text">切换用户</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#su-%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-number">5.4.2.1.</span> <span class="toc-text">su -用户名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#who-am-i"><span class="toc-number">5.4.2.2.</span> <span class="toc-text">who am i</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-number">5.4.2.3.</span> <span class="toc-text">用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-number">5.4.2.3.1.</span> <span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9Eroot%E5%AF%86%E7%A0%81%EF%BC%88%E6%AF%8F%E4%B8%AA%E7%B3%BB%E7%BB%9F%E4%B8%8D%E4%B8%80%E6%A0%B7%EF%BC%89"><span class="toc-number">5.4.2.4.</span> <span class="toc-text">如何找回root密码（每个系统不一样）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">使用指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB"><span class="toc-number">6.1.</span> <span class="toc-text">不同的运行级别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB"><span class="toc-number">6.1.1.</span> <span class="toc-text">指定运行级别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9%E6%8C%87%E4%BB%A4"><span class="toc-number">6.2.</span> <span class="toc-text">帮助指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%B1%BB"><span class="toc-number">6.3.</span> <span class="toc-text">文件目录类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E7%B1%BB"><span class="toc-number">6.4.</span> <span class="toc-text">时间日期类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B%E7%B1%BB"><span class="toc-number">6.5.</span> <span class="toc-text">压缩和解压类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">6.6.</span> <span class="toc-text">其他</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Axios/" title="Axios"><img src="https://tu.sunning.fit/i/y/119.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Axios"/></a><div class="content"><a class="title" href="/2022/07/21/Axios/" title="Axios">Axios</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BFS/" title="BFS"><img src="https://tu.sunning.fit/i/y/46.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BFS"/></a><div class="content"><a class="title" href="/2022/07/21/BFS/" title="BFS">BFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/BOM/" title="BOM"><img src="https://tu.sunning.fit/i/y/70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BOM"/></a><div class="content"><a class="title" href="/2022/07/21/BOM/" title="BOM">BOM</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用"><img src="https://tu.sunning.fit/i/y/18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Clion使用"/></a><div class="content"><a class="title" href="/2022/07/21/Clion%E4%BD%BF%E7%94%A8/" title="Clion使用">Clion使用</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/21/DFS/" title="DFS"><img src="https://tu.sunning.fit/i/y/88.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS"/></a><div class="content"><a class="title" href="/2022/07/21/DFS/" title="DFS">DFS</a><time datetime="2022-07-21T00:43:02.000Z" title="发表于 2022-07-21 08:43:02">2022-07-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Sun wen xiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
